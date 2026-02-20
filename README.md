@@ -1,16 +1,51 @@
-# React + Vite
+# OU Health Portal Redesign
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React-based redesign of the OU Health Portal (Web + Mobile).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## React Compiler
+Follow these steps to run the project locally.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Clone the Repository
 
-## Expanding the ESLint configuration
+```bash
+git clone https://github.com/jbhanuchai/ou-health-portal-redesign.git
+```
+### Navigate into the Project Folder
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+cd ou-health-portal-redesign
+```
+
+### Install Dependencies
+``` bash
+npm install
+```
+
+### Start the Development Server
+```bash
+npm run dev
+```
+
+### Open in Browser
+After running the command above, a local development link will appear in the terminal.
+On macOS (and most systems), it will typically be: http://localhost:5173/
+Open this link in your browser to view the application.
+
+The app will automatically reload when you make changes.
+
+---
+
+## Tech Stack
+
+React (Vite)
+JavaScript
+CSS
+
+---
+
+## Responsive Design
+
+The application is designed to work on Desktop (Web) and Mobile devices
