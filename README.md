@@ -2,7 +2,6 @@
 
 A responsive React-based redesign of the OU Health Portal (Web + Mobile).
 
----
 
 ## Getting Started
 
@@ -36,15 +35,11 @@ Open this link in your browser to view the application.
 
 The app will automatically reload when you make changes.
 
----
-
 ## Tech Stack
 
 React (Vite)
 JavaScript
 CSS
-
----
 
 ## Responsive Design
 
