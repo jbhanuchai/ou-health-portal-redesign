@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OU HealthConnection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #e8f0fb;
+            --surface: #ffffff;
+            --surface-2: #f0f5ff;
+            --blue-1: #3b82f6;
+            --blue-2: #60a5fa;
+            --blue-grad: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
+            --nav-active: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+            --text-dark: #1e3a5f;
+            --text-mid: #4b6fa8;
+            --text-light: #8fafd6;
+            --shadow-sm: 0 2px 8px rgba(59, 130, 246, 0.10);
+            --shadow-md: 0 6px 24px rgba(59, 130, 246, 0.14);
+            --radius: 18px;
+            --radius-sm: 12px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topbar {
+            background: var(--surface);
+            box-shadow: var(--shadow-sm);
+            padding: 0 36px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .topbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-logo {
+            width: 46px;
+            height: 46px;
+            background: var(--blue-grad);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+        }
+
+        .brand-text .title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .brand-text .sub {
+            font-size: 12px;
+            color: var(--text-mid);
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface-2);
+            border: 1.5px solid #dbe8f8;
+            border-radius: 50px;
+            padding: 8px 18px;
+            width: 240px;
+        }
+
+        .search-bar input {
+            border: none;
+            background: transparent;
+            font-size: 13px;
+            color: var(--text-dark);
+            outline: none;
+            width: 100%;
+        }
+
+        .search-bar input::placeholder {
+            color: var(--text-light);
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1.5px solid #dbe8f8;
+            background: var(--surface-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all .2s;
+            color: var(--text-mid);
+        }
+
+        .icon-btn:hover {
+            background: var(--blue-1);
+            color: #fff;
+            border-color: var(--blue-1);
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--blue-grad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            padding: 28px 32px;
+            gap: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .nav-panel {
+            width: 280px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-panel-header {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 20px 22px 16px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 4px;
+        }
+
+        .nav-panel-header p {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 2px;
+        }
+
+        .nav-panel-header h2 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 15px 20px;
+            border-radius: var(--radius-sm);
+            background: var(--surface);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-mid);
+            box-shadow: var(--shadow-sm);
+            transition: all .22s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: transparent;
+            border-radius: 0 4px 4px 0;
+            transition: background .2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--surface-2);
+            color: var(--blue-1);
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-btn:hover::before {
+            background: var(--blue-1);
+        }
+
+        .nav-btn.active {
+            background: var(--nav-active);
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+        }
+
+        .nav-btn.active::before {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(59, 130, 246, 0.10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background .2s;
+        }
+
+        .nav-btn.active .nav-icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-btn:hover:not(.active) .nav-icon {
+            background: rgba(59, 130, 246, 0.15);
+        }
+
+        .nav-icon i {
+            font-size: 17px;
+        }
+
+        .nav-btn.active .nav-icon i {
+            color: #fff;
+        }
+
+        .nav-btn:not(.active) .nav-icon i {
+            color: var(--blue-1);
+        }
+
+        .nav-label {
+            font-size: 14px;
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .nav-arrow {
+            font-size: 16px;
+            opacity: 0.5;
+            transition: opacity .2s, transform .2s;
+        }
+
+        .nav-btn:hover .nav-arrow {
+            opacity: 1;
+            transform: translateX(3px);
+        }
+
+        .nav-btn.active .nav-arrow {
+            opacity: 0.8;
+        }
+
+        .content-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .welcome-card {
+            flex: 1;
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 36px 40px;
+            box-shadow: var(--shadow-md);
+            border: 1.5px solid rgba(219, 232, 248, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-card::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(96, 165, 250, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .welcome-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+
+        .welcome-title .highlight {
+            background: var(--blue-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-subtitle {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--blue-1);
+            margin-bottom: 22px;
+        }
+
+        .divider {
+            height: 1.5px;
+            background: linear-gradient(90deg, #dbeafe, transparent);
+            margin: 22px 0;
+            border-radius: 2px;
+        }
+
+        .notice-card {
+            background: #eff6ff;
+            border: 1.5px solid #bfdbfe;
+            border-radius: var(--radius-sm);
+            padding: 18px 22px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .notice-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--blue-grad);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .notice-icon i,
+        .alert-icon i {
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .notice-text {
+            font-size: 14px;
+            color: var(--text-dark);
+            line-height: 1.65;
+        }
+
+        .notice-text strong {
+            color: var(--blue-1);
+            font-weight: 700;
+        }
+
+        .notice-text .tag {
+            color: var(--blue-1);
+            font-weight: 600;
+        }
+
+        .alerts-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .alert-card {
+            background: #fff7ed;
+            border: 1.5px solid #fed7aa;
+            border-radius: var(--radius-sm);
+            padding: 18px 22px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .alert-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+
+        .alert-text {
+            font-size: 14px;
+            color: #7c3f1e;
+            line-height: 1.65;
+        }
+
+        .alert-text strong {
+            color: #c2410c;
+            font-weight: 700;
+        }
+
+        .info-tiles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .info-tile {
+            background: var(--surface);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1.5px solid rgba(219, 232, 248, 0.6);
+            text-align: center;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .info-tile:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .tile-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tile-icon i {
+            font-size: 20px;
+        }
+
+        .tile-num {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .tile-label {
+            font-size: 12px;
+            color: var(--text-mid);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-light);
+            padding: 12px 0 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="topbar-brand">
+            <div class="brand-logo">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                </svg>
+            </div>
+            <div class="brand-text">
+                <div class="title">OU HealthConnection</div>
+                <div class="sub">University of Oklahoma Patient Portal</div>
+            </div>
+        </div>
+        <div class="topbar-right">
+            <div class="search-bar">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8fafd6" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input type="text" placeholder="Search…" />
+            </div>
+            <div class="icon-btn"><i class="fa-solid fa-bell"></i></div>
+            <div class="icon-btn"><i class="fa-solid fa-message"></i></div>
+            <div class="avatar">JS</div>
+        </div>
+    </header>
+
+    <main class="main">
+        <nav class="nav-panel">
+            <div class="nav-panel-header">
+                <p>Navigation</p>
+                <h2>Patient Menu</h2>
+            </div>
+
+            <button class="nav-btn active" onclick="setActive(this)">
+                <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
+                <span class="nav-label">Home</span><span class="nav-arrow">›</span>
+            </button>
+
+            <button class="nav-btn" onclick="setActive(this)">
+                <div class="nav-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                <span class="nav-label">Appointments</span><span class="nav-arrow">›</span>
+            </button>
+
+            <button class="nav-btn" onclick="setActive(this)">
+                <div class="nav-icon"><i class="fa-solid fa-syringe"></i></div>
+                <span class="nav-label">Immunizations</span><span class="nav-arrow">›</span>
+            </button>
+
+            <button class="nav-btn" onclick="setActive(this)">
+                <div class="nav-icon"><i class="fa-solid fa-upload"></i></div>
+                <span class="nav-label">Upload</span><span class="nav-arrow">›</span>
+            </button>
+
+            <button class="nav-btn" onclick="setActive(this)">
+                <div class="nav-icon"><i class="fa-solid fa-pencil"></i></div>
+                <span class="nav-label">Forms</span><span class="nav-arrow">›</span>
+            </button>
+
+            <button class="nav-btn" onclick="setActive(this)">
+                <div class="nav-icon"><i class="fa-solid fa-envelope"></i></div>
+                <span class="nav-label">Secure Messaging</span><span class="nav-arrow">›</span>
+            </button>
+
+            <button class="nav-btn" onclick="setActive(this)">
+                <div class="nav-icon"><i class="fa-solid fa-umbrella"></i></div>
+                <span class="nav-label">Insurance</span><span class="nav-arrow">›</span>
+            </button>
+
+            <button class="nav-btn" onclick="setActive(this)">
+                <div class="nav-icon"><i class="fa-solid fa-bell"></i></div>
+                <span class="nav-label">Patient Education</span><span class="nav-arrow">›</span>
+            </button>
+
+            <button class="nav-btn" onclick="setActive(this)">
+                <div class="nav-icon"><i class="fa-solid fa-circle-user"></i></div>
+                <span class="nav-label">My Profile</span><span class="nav-arrow">›</span>
+            </button>
+        </nav>
+
+        <section class="content-panel">
+            <div class="welcome-card">
+                <h1 class="welcome-title">Welcome to <span class="highlight">The University of Oklahoma's</span></h1>
+                <div class="welcome-subtitle">HealthConnection Patient Portal</div>
+                <div class="divider"></div>
+                <div class="alerts-stack">
+                    <div class="notice-card">
+                        <div class="notice-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                        <p class="notice-text">
+                            <strong>New</strong> appointments are added at <strong>8am daily</strong>. Please go to
+                            <span class="tag">Forms</span> and fill out <strong>"New Patient Paperwork"</strong> if not
+                            yet
+                            completed.
+                        </p>
+                    </div>
+                    <div class="alert-card">
+                        <div class="alert-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <p class="alert-text">
+                            <strong>Note:</strong> This system is only for the <strong>medical clinic</strong> and
+                            does
+                            <strong>not</strong> communicate with the University Counseling Center or the Goddard
+                            Pharmacy.
+                        </p>
+                    </div>
+                    <div class="notice-card">
+                        <div class="notice-icon"><i class="fa-solid fa-syringe"></i></div>
+                        <p class="notice-text">
+                            You have an <strong>Immunization</strong> scheduled for <strong>5/5/26</strong> at <strong>4:15 PM</strong>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-tiles">
+                <div class="info-tile">
+                    <div class="tile-icon" style="background:linear-gradient(135deg,#eff6ff,#dbeafe)">
+                        <i class="fa-solid fa-calendar-days" style="color:#3b82f6"></i>
+                    </div>
+                    <div class="tile-num">8<span style="font-size:16px;color:#4b6fa8">am</span></div>
+                    <div class="tile-label">Daily Appointment Slots</div>
+                </div>
+                <div class="info-tile">
+                    <div class="tile-icon" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7)">
+                        <i class="fa-solid fa-heart-pulse" style="color:#22c55e"></i>
+                    </div>
+                    <div class="tile-num" style="color:#166534">24/7</div>
+                    <div class="tile-label">Portal Access</div>
+                </div>
+                <div class="info-tile">
+                    <div class="tile-icon" style="background:linear-gradient(135deg,#fff7ed,#ffedd5)">
+                        <i class="fa-solid fa-shield-halved" style="color:#f97316"></i>
+                    </div>
+                    <div class="tile-num" style="color:#9a3412">HIPAA</div>
+                    <div class="tile-label">Secure & Compliant</div>
+                </div>
+            </div>
+
+            <div class="footer-note">HealthConnection Patient Portal</div>
+        </section>
+    </main>
+
+    <script>
+        function setActive(btn) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
