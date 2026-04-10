@@ -604,7 +604,8 @@
                     <div class="notice-card">
                         <div class="notice-icon"><i class="fa-solid fa-syringe"></i></div>
                         <p class="notice-text">
-                            You have an <strong>Immunization</strong> scheduled for <strong>5/5/26</strong> at <strong>4:15 PM</strong>.
+                            You have an <strong>Immunization</strong> scheduled for <strong>5/5/26</strong> at
+                            <strong>4:15 PM</strong>.
                         </p>
                     </div>
                 </div>
@@ -635,6 +636,110 @@
             </div>
 
             <div class="footer-note">HealthConnection Patient Portal</div>
+            <div id="immunization-view" style="display: none; flex-direction: column; gap: 20px;">
+
+                <div class="alert-card" style="background: #fff1f2; border: 1.5px solid #fecdd3;">
+                    <div class="alert-icon" style="background: linear-gradient(135deg, #e11d48, #fb7185);">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+                    <div class="alert-text">
+                        <strong style="color: #9f1239;">Action Required: Verification Pending</strong><br>
+                        Please submit a <strong>hard copy</strong> of your records to OU Health Services. You will
+                        <strong>not</strong> be considered compliant until this step is verified.
+                    </div>
+                </div>
+
+                <div class="info-tiles" style="grid-template-columns: 2fr 1fr;">
+                    <div class="welcome-card"
+                        style="padding: 24px; display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <h3 style="color: var(--text-dark); margin-bottom: 5px;">Compliance Status</h3>
+                            <p style="color: var(--text-mid); font-size: 13px;">University Health Requirements</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span
+                                style="display: inline-block; padding: 6px 16px; background: #dcfce7; color: #166534; border-radius: 50px; font-weight: 700; font-size: 14px;">
+                                <i class="fa-solid fa-check-circle"></i> Verified
+                            </span>
+                        </div>
+                    </div>
+                    <button class="nav-btn"
+                        style="height: 100%; justify-content: center; font-weight: 700; border: 2px solid var(--blue-1); color: var(--blue-1);">
+                        <i class="fa-solid fa-print"></i> Print Records
+                    </button>
+                </div>
+
+                <div class="welcome-card" style="padding: 0; overflow: hidden;">
+                    <div style="padding: 16px 24px; background: var(--surface-2); border-bottom: 1px solid #dbe8f8;">
+                        <h4 style="font-size: 14px; color: var(--text-dark);">Verified Immunization History</h4>
+                    </div>
+
+                    <div style="padding: 0 24px;">
+                        <div style="padding: 20px 0; border-bottom: 1px solid #f0f5ff;">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                                <div>
+                                    <strong style="color: var(--text-dark); font-size: 15px;">Hepatitis B
+                                        Requirement</strong>
+                                    <div style="font-size: 12px; color: var(--text-light); margin-top: 2px;">3 of 3
+                                        Doses Completed</div>
+                                </div>
+                                <i class="fa-solid fa-circle-check" style="color: #22c55e;"></i>
+                            </div>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <span
+                                    style="font-size: 12px; background: #f1f5f9; padding: 4px 10px; border-radius: 4px; color: var(--text-mid);">#1:
+                                    01/23/1998</span>
+                                <span
+                                    style="font-size: 12px; background: #f1f5f9; padding: 4px 10px; border-radius: 4px; color: var(--text-mid);">#2:
+                                    02/23/1998</span>
+                                <span
+                                    style="font-size: 12px; background: #f1f5f9; padding: 4px 10px; border-radius: 4px; color: var(--text-mid);">#3:
+                                    08/05/1998</span>
+                            </div>
+                        </div>
+
+                        <div style="padding: 20px 0; border-bottom: 1px solid #f0f5ff;">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                                <div>
+                                    <strong style="color: var(--text-dark); font-size: 15px;">MMR (Measles, Mumps,
+                                        Rubella)</strong>
+                                    <div style="font-size: 12px; color: var(--text-light); margin-top: 2px;">Fully
+                                        Verified</div>
+                                </div>
+                                <i class="fa-solid fa-circle-check" style="color: #22c55e;"></i>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                                <div style="font-size: 12px; color: var(--text-mid);">
+                                    <div style="font-weight: 600; color: var(--blue-1);">Measles</div>
+                                    03/06/2000, 07/09/2006
+                                </div>
+                                <div style="font-size: 12px; color: var(--text-mid);">
+                                    <div style="font-weight: 600; color: var(--blue-1);">Mumps</div>
+                                    09/12/2024, 10/10/2024
+                                </div>
+                                <div style="font-size: 12px; color: var(--text-mid);">
+                                    <div style="font-weight: 600; color: var(--blue-1);">Rubella</div>
+                                    03/05/1999, 09/12/2024
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="padding: 20px 0;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <strong style="color: var(--text-dark); font-size: 15px;">TB Skin Test</strong>
+                                    <div style="font-size: 12px; color: var(--text-mid); margin-top: 2px;">Latest Test:
+                                        08/14/2024</div>
+                                </div>
+                                <span
+                                    style="font-size: 12px; font-weight: 600; color: #166534; background: #dcfce7; padding: 4px 8px; border-radius: 4px;">Negative</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -642,6 +747,34 @@
         function setActive(btn) {
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+        }
+        function setActive(btn) {
+            // UI Update for Buttons
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Content Toggle Logic
+            const label = btn.querySelector('.nav-label').innerText;
+            const homeContent = document.querySelector('.welcome-card:not(#immunization-view)');
+            const infoTiles = document.querySelector('.info-tiles');
+            const immView = document.getElementById('immunization-view');
+
+            if (label === "Immunizations") {
+                // Hide Home Elements
+                document.querySelectorAll('.content-panel > *').forEach(el => {
+                    if (el.id !== 'immunization-view') el.style.display = 'none';
+                });
+                // Show Immunization View
+                immView.style.display = 'flex';
+            } else if (label === "Home") {
+                // Show Home Elements
+                document.querySelectorAll('.content-panel > *').forEach(el => {
+                    if (el.id !== 'immunization-view' && !el.classList.contains('footer-note')) {
+                        el.style.display = el.classList.contains('info-tiles') ? 'grid' : 'block';
+                    }
+                });
+                immView.style.display = 'none';
+            }
         }
     </script>
 </body>
