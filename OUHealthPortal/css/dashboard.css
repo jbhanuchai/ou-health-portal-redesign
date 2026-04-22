@@ -1,0 +1,573 @@
+/* ============================================================
+   FILE: dashboard.css
+   PURPOSE: Dashboard specific styles for the OU
+            HealthConnection Patient Portal home screen.
+   ============================================================
+   This stylesheet extends base.css with the rules needed for
+   the post login dashboard. It defines the topbar search and
+   utility controls, the left hand navigation panel, the
+   welcome card with its stacked notices, and the information
+   tiles that summarize portal features.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   SECTION 1: Topbar Right Group (Search, Icons, Avatar)
+   ------------------------------------------------------------
+   The dashboard topbar extends the shared topbar from base.css
+   by adding a grouping container on the right that holds the
+   search bar, notification and message buttons, and the user
+   avatar.
+   ------------------------------------------------------------ */
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 2: Search Bar
+   ------------------------------------------------------------
+   A pill shaped search input placed in the topbar. The input
+   inside it is styled to be transparent so that the pill
+   shape of its parent container is not disrupted.
+   ------------------------------------------------------------ */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface-2);
+    border: 1.5px solid #dbe8f8;
+    border-radius: 50px;
+    padding: 8px 18px;
+    width: 240px;
+}
+
+.search-bar input {
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    color: var(--text-dark);
+    outline: none;
+    width: 100%;
+}
+
+.search-bar input::placeholder {
+    color: var(--text-light);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 3: Circular Icon Buttons
+   ------------------------------------------------------------
+   The bell and message icons use a circular button treatment.
+   On hover the button fills with the primary blue color to
+   provide clear interactive feedback.
+   ------------------------------------------------------------ */
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid #dbe8f8;
+    background: var(--surface-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .2s;
+    color: var(--text-mid);
+}
+
+.icon-btn:hover {
+    background: var(--blue-1);
+    color: #fff;
+    border-color: var(--blue-1);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 4: User Avatar
+   ------------------------------------------------------------
+   A circular avatar displayed in the top right corner. It
+   currently shows the users initials over the primary blue
+   gradient. A shadow is added to give it a subtle lift.
+   ------------------------------------------------------------ */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--blue-grad);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 5: Main Dashboard Layout
+   ------------------------------------------------------------
+   The dashboard uses a two column layout. The navigation
+   panel on the left is fixed in width while the content
+   panel on the right expands to fill remaining space. The
+   maximum width is capped so that the layout stays readable
+   on very wide monitors.
+   ------------------------------------------------------------ */
+.main {
+    flex: 1;
+    display: flex;
+    padding: 28px 32px;
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 6: Navigation Panel Container
+   ------------------------------------------------------------
+   The left side navigation panel holds the patient menu.
+   Its width is fixed and it is prevented from shrinking so
+   that navigation items do not wrap awkwardly.
+   ------------------------------------------------------------ */
+.nav-panel {
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* The header block at the top of the navigation panel that
+   identifies the section as the Patient Menu. */
+.nav-panel-header {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 20px 22px 16px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 4px;
+}
+
+.nav-panel-header p {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 2px;
+}
+
+.nav-panel-header h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 7: Navigation Button (Individual Menu Item)
+   ------------------------------------------------------------
+   Each menu entry is a full width button styled with rounded
+   corners, a subtle shadow, and a left border indicator that
+   animates in when the user hovers the item.
+   ------------------------------------------------------------ */
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 20px;
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-mid);
+    box-shadow: var(--shadow-sm);
+    transition: all .22s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* The thin vertical accent strip that slides in from the left
+   edge of the button on hover. It uses a pseudo element so
+   that it does not require an extra HTML node. */
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: transparent;
+    border-radius: 0 4px 4px 0;
+    transition: background .2s;
+}
+
+/* Hover state shifts the button slightly to the right and
+   reveals the left accent strip. */
+.nav-btn:hover {
+    background: var(--surface-2);
+    color: var(--blue-1);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
+}
+
+.nav-btn:hover::before {
+    background: var(--blue-1);
+}
+
+/* Active state marks the currently selected menu item using
+   the deeper blue gradient and a stronger shadow. */
+.nav-btn.active {
+    background: var(--nav-active);
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+}
+
+.nav-btn.active::before {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 8: Navigation Icon Badge
+   ------------------------------------------------------------
+   The small rounded square that holds each menu items icon.
+   Its background lightens slightly on hover and turns
+   semi transparent white when the button is active.
+   ------------------------------------------------------------ */
+.nav-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(59, 130, 246, 0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background .2s;
+}
+
+.nav-btn.active .nav-icon {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-btn:hover:not(.active) .nav-icon {
+    background: rgba(59, 130, 246, 0.15);
+}
+
+.nav-icon i {
+    font-size: 17px;
+}
+
+.nav-btn.active .nav-icon i {
+    color: #fff;
+}
+
+.nav-btn:not(.active) .nav-icon i {
+    color: var(--blue-1);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 9: Navigation Label and Trailing Arrow
+   ------------------------------------------------------------
+   The label fills the middle of the button and the trailing
+   chevron on the right shifts to the right slightly on hover
+   to reinforce that the item is clickable.
+   ------------------------------------------------------------ */
+.nav-label {
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1;
+}
+
+.nav-arrow {
+    font-size: 16px;
+    opacity: 0.5;
+    transition: opacity .2s, transform .2s;
+}
+
+.nav-btn:hover .nav-arrow {
+    opacity: 1;
+    transform: translateX(3px);
+}
+
+.nav-btn.active .nav-arrow {
+    opacity: 0.8;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 10: Content Panel (Right Column)
+   ------------------------------------------------------------
+   The content panel holds the welcome card and the row of
+   information tiles. It uses a vertical flex layout with a
+   consistent gap between each child.
+   ------------------------------------------------------------ */
+.content-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 11: Welcome Card
+   ------------------------------------------------------------
+   The large card at the top of the content panel that greets
+   the user and surfaces important announcements. A faint
+   radial gradient is added in the top right corner using a
+   pseudo element for visual polish.
+   ------------------------------------------------------------ */
+.welcome-card {
+    flex: 1;
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 36px 40px;
+    box-shadow: var(--shadow-md);
+    border: 1.5px solid rgba(219, 232, 248, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-card::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 12: Welcome Heading and Subtitle
+   ------------------------------------------------------------
+   The large heading uses a text gradient clipping technique
+   to color the highlighted phrase with the primary blue
+   gradient while leaving the rest of the heading dark.
+   ------------------------------------------------------------ */
+.welcome-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.3;
+    margin-bottom: 6px;
+}
+
+/* The highlighted portion of the welcome title. The gradient
+   is applied to the text itself by clipping the background
+   to the text shape and hiding the solid color. */
+.welcome-title .highlight {
+    background: var(--blue-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.welcome-subtitle {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--blue-1);
+    margin-bottom: 22px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 13: Horizontal Divider
+   ------------------------------------------------------------
+   A thin gradient line used inside the welcome card to
+   separate the heading area from the stacked notice cards.
+   The gradient fades out toward the right for a soft finish.
+   ------------------------------------------------------------ */
+.divider {
+    height: 1.5px;
+    background: linear-gradient(90deg, #dbeafe, transparent);
+    margin: 22px 0;
+    border-radius: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 14: Notice and Alert Cards (Stacked)
+   ------------------------------------------------------------
+   The alerts stack holds a vertical collection of notices.
+   Informational notices use a blue palette while warning
+   alerts use an orange palette to differentiate severity.
+   ------------------------------------------------------------ */
+.alerts-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Informational notice with blue tinted background */
+.notice-card {
+    background: #eff6ff;
+    border: 1.5px solid #bfdbfe;
+    border-radius: var(--radius-sm);
+    padding: 18px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+/* The icon badge on the left of each notice card */
+.notice-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--blue-grad);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Shared icon styling for both notice and alert cards */
+.notice-icon i,
+.alert-icon i {
+    font-size: 18px;
+    color: #fff;
+}
+
+.notice-text {
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 1.65;
+}
+
+.notice-text strong {
+    color: var(--blue-1);
+    font-weight: 700;
+}
+
+/* A pill style tag used inline inside notice text to call
+   out the name of a specific portal section. */
+.notice-text .tag {
+    color: var(--blue-1);
+    font-weight: 600;
+}
+
+/* Warning alert card with orange tinted palette */
+.alert-card {
+    background: #fff7ed;
+    border: 1.5px solid #fed7aa;
+    border-radius: var(--radius-sm);
+    padding: 18px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.alert-icon {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #f97316, #fb923c);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.alert-text {
+    font-size: 14px;
+    color: #7c3f1e;
+    line-height: 1.65;
+}
+
+.alert-text strong {
+    color: #c2410c;
+    font-weight: 700;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 15: Information Tile Row
+   ------------------------------------------------------------
+   A three column grid of compact tiles placed below the
+   welcome card. Each tile surfaces a single piece of summary
+   information and lifts slightly on hover.
+   ------------------------------------------------------------ */
+.info-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.info-tile {
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    border: 1.5px solid rgba(219, 232, 248, 0.6);
+    text-align: center;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.info-tile:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* The colored square icon at the top of each info tile */
+.tile-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tile-icon i {
+    font-size: 20px;
+}
+
+/* The large value or metric shown prominently in each tile */
+.tile-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+/* The descriptive label shown beneath the metric */
+.tile-label {
+    font-size: 12px;
+    color: var(--text-mid);
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 16: Dashboard Footer Note
+   ------------------------------------------------------------
+   A small centered label shown below the content panel to
+   reinforce the portal name in the footer region.
+   ------------------------------------------------------------ */
+.footer-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-light);
+    padding: 12px 0 4px;
+}

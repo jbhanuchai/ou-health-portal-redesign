@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- ============================================================
+     FILE: register.html
+     PURPOSE: Multi step account creation form for the OU
+              HealthConnection Patient Portal.
+     ============================================================
+     The registration experience is divided into three panels
+     that collect information in a logical order:
+     
+       Step 1: Identity information (name, date of birth, and
+               OU identification number).
+       Step 2: Contact information (email, phone, address, and
+               insurance details).
+       Step 3: Security information (password and security
+               question) plus agreement to the terms of use.
+     
+     A progress bar at the top of the card indicates which
+     step the user is currently viewing. Navigation between
+     steps is handled by the goStep function defined in
+     register.js.
+     ============================================================ -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OU HealthConnection: Create Account</title>
+
+    <!-- External icon library for all Font Awesome glyphs -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Internal stylesheets loaded in order of dependency.
+         Base provides the design tokens, auth-forms provides
+         the shared card and input styling, and register adds
+         rules that are unique to this page. -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/auth-forms.css" />
+    <link rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+
+    <!-- ====================================================
+         TOPBAR
+         On the registration page the right side offers a
+         quick return to the sign in page for users who
+         already have an account.
+         ==================================================== -->
+    <header class="topbar">
+
+        <!-- Brand block with logo and portal title -->
+        <div class="topbar-brand">
+            <div class="brand-logo">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+                     stroke="white" stroke-width="2.2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                </svg>
+            </div>
+            <div class="brand-text">
+                <div class="title">OU HealthConnection</div>
+                <div class="sub">University of Oklahoma Patient Portal</div>
+            </div>
+        </div>
+
+        <!-- Secondary link back to the login page -->
+        <a href="login.html" class="topbar-link">
+            <i class="fa-solid fa-right-to-bracket"></i> Already have an account?
+        </a>
+    </header>
+
+
+    <!-- ====================================================
+         PAGE BODY
+         The register page modifier class aligns the card to
+         the top of the viewport because the form is tall
+         and benefits from extra headroom.
+         ==================================================== -->
+    <main class="page register-page">
+        <div class="auth-card register-card">
+
+            <!-- ---- Card Header Band ---- -->
+            <div class="card-header">
+                <div class="header-icon">
+                    <i class="fa-solid fa-user-plus" style="color:#fff;font-size:22px;"></i>
+                </div>
+                <h1>Create Your Account</h1>
+                <p>Register to access the OU HealthConnection Patient Portal</p>
+            </div>
+
+
+            <!-- ---- Step Progress Bar ----
+                 Three circular indicators connected by two
+                 horizontal lines. The register.js script
+                 updates their state as the user advances. -->
+            <div class="steps-bar">
+
+                <!-- Step 1 indicator (active on page load) -->
+                <div class="step active" id="step-ind-1">
+                    <div class="step-circle" id="sc1">1</div>
+                    <div class="step-label">Identity</div>
+                </div>
+
+                <!-- Connector between step 1 and step 2 -->
+                <div class="step-line" id="line-1"></div>
+
+                <!-- Step 2 indicator -->
+                <div class="step" id="step-ind-2">
+                    <div class="step-circle" id="sc2">2</div>
+                    <div class="step-label">Contact</div>
+                </div>
+
+                <!-- Connector between step 2 and step 3 -->
+                <div class="step-line" id="line-2"></div>
+
+                <!-- Step 3 indicator -->
+                <div class="step" id="step-ind-3">
+                    <div class="step-circle" id="sc3">3</div>
+                    <div class="step-label">Security</div>
+                </div>
+            </div>
+
+
+            <!-- ---- Card Body ---- -->
+            <div class="card-body">
+
+                <!-- ==========================================
+                     STEP 1: IDENTITY
+                     Collects personal identifying details
+                     and the OU student or staff ID number.
+                     This panel is visible by default because
+                     it carries the active class.
+                     ========================================== -->
+                <div class="step-panel active" id="panel-1">
+
+                    <!-- Informational notice reminding users
+                         to match the details on their ID. -->
+                    <div class="info-notice">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p>Please enter your information exactly as it appears on your
+                            <strong>OU student or staff ID</strong>.</p>
+                    </div>
+
+                    <div class="section-title">Personal Information</div>
+
+                    <!-- Two column grid for paired fields
+                         such as first and last name. Fields
+                         that span the full width receive
+                         the .full modifier. -->
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label class="form-label" for="fname">First Name</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-user input-icon"></i>
+                                <input id="fname" class="form-input" type="text"
+                                       placeholder="First" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="lname">Last Name</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-user input-icon"></i>
+                                <input id="lname" class="form-input" type="text"
+                                       placeholder="Last" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="dob">Date of Birth</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-cake-candles input-icon"></i>
+                                <input id="dob" class="form-input" type="date" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="sex">Biological Sex</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-venus-mars input-icon"></i>
+                                <select id="sex" class="form-input">
+                                    <option value="" disabled selected>Select...</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Prefer not to say</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Full width field because the ID
+                             number does not pair naturally
+                             with another input. -->
+                        <div class="form-group full">
+                            <label class="form-label" for="ouid">OU Student/Staff ID</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-id-badge input-icon"></i>
+                                <input id="ouid" class="form-input" type="text"
+                                       placeholder="e.g. 113XXXXXX" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Forward only action row because
+                         there is no previous step. -->
+                    <div class="btn-row">
+                        <button class="btn-primary" type="button" onclick="goStep(2)">
+                            Continue <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- ==========================================
+                     STEP 2: CONTACT
+                     Collects email, phone, address, and
+                     insurance details. This panel is hidden
+                     until goStep(2) is invoked.
+                     ========================================== -->
+                <div class="step-panel" id="panel-2">
+
+                    <div class="section-title">Contact Information</div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group full">
+                            <label class="form-label" for="email">OU Email Address</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-envelope input-icon"></i>
+                                <input id="email" class="form-input" type="email"
+                                       placeholder="yourname@ou.edu" />
+                            </div>
+                        </div>
+
+                        <div class="form-group full">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-phone input-icon"></i>
+                                <input id="phone" class="form-input" type="tel"
+                                       placeholder="(405) 000-0000" />
+                            </div>
+                        </div>
+
+                        <div class="form-group full">
+                            <label class="form-label" for="address">Campus Address / Residence</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-location-dot input-icon"></i>
+                                <input id="address" class="form-input" type="text"
+                                       placeholder="Dorm, apartment, or address" />
+                            </div>
+                        </div>
+
+                        <!-- Insurance provider dropdown and
+                             member ID share a row. -->
+                        <div class="form-group">
+                            <label class="form-label" for="insurance">Insurance Provider</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-umbrella input-icon"></i>
+                                <select id="insurance" class="form-input">
+                                    <option value="" disabled selected>Select...</option>
+                                    <option>BCBS</option>
+                                    <option>Aetna</option>
+                                    <option>UnitedHealth</option>
+                                    <option>OU Student Plan</option>
+                                    <option>Uninsured</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="ins-id">Insurance Member ID</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-hashtag input-icon"></i>
+                                <input id="ins-id" class="form-input" type="text"
+                                       placeholder="Optional" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Two button row offering both a Back
+                         button and a Continue button. -->
+                    <div class="btn-row">
+                        <button class="btn-secondary" type="button" onclick="goStep(1)">
+                            <i class="fa-solid fa-arrow-left"></i> Back
+                        </button>
+                        <button class="btn-primary" type="button" onclick="goStep(3)">
+                            Continue <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- ==========================================
+                     STEP 3: SECURITY
+                     Collects a password plus a security question and a
+                     final terms of service agreement.
+                     ========================================== -->
+                <div class="step-panel" id="panel-3">
+
+                    <div class="section-title">Create a Password</div>
+
+                    <div class="form-grid">
+
+                        <!-- Password field.-->
+                        <div class="form-group full">
+                            <label class="form-label" for="new-pwd">Password</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-lock input-icon"></i>
+                                <input id="new-pwd" class="form-input" type="password"
+                                       placeholder="Min. 8 characters"/>
+                                <button class="eye-btn" type="button"
+                                        onclick="togglePwd('new-pwd', this)">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+
+                        <div class="form-group full">
+                            <label class="form-label" for="confirm-pwd">Confirm Password</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-lock input-icon"></i>
+                                <input id="confirm-pwd" class="form-input" type="password"
+                                       placeholder="Re-enter password" />
+                                <button class="eye-btn" type="button"
+                                        onclick="togglePwd('confirm-pwd', this)">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Security question section.
+                         The section-sep modifier adds margin
+                         so that this group stands apart from
+                         the password group above. -->
+                    <div class="section-title section-sep">Security Question</div>
+
+                    <div class="form-group" style="margin-bottom:14px;">
+                        <label class="form-label" for="sec-q">Security Question</label>
+                        <div class="input-wrap">
+                            <i class="fa-solid fa-circle-question input-icon"></i>
+                            <select id="sec-q" class="form-input">
+                                <option value="" disabled selected>Select a question...</option>
+                                <option>What was the name of your first pet?</option>
+                                <option>What city were you born in?</option>
+                                <option>What is your mother's maiden name?</option>
+                                <option>What was the make of your first car?</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom:20px;">
+                        <label class="form-label" for="sec-a">Your Answer</label>
+                        <div class="input-wrap">
+                            <i class="fa-solid fa-key input-icon"></i>
+                            <input id="sec-a" class="form-input" type="text"
+                                   placeholder="Your answer" />
+                        </div>
+                    </div>
+
+
+                    <!-- Terms of service agreement checkbox
+                         containing inline links to the policy
+                         documents. -->
+                    <label class="checkbox-wrap">
+                        <input type="checkbox" />
+                        I agree to the <a href="#" class="link">Terms of Service</a>
+                        and acknowledge the
+                        <a href="#" class="link">HIPAA Privacy Notice</a>
+                        for OU HealthConnection.
+                    </label>
+
+
+                    <!-- Final action row with a Back button
+                         and a Create Account button. -->
+                    <div class="btn-row">
+                        <button class="btn-secondary" type="button" onclick="goStep(2)">
+                            <i class="fa-solid fa-arrow-left"></i> Back
+                        </button>
+                        <button class="btn-primary" type="button">
+                            <i class="fa-solid fa-user-check"></i> Create Account
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- ---- Card Footer ----
+                 Offers a quick path to the login page for
+                 users who change their mind. -->
+            <div class="card-footer">
+                Already have an account?
+                <a href="login.html" class="link">Sign in</a>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- ====================================================
+         SCRIPTS
+         Common provides the password visibility toggle and
+         must load before register, which depends on nothing
+         from common directly but is kept in the same load
+         order for consistency across pages.
+         ==================================================== -->
+    <script src="js/common.js"></script>
+    <script src="js/register.js"></script>
+</body>
+
+</html>

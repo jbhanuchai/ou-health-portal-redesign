@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- ============================================================
+     FILE: login.html
+     PURPOSE: Sign in page for the OU HealthConnection
+              Patient Portal. Collects a username or email
+              and a password and offers a single sign on
+              option through the OU Google account.
+     ============================================================
+     This document is composed primarily of structural markup.
+     All visual styling is delegated to the linked stylesheets
+     in the css folder, and all interactive behavior is handled
+     by the linked script in the js folder.
+     ============================================================ -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OU HealthConnection: Sign In</title>
+
+    <!-- External icon library used for all Font Awesome glyphs
+         referenced throughout the page. -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Internal stylesheets. The base sheet must load first
+         because the authentication sheet relies on its CSS
+         custom properties and shared selectors. -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/auth-forms.css" />
+</head>
+
+<body>
+
+    <!-- ====================================================
+         TOPBAR
+         Sits at the top of every page. On the login screen
+         the right side offers a direct path to create a new
+         account for first time visitors.
+         ==================================================== -->
+    <header class="topbar">
+
+        <!-- Brand block with logo and portal title -->
+        <div class="topbar-brand">
+            <div class="brand-logo">
+                <!-- Inline pulse glyph used as the brand mark -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+                     stroke="white" stroke-width="2.2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                </svg>
+            </div>
+            <div class="brand-text">
+                <div class="title">OU HealthConnection</div>
+                <div class="sub">University of Oklahoma Patient Portal</div>
+            </div>
+        </div>
+
+        <!-- Secondary link leading to the registration page -->
+        <a href="register.html" class="topbar-link">
+            <i class="fa-solid fa-user-plus"></i> Create Account
+        </a>
+    </header>
+
+
+    <!-- ====================================================
+         PAGE BODY
+         The main element is centered both horizontally and
+         vertically so that the authentication card sits in
+         the optical middle of the viewport.
+         ==================================================== -->
+    <main class="page">
+        <div class="auth-card">
+
+            <!-- ---- Card Header Band ----
+                 Contains the padlock icon, the welcome
+                 heading, and a short supporting description. -->
+            <div class="card-header">
+                <div class="header-icon">
+                    <i class="fa-solid fa-lock" style="color:#fff;font-size:22px;"></i>
+                </div>
+                <h1>Welcome Back</h1>
+                <p>Sign in to access your patient portal</p>
+            </div>
+
+            <!-- ---- Card Body ----
+                 Contains the credential form, the utility
+                 row, the primary sign in button, and the
+                 single sign on option. -->
+            <div class="card-body">
+
+                <!-- Username field.
+                     Accepts either an OU username or a full
+                     OU email address. -->
+                <div class="form-group">
+                    <label class="form-label" for="username">OU Username or Email</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-circle-user input-icon"></i>
+                        <input id="username" class="form-input" type="text"
+                               placeholder="e.g. jsmith@ou.edu" />
+                    </div>
+                </div>
+
+                <!-- Password field with visibility toggle.
+                     The eye button invokes togglePwd from
+                     common.js when clicked. -->
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-key input-icon"></i>
+                        <input id="password" class="form-input" type="password"
+                               placeholder="Enter your password" />
+                        <button class="eye-btn" type="button"
+                                onclick="togglePwd('password', this)"
+                                aria-label="Toggle password">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Utility row.
+                     Offers a Remember Me checkbox on the
+                     left and a Forgot Password link on the
+                     right. -->
+                <div class="row-between">
+                    <label class="checkbox-wrap">
+                        <input type="checkbox" /> Remember me
+                    </label>
+                    <a href="#" class="link">Forgot password?</a>
+                </div>
+
+                <!-- Primary sign in button -->
+                <button class="btn-primary" type="button">
+                    <i class="fa-solid fa-right-to-bracket"></i> Sign In
+                </button>
+
+                <!-- Divider introducing the alternate sign
+                     in option below it. -->
+                <div class="divider"><span>or continue with</span></div>
+
+                <!-- Single sign on button.
+                     This button reuses the primary button
+                     class but overrides its background and
+                     colors inline so that the Google brand
+                     visuals can be honored without breaking
+                     the shared button shape. -->
+                <button class="btn-primary" type="button"
+                        style="background:var(--surface-2);color:var(--text-dark);box-shadow:var(--shadow-sm);border:1.5px solid #dbe8f8;">
+                    <svg width="16" height="16" viewBox="0 0 48 48"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#EA4335"
+                              d="M24 9.5c3.5 0 6.6 1.2 9.1 3.2l6.8-6.8C35.8 2.3 30.2 0 24 0 14.7 0 6.7 5.4 2.7 13.3l7.9 6.1C12.5 13 17.8 9.5 24 9.5z" />
+                        <path fill="#4285F4"
+                              d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17z" />
+                        <path fill="#FBBC05"
+                              d="M10.6 28.6A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.1.8-4.6l-7.9-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.7 10.7l7.9-6.1z" />
+                        <path fill="#34A853"
+                              d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.3-7.7 2.3-6.2 0-11.5-4.2-13.4-9.9l-7.9 6.1C6.7 42.6 14.7 48 24 48z" />
+                    </svg>
+                    Sign in with Google (OU SSO)
+                </button>
+
+            </div>
+
+            <!-- ---- Card Footer ----
+                 Directs visitors without an account to the
+                 registration page. -->
+            <div class="card-footer">
+                Don't have an account?
+                <a href="register.html" class="link">Create one now</a>
+            </div>
+        </div>
+
+
+        <!-- ---- Secure Strip ----
+             Pinned to the bottom of the viewport on the
+             login page. Reassures the user that the portal
+             is compliant with health privacy standards. -->
+        <div style="position:absolute;bottom:16px;left:0;right:0;">
+            <div class="secure-strip">
+                <div class="secure-badge">
+                    <i class="fa-solid fa-shield-halved"></i> HIPAA Secure
+                </div>
+                <div class="secure-badge" style="color:#dbe8f8">|</div>
+                <div class="secure-badge">
+                    <i class="fa-solid fa-lock"></i> 256-bit Encryption
+                </div>
+                <div class="secure-badge" style="color:#dbe8f8">|</div>
+                <div class="secure-badge">
+                    <i class="fa-solid fa-university"></i> University of Oklahoma
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- ====================================================
+         SCRIPTS
+         The common script provides the password visibility
+         toggle that the eye button above depends on.
+         ==================================================== -->
+    <script src="js/common.js"></script>
+</body>
+
+</html>

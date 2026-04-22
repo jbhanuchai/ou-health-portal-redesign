@@ -1,0 +1,454 @@
+/* ============================================================
+   FILE: auth-forms.css
+   PURPOSE: Shared styling for the login and registration
+            pages of the OU HealthConnection Patient Portal.
+   ============================================================
+   This stylesheet defines visual treatments common to both
+   authentication screens. It includes the centered card
+   layout, the blue gradient header band, the form input
+   styling, and the primary and secondary button appearances.
+   Page specific rules (such as the multi step progress bar
+   on the register page) are placed in register.css instead.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   SECTION 1: Page Layout Container
+   ------------------------------------------------------------
+   The main element is set to grow and fill the remaining
+   vertical space so that the authentication card can be
+   centered both horizontally and vertically. Generous
+   padding prevents the card from touching the viewport
+   edges on small screens.
+   ------------------------------------------------------------ */
+.page {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 2: Authentication Card
+   ------------------------------------------------------------
+   The card is the central container for all sign in and
+   registration content. It is capped at a maximum width to
+   preserve readability on wide monitors and uses a soft
+   rounded radius combined with a large drop shadow to lift
+   it visually from the blue page background.
+   ------------------------------------------------------------ */
+.auth-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 440px;
+    overflow: hidden;
+    animation: fadeUp .45s ease both;
+}
+
+/* The fadeUp animation causes the card to drift upward into
+   place when the page first loads. This subtle motion gives
+   the interface a polished feel without being distracting. */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 3: Card Header Band
+   ------------------------------------------------------------
+   The header band at the top of the card uses the primary
+   blue gradient. Two decorative circles are added via the
+   pseudo elements below to create a subtle depth effect.
+   The overflow is clipped so that the circles cannot spill
+   out of the rounded card corners.
+   ------------------------------------------------------------ */
+.card-header {
+    background: var(--blue-grad);
+    padding: 32px 36px 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative circle positioned near the top right corner */
+.card-header::before {
+    content: '';
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .08);
+}
+
+/* A second decorative circle placed lower for layered depth */
+.card-header::after {
+    content: '';
+    position: absolute;
+    right: 30px;
+    bottom: -50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .06);
+}
+
+/* The icon badge shown inside the header introduces the
+   purpose of the page (a padlock for login or a user icon
+   for registration). */
+.header-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .18);
+    border: 1.5px solid rgba(255, 255, 255, .3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+/* Heading shown inside the gradient header band */
+.card-header h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+}
+
+/* Supporting description text placed below the main heading */
+.card-header p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, .75);
+    margin-top: 4px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 4: Card Body
+   ------------------------------------------------------------
+   The body is the white area beneath the gradient header
+   that holds the form fields, buttons, and helper text.
+   ------------------------------------------------------------ */
+.card-body {
+    padding: 32px 36px 28px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 5: Form Group and Label
+   ------------------------------------------------------------
+   Each labeled input is wrapped in a form group. The label
+   uses uppercase lettering with slight letter spacing to
+   give it a professional and consistent appearance.
+   ------------------------------------------------------------ */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text-mid);
+    margin-bottom: 7px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 6: Input Wrapper and Leading Icon
+   ------------------------------------------------------------
+   The input wrapper allows a Font Awesome icon to be placed
+   inside the left edge of each text field. The icon is
+   absolutely positioned so that it does not disturb the
+   natural text flow of the input itself.
+   ------------------------------------------------------------ */
+.input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    color: var(--text-light);
+    font-size: 14px;
+    pointer-events: none;
+    transition: color .2s;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 7: Form Input Styling
+   ------------------------------------------------------------
+   Inputs use a soft blue tinted background to differentiate
+   them from the surrounding card surface. The left padding
+   is generous so that the leading icon has adequate space
+   without overlapping the placeholder text.
+   ------------------------------------------------------------ */
+.form-input {
+    width: 100%;
+    padding: 12px 14px 12px 40px;
+    border: 1.5px solid #dbe8f8;
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+.form-input::placeholder {
+    color: var(--text-light);
+}
+
+/* When an input receives focus, the border turns blue and a
+   soft blue halo appears to make the active field obvious. */
+.form-input:focus {
+    border-color: var(--blue-1);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+/* The leading icon also turns blue when the input is focused
+   so that the active field is visually unified. */
+.form-input:focus + .input-icon,
+.input-wrap:focus-within .input-icon {
+    color: var(--blue-1);
+}
+
+/* Select elements inherit the input styling but use a pointer
+   cursor to signal that they open a dropdown. */
+select.form-input {
+    padding-left: 40px;
+    cursor: pointer;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 8: Password Visibility Toggle Button
+   ------------------------------------------------------------
+   The eye icon button appears on password fields and allows
+   the user to reveal their typed password. It is absolutely
+   positioned inside the input wrapper on the right side.
+   ------------------------------------------------------------ */
+.eye-btn {
+    position: absolute;
+    right: 13px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 14px;
+    transition: color .2s;
+    padding: 4px;
+}
+
+.eye-btn:hover {
+    color: var(--blue-1);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 9: Utility Row (Remember Me and Forgot Password)
+   ------------------------------------------------------------
+   This layout helper places a checkbox on the left and a
+   link on the right within the same horizontal line. It is
+   primarily used on the login page below the password field.
+   ------------------------------------------------------------ */
+.row-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+
+/* The checkbox wrapper enables clicking the label text to
+   toggle the checkbox, which improves accessibility. */
+.checkbox-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text-mid);
+    font-weight: 500;
+    user-select: none;
+}
+
+.checkbox-wrap input[type="checkbox"] {
+    accent-color: var(--blue-1);
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 10: Primary Button
+   ------------------------------------------------------------
+   The primary button uses the blue gradient and a pronounced
+   drop shadow to draw the eye. A hover state lifts the
+   button slightly and deepens its shadow for clear feedback.
+   ------------------------------------------------------------ */
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: var(--blue-grad);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+    transition: opacity .2s, transform .15s, box-shadow .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary:hover {
+    opacity: .92;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(37, 99, 235, 0.42);
+}
+
+/* The active state resets the vertical offset so that the
+   button feels pressed when clicked. */
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 11: Secondary Button
+   ------------------------------------------------------------
+   The secondary button is used on the register page for the
+   Back action. It uses a light blue tinted background and a
+   thin border to appear quieter than the primary button.
+   ------------------------------------------------------------ */
+.btn-secondary {
+    padding: 14px 20px;
+    background: var(--surface-2);
+    color: var(--text-mid);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1.5px solid #dbe8f8;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn-secondary:hover {
+    background: #dbe8f8;
+    color: var(--text-dark);
+}
+
+/* The button row arranges a Back button and a Continue button
+   side by side with a consistent gap between them. */
+.btn-row {
+    display: flex;
+    gap: 12px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 12: Divider with Centered Label
+   ------------------------------------------------------------
+   This decorative element is used on the login page to
+   separate the credential form from the single sign on
+   option. Two flexible horizontal lines flank a text label.
+   ------------------------------------------------------------ */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 22px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1.5px;
+    background: #dbe8f8;
+    border-radius: 2px;
+}
+
+.divider span {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 13: Card Footer
+   ------------------------------------------------------------
+   A simple strip at the bottom of the card that typically
+   offers a link to the opposite authentication page, such
+   as sending the user from login to register.
+   ------------------------------------------------------------ */
+.card-footer {
+    background: var(--surface-2);
+    border-top: 1.5px solid #dbe8f8;
+    padding: 18px 36px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-mid);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 14: Security Strip at the Page Bottom
+   ------------------------------------------------------------
+   Badges that emphasize HIPAA compliance, encryption, and
+   institutional backing. They reassure the user that their
+   medical information is handled securely.
+   ------------------------------------------------------------ */
+.secure-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 18px 0 8px;
+}
+
+.secure-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.secure-badge i {
+    font-size: 12px;
+}

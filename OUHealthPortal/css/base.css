@@ -1,0 +1,199 @@
+/* ============================================================
+   FILE: base.css
+   PURPOSE: Shared foundational styles for every page in the
+            OU HealthConnection Patient Portal.
+   AUTHOR:  OU HealthConnection Front End Team
+   ============================================================
+   This stylesheet is intended to be loaded first on every page.
+   It establishes the global design tokens (colors, spacing, and
+   shadows), applies a universal reset, and styles elements that
+   appear on all pages such as the body background and the top
+   navigation bar.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   SECTION 1: External Font Import
+   ------------------------------------------------------------
+   The Inter typeface is loaded from Google Fonts in a range
+   of weights. The lighter weights are reserved for body copy
+   while the heavier weights are used for headings and buttons.
+   ------------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+
+/* ------------------------------------------------------------
+   SECTION 2: Universal Reset
+   ------------------------------------------------------------
+   Browsers apply inconsistent default margins, padding, and
+   box sizing to elements. The universal selector below removes
+   those defaults so that every element behaves predictably
+   across browsers and devices.
+   ------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 3: Global Design Tokens (CSS Custom Properties)
+   ------------------------------------------------------------
+   The :root selector declares variables that are reused across
+   every stylesheet. Centralizing these values guarantees that
+   color, spacing, and shadow choices remain consistent and can
+   be updated from a single location.
+   ------------------------------------------------------------ */
+:root {
+    /* Background and surface colors used for page and card layers */
+    --bg: #e8f0fb;
+    --surface: #ffffff;
+    --surface-2: #f0f5ff;
+
+    /* Primary blue palette used for interactive elements */
+    --blue-1: #3b82f6;
+    --blue-2: #60a5fa;
+
+    /* Reusable gradients for buttons, headers, and active states */
+    --blue-grad: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
+    --nav-active: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+
+    /* Text color hierarchy from darkest to lightest */
+    --text-dark: #1e3a5f;
+    --text-mid: #4b6fa8;
+    --text-light: #8fafd6;
+
+    /* Shadow elevations for small, medium, and large components */
+    --shadow-sm: 0 2px 8px rgba(59, 130, 246, 0.10);
+    --shadow-md: 0 6px 24px rgba(59, 130, 246, 0.14);
+    --shadow-lg: 0 16px 48px rgba(59, 130, 246, 0.18);
+
+    /* Corner rounding values for large and small components */
+    --radius: 18px;
+    --radius-sm: 12px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 4: Body and Page Foundation
+   ------------------------------------------------------------
+   The body fills the full viewport height and uses a vertical
+   flex layout so that the topbar sits above the main content
+   and any footer sits at the bottom of the page.
+   ------------------------------------------------------------ */
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 5: Topbar Container
+   ------------------------------------------------------------
+   The topbar is pinned to the top of the viewport using
+   sticky positioning. It provides brand identity on the left
+   and utility links or user controls on the right. A high
+   z-index ensures it remains above scrolling page content.
+   ------------------------------------------------------------ */
+.topbar {
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+    padding: 0 36px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 6: Brand Block (Logo and Title)
+   ------------------------------------------------------------
+   The brand block groups the square logo with the portal
+   title and subtitle. A small gap separates the icon from
+   the text while both are vertically centered.
+   ------------------------------------------------------------ */
+.topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* The logo container holds the decorative pulse icon.
+   It uses the same blue gradient found on primary buttons
+   to reinforce the brand identity throughout the interface. */
+.brand-logo {
+    width: 46px;
+    height: 46px;
+    background: var(--blue-grad);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+}
+
+/* The portal title shown next to the logo */
+.brand-text .title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* The subtitle provides institutional context below the title */
+.brand-text .sub {
+    font-size: 12px;
+    color: var(--text-mid);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 7: Topbar Link (Used on Login and Register Pages)
+   ------------------------------------------------------------
+   A subtle utility link placed at the right edge of the
+   topbar. It shifts to the primary blue color on hover to
+   indicate interactivity.
+   ------------------------------------------------------------ */
+.topbar-link {
+    font-size: 13px;
+    color: var(--text-mid);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color .2s;
+}
+
+.topbar-link:hover {
+    color: var(--blue-1);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 8: Generic Link Style
+   ------------------------------------------------------------
+   This class is applied to inline hyperlinks inside card
+   bodies and footers. It uses the primary blue color and
+   darkens slightly on hover for clear visual feedback.
+   ------------------------------------------------------------ */
+.link {
+    font-size: 13px;
+    color: var(--blue-1);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color .2s;
+}
+
+.link:hover {
+    color: #1d4ed8;
+}

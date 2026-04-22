@@ -1,0 +1,307 @@
+/* ============================================================
+   FILE: register.css
+   PURPOSE: Register page specific styles for the OU
+            HealthConnection Patient Portal.
+   ============================================================
+   This stylesheet builds on top of base.css and auth-forms.css.
+   It provides rules that are unique to the registration
+   experience, including the three step progress indicator,
+   the two column form grid, the password strength meter, and
+   the informational notice banners.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   SECTION 1: Register Page Layout Override
+   ------------------------------------------------------------
+   The register card is taller than the login card because it
+   contains more form fields. The page alignment is therefore
+   adjusted to align the card to the top of the viewport and
+   the maximum card width is increased.
+   ------------------------------------------------------------ */
+.page.register-page {
+    align-items: flex-start;
+    padding: 36px 20px 60px;
+}
+
+.auth-card.register-card {
+    max-width: 500px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 2: Adjusted Card Body Padding for Register
+   ------------------------------------------------------------
+   The register body has less top padding than the login body
+   because the step indicator sits immediately above it and
+   provides its own vertical spacing.
+   ------------------------------------------------------------ */
+.register-card .card-body {
+    padding: 24px 36px 28px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 3: Step Progress Bar
+   ------------------------------------------------------------
+   The step bar is a row of circular indicators connected by
+   horizontal lines. Each circle represents one step in the
+   registration flow (Identity, Contact, Security) and reflects
+   the users current progress using color and iconography.
+   ------------------------------------------------------------ */
+.steps-bar {
+    display: flex;
+    align-items: center;
+    padding: 20px 36px 0;
+    gap: 0;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+}
+
+/* The circular indicator for each step. The default state
+   is a neutral gray circle with the step number inside. */
+.step-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: 2px solid #dbe8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-light);
+    transition: all .3s;
+    position: relative;
+    z-index: 1;
+}
+
+/* The active state applies the primary blue gradient to
+   highlight the step the user is currently viewing. */
+.step.active .step-circle {
+    background: var(--blue-grad);
+    border-color: var(--blue-1);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+}
+
+/* The done state turns the circle green to indicate that the
+   step has been completed successfully. */
+.step.done .step-circle {
+    background: #22c55e;
+    border-color: #22c55e;
+    color: #fff;
+}
+
+/* Small label shown beneath each step circle */
+.step-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text-light);
+    white-space: nowrap;
+}
+
+.step.active .step-label {
+    color: var(--blue-1);
+}
+
+.step.done .step-label {
+    color: #22c55e;
+}
+
+/* The connecting line between two step circles. It turns
+   green once the step preceding it has been completed. */
+.step-line {
+    flex: 1;
+    height: 2px;
+    background: #dbe8f8;
+    margin-bottom: 22px;
+    transition: background .3s;
+}
+
+.step-line.done {
+    background: #22c55e;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 4: Section Title
+   ------------------------------------------------------------
+   A small uppercase label used to group related form fields
+   under a common heading such as "Personal Information" or
+   "Contact Information".
+   ------------------------------------------------------------ */
+.section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text-light);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid #f0f5ff;
+}
+
+/* Variant that adds vertical margin when a section follows
+   another section within the same step panel. */
+.section-sep {
+    margin: 20px 0 16px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 5: Two Column Form Grid
+   ------------------------------------------------------------
+   Many registration fields pair naturally (for example First
+   Name with Last Name). The grid places two form groups per
+   row and exposes a .full modifier for fields that need to
+   span the entire row on their own.
+   ------------------------------------------------------------ */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 16px;
+    margin-bottom: 16px;
+}
+
+.form-grid .full {
+    grid-column: 1 / -1;
+}
+
+/* Inside the grid, form groups do not need their own bottom
+   margin because the grid gap already provides spacing. */
+.form-grid .form-group {
+    margin-bottom: 0;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 6: Password Strength Meter
+   ------------------------------------------------------------
+   A thin horizontal bar that appears below the password input
+   on the security step. It is filled in proportion to the
+   strength of the typed password and is color coded from red
+   (weak) to green (strong).
+   ------------------------------------------------------------ */
+.strength-bar {
+    margin-top: 8px;
+    height: 4px;
+    border-radius: 4px;
+    background: #dbe8f8;
+    overflow: hidden;
+}
+
+/* The colored fill that grows horizontally as the strength
+   score increases. Both width and color animate smoothly. */
+.strength-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width .4s ease, background .4s;
+    width: 0%;
+    background: #3b82f6;
+}
+
+/* Text label below the bar that reads Weak, Fair, Good, or
+   Strong depending on the current password score. */
+.strength-text {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-top: 4px;
+    min-height: 14px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 7: Terms and Conditions Checkbox
+   ------------------------------------------------------------
+   The checkbox on the security step uses top aligned items
+   because the label text can wrap onto multiple lines when
+   linking to the Terms of Service and HIPAA Privacy Notice.
+   ------------------------------------------------------------ */
+.register-card .checkbox-wrap {
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+    margin-bottom: 22px;
+}
+
+.register-card .checkbox-wrap input[type="checkbox"] {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 8: Informational Notice Card
+   ------------------------------------------------------------
+   A light blue notice used at the top of the identity step
+   to remind the user to enter their name exactly as shown on
+   their OU student or staff identification card.
+   ------------------------------------------------------------ */
+.info-notice {
+    background: #eff6ff;
+    border: 1.5px solid #bfdbfe;
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+
+.info-notice i {
+    color: var(--blue-1);
+    margin-top: 2px;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.info-notice p {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.6;
+}
+
+.info-notice strong {
+    color: var(--text-dark);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 9: Step Panel Visibility
+   ------------------------------------------------------------
+   Only one step panel is visible at a time. By default every
+   panel is hidden using display: none. The active class is
+   added to the current panel by the register.js script to
+   bring it into view.
+   ------------------------------------------------------------ */
+.step-panel {
+    display: none;
+}
+
+.step-panel.active {
+    display: block;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 10: Primary Button Override Inside Button Row
+   ------------------------------------------------------------
+   When the primary button sits inside a button row alongside
+   a secondary Back button, it should flex to fill whatever
+   space remains rather than stretching to full width.
+   ------------------------------------------------------------ */
+.btn-row .btn-primary {
+    flex: 1;
+    width: auto;
+}
