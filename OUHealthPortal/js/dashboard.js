@@ -23,13 +23,20 @@
      btn : The navigation button element that was clicked.
    ------------------------------------------------------------ */
 function setActive(btn) {
+
+   
     /* Remove the active class from every navigation button
        so that no stale highlight remains from a previous
        selection. */
-    document.querySelectorAll('.nav-btn').forEach(b => {
+
+    /*document.querySelectorAll('.nav-btn').forEach(b => {
         b.classList.remove('active');
     });
 
     /* Apply the active class to the button that was clicked. */
-    btn.classList.add('active');
+    /*btn.classList.add('active');
+   */
+  //window.location.href='dashboard.html';
+  return;
+   
 }
