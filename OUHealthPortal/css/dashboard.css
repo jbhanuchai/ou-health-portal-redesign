@@ -12,6 +12,41 @@
 
 
 /* ------------------------------------------------------------
+   SECTION 0: Dashboard Color Palette
+   ------------------------------------------------------------ */
+:root {
+    /* Neutral white and border colors */
+    --white: #fff;
+    --border-soft: #dbe8f8;
+    --border-card-subtle: rgba(219, 232, 248, 0.6);
+
+    /* Translucent whites used on top of the blue gradient */
+    --white-50: rgba(255, 255, 255, 0.5);
+    --white-20: rgba(255, 255, 255, 0.2);
+
+    /* Blue tints and shadows reused across navigation and cards */
+    --blue-shadow: rgba(59, 130, 246, 0.3);
+    --blue-active-shadow: rgba(37, 99, 235, 0.35);
+    --slight-purple-grad: linear-gradient(135deg,rgba(0, 0, 255, 0.4),rgba(0,0,255,0.4)); /*Not a real gradient, but necessary for browser to appear smooth during hover color switch*/
+    --blue-radial: rgba(96, 165, 250, 0.12);
+
+    /* Informational notice palette (blue family) */
+    --notice-bg: #eff6ff;
+    --notice-border: #bfdbfe;
+    --divider-blue: #dbeafe;
+
+    /* Warning alert palette (orange family) */
+    --alert-bg: #fff7ed;
+    --alert-border: #fed7aa;
+    --alert-orange-1: #f97316;
+    --alert-orange-2: #fb923c;
+    --alert-shadow: rgba(249, 115, 22, 0.3);
+    --alert-text: #7c3f1e;
+    --alert-text-strong: #c2410c;
+}
+
+
+/* ------------------------------------------------------------
    SECTION 1: Topbar Right Group (Search, Icons, Avatar)
    ------------------------------------------------------------
    The dashboard topbar extends the shared topbar from base.css
@@ -38,7 +73,7 @@
     align-items: center;
     gap: 8px;
     background: var(--surface-2);
-    border: 1.5px solid #dbe8f8;
+    border: 1.5px solid var(--border-soft);
     border-radius: 50px;
     padding: 8px 18px;
     width: 240px;
@@ -69,8 +104,8 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 1.5px solid #dbe8f8;
-    background: var(--surface-2);
+    border: 1.5px solid var(--border-soft);
+    background: var(--blue-grad);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,9 +115,9 @@
 }
 
 .icon-btn:hover {
-    background: var(--blue-1);
-    color: #fff;
-    border-color: var(--blue-1);
+    background: var(--slight-purple-grad);
+    color: var(--white);
+    border-color: var(--slight-purple-grad);
 }
 
 
@@ -103,9 +138,9 @@
     justify-content: center;
     font-size: 13px;
     font-weight: 700;
-    color: #fff;
+    color: var(--white);
     cursor: pointer;
-    box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 3px 10px var(--blue-shadow);
 }
 
 
@@ -230,12 +265,12 @@
    the deeper blue gradient and a stronger shadow. */
 .nav-btn.active {
     background: var(--nav-active);
-    color: #fff;
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+    color: var(--white);
+    box-shadow: 0 6px 20px var(--blue-active-shadow);
 }
 
 .nav-btn.active::before {
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--white-50);
 }
 
 
@@ -250,7 +285,7 @@
     width: 36px;
     height: 36px;
     border-radius: 10px;
-    background: rgba(59, 130, 246, 0.10);
+    background: var(--blue-grad);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -259,11 +294,11 @@
 }
 
 .nav-btn.active .nav-icon {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--white-20);
 }
 
 .nav-btn:hover:not(.active) .nav-icon {
-    background: rgba(59, 130, 246, 0.15);
+    background: var(--slight-purple-grad);
 }
 
 .nav-icon i {
@@ -271,7 +306,7 @@
 }
 
 .nav-btn.active .nav-icon i {
-    color: #fff;
+    color: var(--white);
 }
 
 .nav-btn:not(.active) .nav-icon i {
@@ -337,7 +372,7 @@
     border-radius: var(--radius);
     padding: 36px 40px;
     box-shadow: var(--shadow-md);
-    border: 1.5px solid rgba(219, 232, 248, 0.6);
+    border: 1.5px solid var(--border-card-subtle);
     position: relative;
     overflow: hidden;
 }
@@ -350,7 +385,7 @@
     width: 220px;
     height: 220px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(96, 165, 250, 0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--blue-radial) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -397,7 +432,7 @@
    ------------------------------------------------------------ */
 .divider {
     height: 1.5px;
-    background: linear-gradient(90deg, #dbeafe, transparent);
+    background: linear-gradient(90deg, var(--divider-blue), transparent);
     margin: 22px 0;
     border-radius: 2px;
 }
@@ -418,8 +453,8 @@
 
 /* Informational notice with blue tinted background */
 .notice-card {
-    background: #eff6ff;
-    border: 1.5px solid #bfdbfe;
+    background: var(--notice-bg);
+    border: 1.5px solid var(--notice-border);
     border-radius: var(--radius-sm);
     padding: 18px 22px;
     display: flex;
@@ -437,14 +472,14 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 12px var(--blue-shadow);
 }
 
 /* Shared icon styling for both notice and alert cards */
 .notice-icon i,
 .alert-icon i {
     font-size: 18px;
-    color: #fff;
+    color: var(--white);
 }
 
 .notice-text {
@@ -467,8 +502,8 @@
 
 /* Warning alert card with orange tinted palette */
 .alert-card {
-    background: #fff7ed;
-    border: 1.5px solid #fed7aa;
+    background: var(--alert-bg);
+    border: 1.5px solid var(--alert-border);
     border-radius: var(--radius-sm);
     padding: 18px 22px;
     display: flex;
@@ -479,23 +514,23 @@
 .alert-icon {
     width: 38px;
     height: 38px;
-    background: linear-gradient(135deg, #f97316, #fb923c);
+    background: linear-gradient(135deg, var(--alert-orange-1), var(--alert-orange-2));
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 4px 12px var(--alert-shadow);
 }
 
 .alert-text {
     font-size: 14px;
-    color: #7c3f1e;
+    color: var(--alert-text);
     line-height: 1.65;
 }
 
 .alert-text strong {
-    color: #c2410c;
+    color: var(--alert-text-strong);
     font-weight: 700;
 }
 
@@ -518,7 +553,7 @@
     border-radius: var(--radius-sm);
     padding: 20px;
     box-shadow: var(--shadow-sm);
-    border: 1.5px solid rgba(219, 232, 248, 0.6);
+    border: 1.5px solid var(--border-card-subtle);
     text-align: center;
     transition: transform .2s, box-shadow .2s;
 }
