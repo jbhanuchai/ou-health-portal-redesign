@@ -197,3 +197,22 @@ body {
 .link:hover {
     color: #1d4ed8;
 }
+
+/* ------------------------------------------------------------
+   SECTION: Custom SVG Icon Sizing
+   ------------------------------------------------------------
+   Provides a uniform size for all user supplied SVG icons
+   that are loaded through an img tag. Individual size
+   modifiers can be added where a larger or smaller icon
+   is needed.
+   ------------------------------------------------------------ */
+.icon {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-lg { width: 22px; height: 22px; }
+.icon-md { width: 18px; height: 18px; }
+.icon-sm { width: 12px; height: 12px; }
