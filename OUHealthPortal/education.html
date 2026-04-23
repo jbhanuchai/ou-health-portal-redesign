@@ -112,7 +112,7 @@
             </div>
 
             <!-- Home (active by default) -->
-            <button class="nav-btn active" >
+            <button class="nav-btn" >
                 <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
                 <span class="nav-label">Home</span>
                 <span class="nav-arrow">&#8250;</span>
@@ -168,7 +168,7 @@
             </button>
 
             <!-- Patient Education resources -->
-            <button class="nav-btn">
+            <button class="nav-btn active">
                 <div class="nav-icon"><i class="fa-solid fa-bell"></i></div>
                 <span class="nav-label">Patient Education</span>
                 <span class="nav-arrow">&#8250;</span>
@@ -184,124 +184,12 @@
             </button>
         </nav>
 
-
-        <!-- ---- Content Panel ----
-             Holds the welcome card, the alert stack, and
-             the information tile row. -->
-        <section class="content-panel">
-
-            <!-- Welcome card.
-                 The large heading uses a span with the
-                 highlight class so that a portion of the
-                 title can be painted with the brand
-                 gradient. -->
-            <div class="welcome-card">
-                <h1 class="welcome-title">
-                    Welcome to <span class="highlight">The University of Oklahoma's</span>
-                </h1>
-                <div class="welcome-subtitle">HealthConnection Patient Portal</div>
-
-                <!-- Thin decorative separator -->
-                <div class="divider"></div>
-
-                <!-- Stack of notice and alert cards that
-                     surface important status messages for
-                     the patient. -->
-                <div class="alerts-stack">
-
-                    <!-- Informational notice about daily
-                         appointment slot releases. -->
-                    <div class="notice-card">
-                        <div class="notice-icon">
-                            <i class="fa-solid fa-calendar-days"></i>
-                        </div>
-                        <p class="notice-text">
-                            <strong>New</strong> appointments are added at
-                            <strong>8am daily</strong>. Please go to
-                            <span class="tag">Forms</span> and fill out
-                            <strong>"New Patient Paperwork"</strong>
-                            if not yet completed.
-                        </p>
-                    </div>
-
-                    <!-- Warning alert clarifying the scope
-                         of the portal. -->
-                    <div class="alert-card">
-                        <div class="alert-icon">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                        </div>
-                        <p class="alert-text">
-                            <strong>Note:</strong> This system is only for the
-                            <strong>medical clinic</strong> and does
-                            <strong>not</strong> communicate with the University
-                            Counseling Center or the Goddard Pharmacy.
-                        </p>
-                    </div>
-
-                    <!-- Informational notice reminding the
-                         patient of their upcoming
-                         immunization appointment. -->
-                    <div class="notice-card">
-                        <div class="notice-icon">
-                            <i class="fa-solid fa-syringe"></i>
-                        </div>
-                        <p class="notice-text">
-                            You have an <strong>Immunization</strong> scheduled for
-                            <strong>5/5/26</strong> at <strong>4:15 PM</strong>.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Information tile row.
-                 A three column grid of compact summary
-                 tiles. Each tile uses its own gradient
-                 background color so that the group is
-                 visually varied. -->
-            <div class="info-tiles">
-
-                <!-- Tile 1: Daily appointment slot time -->
-                <div class="info-tile">
-                    <div class="tile-icon" style="background:linear-gradient(135deg,#eff6ff,#dbeafe)">
-                        <i class="fa-solid fa-calendar-days" style="color:#3b82f6"></i>
-                    </div>
-                    <div class="tile-num">8<span style="font-size:16px;color:#4b6fa8">am</span></div>
-                    <div class="tile-label">Daily Appointment Slots</div>
-                </div>
-
-                <!-- Tile 2: Portal availability -->
-                <div class="info-tile">
-                    <div class="tile-icon" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7)">
-                        <i class="fa-solid fa-heart-pulse" style="color:#22c55e"></i>
-                    </div>
-                    <div class="tile-num" style="color:#166534">24/7</div>
-                    <div class="tile-label">Portal Access</div>
-                </div>
-
-                <!-- Tile 3: Compliance statement -->
-                <div class="info-tile">
-                    <div class="tile-icon" style="background:linear-gradient(135deg,#fff7ed,#ffedd5)">
-                        <i class="fa-solid fa-shield-halved" style="color:#f97316"></i>
-                    </div>
-                    <div class="tile-num" style="color:#9a3412">HIPAA</div>
-                    <div class="tile-label">Secure &amp; Compliant</div>
-                </div>
-            </div>
-
-
             <!-- Small centered footer label reinforcing the
                  portal name. -->
             <div class="footer-note">HealthConnection Patient Portal</div>
         </section>
     </main>
 
-
-    <!-- ====================================================
-         SCRIPTS
-         The dashboard script activates the clicked menu
-         button and clears the active state from the others.
-         ==================================================== -->
 </body>
 
 </html>
