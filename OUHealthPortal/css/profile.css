@@ -1,0 +1,646 @@
+/* ============================================================
+   FILE: profile.css
+   PURPOSE: Profile page specific styles for the OU
+            HealthConnection Patient Portal.
+   ============================================================ */
+
+   .content-panel {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+/* ------------------------------------------------------------
+   SECTION 1: Profile Page Heading
+   ------------------------------------------------------------ */
+.profile-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.profile-heading .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--blue-1);
+    margin-bottom: 4px;
+}
+
+.profile-heading h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.2;
+}
+
+.profile-heading p {
+    font-size: 14px;
+    color: var(--text-mid);
+    margin-top: 5px;
+    line-height: 1.5;
+}
+
+/* ------------------------------------------------------------
+   SECTION 2: Profile Summary Card
+   ------------------------------------------------------------ */
+.profile-summary-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    min-height: 130px;
+    box-shadow: var(--shadow-md);
+    border: 1.5px solid rgba(219, 232, 248, 0.7);
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-summary-card::before {
+    content: '';
+    position: absolute;
+    top: -70px;
+    right: -70px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.14) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.profile-avatar-xl {
+    width: 78px;
+    height: 78px;
+    border-radius: 24px;
+    background: var(--blue-grad);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 800;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.32);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-summary-info {
+    position: relative;
+    z-index: 1;
+}
+
+.profile-summary-info h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.profile-summary-info p {
+    font-size: 14px;
+    color: var(--text-mid);
+    margin-top: 4px;
+}
+
+.status-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface-2);
+    color: var(--text-mid);
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid #dbe8f8;
+}
+
+.status-pill.success {
+    background: #ecfdf5;
+    color: #15803d;
+    border-color: #bbf7d0;
+}
+
+/* ------------------------------------------------------------
+   SECTION 3: Quick Action Cards
+   ------------------------------------------------------------ */
+.profile-action-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.quick-action-card {
+    min-height: 76px;
+    background: var(--surface);
+    border: 1.5px solid rgba(219, 232, 248, 0.7);
+    border-radius: var(--radius-sm);
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+    font-family: 'Inter', sans-serif;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--blue-1);
+}
+
+.quick-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    background: var(--surface-2);
+    color: var(--blue-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.quick-icon i {
+    font-size: 18px;
+}
+
+.quick-action-card h3 {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.quick-action-card p {
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-top: 3px;
+}
+
+/* ------------------------------------------------------------
+   SECTION 4: Profile Card Grid
+   ------------------------------------------------------------ */
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+    gap: 22px;
+}
+
+.profile-card {
+    min-height: 300px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+    border: 1.5px solid rgba(219, 232, 248, 0.7);
+    transition: all .2s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(59, 130, 246, 0.12);
+}
+
+.card-title-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.card-title-row h3 {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.card-title-row p {
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-top: 4px;
+    line-height: 1.45;
+}
+
+.card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    background: var(--surface-2);
+    color: var(--blue-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+/* ------------------------------------------------------------
+   SECTION 5: Profile Information Rows
+   ------------------------------------------------------------ */
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid #edf4ff;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.info-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.info-label.required::after {
+    content: " *";
+    color: #dc2626;
+    font-weight: 900;
+}
+
+.info-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    overflow-wrap: anywhere;
+}
+
+.info-value.muted {
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* ------------------------------------------------------------
+   SECTION 6: Real-Time Edit Inputs
+   ------------------------------------------------------------ */
+.profile-edit-input {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1.5px solid #dbe8f8;
+    border-radius: 10px;
+    background: var(--surface-2);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+}
+
+.profile-edit-input:focus {
+    border-color: var(--blue-1);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+/* ------------------------------------------------------------
+   SECTION 7: Communication Preference Cards
+   ------------------------------------------------------------ */
+.preference-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.preference-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    border: 1.5px solid #dbe8f8;
+}
+
+.preference-item.active {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.preference-item h4 {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.preference-item p {
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-top: 4px;
+    line-height: 1.45;
+}
+
+.toggle-badge {
+    height: fit-content;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: var(--blue-grad);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+}
+
+.toggle-badge.off {
+    background: #e2e8f0;
+    color: #64748b;
+}
+
+/* ------------------------------------------------------------
+   SECTION 8: Profile Action Buttons
+   ------------------------------------------------------------ */
+.profile-footer-actions {
+    max-width: 100%;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1.5px solid rgba(219, 232, 248, 0.7);
+    padding: 18px 22px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.profile-primary-btn,
+.profile-secondary-btn {
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 12px 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .2s, background .2s, color .2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.profile-primary-btn {
+    background: var(--blue-grad);
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.28);
+}
+
+.profile-primary-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(37, 99, 235, 0.35);
+}
+
+.profile-secondary-btn {
+    background: var(--surface-2);
+    color: var(--text-mid);
+    border: 1.5px solid #dbe8f8;
+}
+
+.profile-secondary-btn:hover {
+    background: #dbe8f8;
+    color: var(--text-dark);
+}
+
+/* ------------------------------------------------------------
+   SECTION 9: Real-Time Toast Feedback
+   ------------------------------------------------------------ */
+.profile-toast {
+    position: fixed;
+    top: 92px;
+    right: 28px;
+    bottom: auto;
+    background: var(--blue-grad);
+    color: white;
+    padding: 16px 22px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 12px 34px rgba(37, 99, 235, 0.38);
+    z-index: 9999;
+    max-width: 360px;
+    line-height: 1.5;
+    animation: toastSlideIn .25s ease both;
+}
+
+.profile-toast.hide {
+    animation: toastSlideOut .35s ease both;
+}
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes toastSlideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+}
+
+/* ============================================================
+   PASSWORD MODAL
+   ============================================================ */
+.password-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998;
+    backdrop-filter: blur(4px);
+}
+
+.password-modal {
+    width: 100%;
+    max-width: 520px;
+    background: white;
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
+    animation: modalIn .25s ease;
+}
+
+.password-modal-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.password-modal-header h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.password-modal-header p {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--text-mid);
+}
+
+.close-modal-btn {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 12px;
+    background: var(--surface-2);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.close-modal-btn:hover {
+    background: #dbe8f8;
+    color: var(--blue-1);
+}
+
+.password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.password-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.password-field label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.password-field input {
+    height: 48px;
+    border: 1.5px solid #dbe8f8;
+    border-radius: 14px;
+    padding: 0 14px;
+    font-size: 14px;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.password-field input:focus {
+    border-color: var(--blue-1);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, .12);
+}
+
+.password-rules {
+    background: #f8fbff;
+    border: 1px solid #dbe8f8;
+    padding: 16px;
+    border-radius: 14px;
+}
+
+.password-rules p {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.password-rules ul {
+    padding-left: 18px;
+    color: var(--text-mid);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.password-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ------------------------------------------------------------
+   SECTION 10: Responsive Adjustments
+   ------------------------------------------------------------ */
+@media (max-width: 1050px) {
+    .content-panel {
+        max-width: 100%;
+    }
+
+    .profile-action-grid,
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 760px) {
+    .profile-summary-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-footer-actions,
+    .password-modal-actions {
+        flex-direction: column;
+    }
+
+    .profile-primary-btn,
+    .profile-secondary-btn {
+        width: 100%;
+    }
+
+    .password-modal {
+        width: 92%;
+        padding: 22px;
+    }
+}
