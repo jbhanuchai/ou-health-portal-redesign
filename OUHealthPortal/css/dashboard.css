@@ -573,6 +573,10 @@
     align-items: center;
     justify-content: center;
 }
+.tile-icon .icon {
+    width: 28px;
+    height: 28px;
+}
 
 .tile-icon i {
     font-size: 20px;
