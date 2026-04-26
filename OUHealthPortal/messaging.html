@@ -4,14 +4,11 @@
 <!-- ============================================================
      FILE: messaging.html
      PURPOSE: Secure Messaging page for the OU HealthConnection
-              Patient Portal. This is where patients exchange
-              messages with their care team.
+              Patient Portal.
      ============================================================
-     This page is currently a styled template. The topbar and
-     navigation panel match the dashboard so the visual
-     language is consistent across the portal. The content
-     panel holds a placeholder welcome card that can be
-     replaced with the real page content when it is built out.
+     Loads base.css and dashboard.css for shared layout tokens,
+     then messaging.css for page-specific two-pane layout.
+     messaging.js drives all interactive behavior.
      ============================================================ -->
 
 <head>
@@ -21,6 +18,7 @@
 
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/messaging.css" />
 </head>
 
 <body>
@@ -45,8 +43,12 @@
                 <img src="icons/search.svg" class="icon icon-md" alt="" />
                 <input type="text" placeholder="Search..." />
             </div>
-            <div class="icon-btn"><img src="icons/bell.svg" class="icon icon-md" alt="" /></div>
-            <div class="icon-btn"><img src="icons/msg.svg" class="icon icon-md" alt="" /></div>
+            <div class="icon-btn">
+                <img src="icons/bell.svg" class="icon icon-md" alt="" />
+            </div>
+            <div class="icon-btn">
+                <img src="icons/msg.svg" class="icon icon-md" alt="" />
+            </div>
             <div class="avatar" onclick="window.location.href='profile.html'">JS</div>
         </div>
     </header>
@@ -57,6 +59,7 @@
          ==================================================== -->
     <main class="main">
 
+        <!-- Left nav panel (shared across portal pages) -->
         <nav class="nav-panel">
 
             <div class="nav-panel-header">
@@ -120,30 +123,219 @@
         </nav>
 
 
+        <!-- ================================================
+             MESSAGING SHELL (two-pane layout)
+             ================================================ -->
         <section class="content-panel">
+            <div class="messaging-shell">
 
-            <div class="welcome-card">
-                <h1 class="welcome-title">
-                    <span class="highlight">Secure Messaging</span>
-                </h1>
-                <div class="welcome-subtitle">Private communication with your care team</div>
+                <!-- ----------------------------------------
+                     LEFT PANE: Conversation list
+                     ---------------------------------------- -->
+                <div class="conv-list-pane">
 
-                <div class="divider"></div>
-
-                <div class="alerts-stack">
-                    <div class="notice-card">
-                        <p class="notice-text">
-                            This section is a styled <strong>template</strong>. A
-                            HIPAA-compliant inbox and message composer will appear
-                            here once the page is built out.
-                        </p>
+                    <div class="conv-list-header">
+                        <h2>Messages</h2>
+                        <div class="conv-search">
+                            <img src="icons/search.svg" class="icon icon-sm" alt="" />
+                            <input type="text" placeholder="Search conversations…" />
+                        </div>
                     </div>
+
+                    <div class="conv-list">
+
+                        <!-- Conversation: Dr. Example -->
+                        <div class="conv-item active" id="conv-drpatel">
+                            <div class="conv-avatar">
+                                DE
+                                <span class="status-dot online"></span>
+                            </div>
+                            <div class="conv-body">
+                                <div class="conv-name">Dr. Example</div>
+                                <div class="conv-role">Primary Care</div>
+                                <div class="conv-preview">…try to reduce sodium intake and aim for 30 min…</div>
+                            </div>
+                            <div class="conv-meta">
+                                <span class="conv-time">9:48 AM</span>
+                            </div>
+                        </div>
+
+                        <!-- Conversation: Nurse Example -->
+                        <div class="conv-item" id="conv-nursejones">
+                            <div class="conv-avatar" style="background: linear-gradient(135deg,#0891b2,#67e8f9)">
+                                NE
+                                <span class="status-dot"></span>
+                            </div>
+                            <div class="conv-body">
+                                <div class="conv-name">Nurse Example</div>
+                                <div class="conv-role">Student Health Center</div>
+                                <div class="conv-preview">Perfect! No appointment needed. See you then.</div>
+                            </div>
+                            <div class="conv-meta">
+                                <span class="conv-time">Mon</span>
+                            </div>
+                        </div>
+
+                        <!-- Conversation: Pharmacy -->
+                        <div class="conv-item" id="conv-pharmacy">
+                            <div class="conv-avatar" style="background: linear-gradient(135deg,#7c3aed,#a78bfa)">
+                                Rx
+                                <span class="status-dot online"></span>
+                            </div>
+                            <div class="conv-body">
+                                <div class="conv-name">OU Pharmacy Team</div>
+                                <div class="conv-role">Campus Pharmacy</div>
+                                <div class="conv-preview">We'll notify you here when it's ready.</div>
+                            </div>
+                            <div class="conv-meta">
+                                <span class="conv-time">Yesterday</span>
+                                <span class="unread-badge">2</span>
+                            </div>
+                        </div>
+
+                    </div><!-- /.conv-list -->
+
+                    <button class="new-msg-btn" id="new-msg-btn">
+                        <img src="icons/plus.svg" class="icon icon-sm" alt="" style="filter:brightness(0) invert(1)" />
+                        New Message
+                    </button>
+
+                </div><!-- /.conv-list-pane -->
+
+
+                <!-- ----------------------------------------
+                     RIGHT PANE: Thread view
+                     ---------------------------------------- -->
+                <div class="thread-pane">
+
+                    <!-- Thread header (hidden until a thread loads) -->
+                    <div class="thread-header" id="thread-header" style="display:none">
+                        <div class="thread-header-left">
+                            <div class="thread-avatar" id="thread-avatar-text">AP</div>
+                            <div>
+                                <div class="thread-name" id="thread-name-text"></div>
+                                <div class="thread-role" id="thread-role-text"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Empty placeholder shown before any thread is selected -->
+                    <div class="thread-empty" id="thread-empty">
+                        <div class="thread-empty-icon">
+                            <img src="icons/msg.svg" class="icon icon-lg" alt="" />
+                        </div>
+                        <h3>Select a conversation</h3>
+                        <p>Choose a conversation from the list or start a new message to your care team.</p>
+                    </div>
+
+                    <!-- Scrollable message bubbles -->
+                    <div class="thread-messages" id="thread-messages" style="display:none"></div>
+
+                    <!-- Compose area -->
+                    <div class="compose-area" id="compose-area" style="display:none">
+
+                        <div class="compose-toolbar">
+                            <!-- Toolbar buttons are visual placeholders for a future rich-text editor -->
+                            <button class="compose-tool-btn" title="Bold">
+                                <strong>B</strong>
+                            </button>
+                            <button class="compose-tool-btn" title="Italic">
+                                <em>I</em>
+                            </button>
+                            <div class="compose-tool-divider"></div>
+                            <button class="compose-tool-btn" title="Attach file">
+                                <img src="icons/uploadicon.svg" class="icon icon-sm" alt="Attach" />
+                            </button>
+                            <button class="compose-tool-btn" title="Forms">
+                                <img src="icons/formsicon.svg" class="icon icon-sm" alt="Forms" />
+                            </button>
+                        </div>
+
+                        <div class="compose-input-row">
+                            <textarea
+                                class="compose-input"
+                                id="compose-input"
+                                placeholder="Type a secure message… (Ctrl+Enter to send)"
+                                rows="1"
+                            ></textarea>
+                            <button class="send-btn" id="send-btn" title="Send message">
+                                <img src="icons/send.svg" class="icon icon-md" alt="Send" style="filter:brightness(0) invert(1)" />
+                            </button>
+                        </div>
+
+                        <div class="compose-hint">
+                            <span>Press Ctrl+Enter to send</span>
+                        </div>
+
+                    </div><!-- /.compose-area -->
+
+                </div><!-- /.thread-pane -->
+
+            </div><!-- /.messaging-shell -->
+        </section>
+
+    </main>
+
+
+    <!-- ====================================================
+         NEW MESSAGE MODAL
+         ==================================================== -->
+    <div class="modal-overlay" id="new-msg-modal">
+        <div class="modal-card">
+
+            <div class="modal-header">
+                <div>
+                    <h2>New Message</h2>
+                    <p>Send a secure message to your care team</p>
                 </div>
+                <button class="modal-close" id="modal-close-btn">&#x2715;</button>
             </div>
 
-            <div class="footer-note">HealthConnection Patient Portal</div>
-        </section>
-    </main>
+            <div class="modal-body">
+
+                <div class="modal-field">
+                    <label for="modal-recipient">To</label>
+                    <select class="modal-select" id="modal-recipient">
+                        <option value="">Select a recipient…</option>
+                        <option value="drpatel">Dr. Example – Primary Care</option>
+                        <option value="nursejones">Nurse Example – Student Health Center</option>
+                        <option value="pharmacy">OU Pharmacy Team</option>
+                        <option value="billing">Billing &amp; Insurance Office</option>
+                    </select>
+                </div>
+
+                <div class="modal-field">
+                    <label for="modal-subject">Subject</label>
+                    <input
+                        type="text"
+                        class="modal-input"
+                        id="modal-subject"
+                        placeholder="e.g. Question about my prescription"
+                    />
+                </div>
+
+                <div class="modal-field">
+                    <label for="modal-body">Message</label>
+                    <textarea
+                        class="modal-textarea"
+                        id="modal-body"
+                        placeholder="Type your message here…"
+                    ></textarea>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-cancel" id="modal-cancel-btn">Cancel</button>
+                <button class="modal-send"   id="modal-send-btn">Send Securely</button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="js/messaging.js"></script>
 
 </body>
 
