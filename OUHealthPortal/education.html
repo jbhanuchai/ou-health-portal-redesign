@@ -2,35 +2,25 @@
 <html lang="en">
 
 <!-- ============================================================
-     FILE: dashboard.html
-     PURPOSE: Authenticated dashboard (home screen) for the
-              OU HealthConnection Patient Portal.
+     FILE: education.html
+     PURPOSE: Patient Education page for the OU
+              HealthConnection Patient Portal.
      ============================================================
-     The dashboard presents the patient menu in a navigation
-     panel on the left and a content panel on the right that
-     contains:
-     
-       A welcome card with the portal name highlighted in the
-       brand gradient, a horizontal divider, and a stack of
-       informational notices and alerts.
-       
-       A row of three summary tiles that surface at a glance
-       information about appointment slots, portal access,
-       and security compliance.
+     This page is currently a styled template. The topbar and
+     navigation panel match the dashboard so the visual
+     language is consistent across the portal. The content
+     panel holds a placeholder welcome card that can be
+     replaced with the real page content when it is built out.
      ============================================================ -->
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OU HealthConnection</title>
-
-    <!-- External icon library for all Font Awesome glyphs -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <title>Patient Education – OU HealthConnection</title>
 
     <!-- Internal stylesheets. The base sheet defines global
-         tokens and the topbar while the dashboard sheet
-         adds layout rules that are unique to this page. -->
+         tokens and the topbar while the dashboard sheet adds
+         layout rules shared with every authenticated page. -->
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
 </head>
@@ -39,20 +29,15 @@
 
     <!-- ====================================================
          TOPBAR
-         The dashboard topbar extends the shared brand block
-         with a search bar and a cluster of utility controls
-         on the right (notifications, messages, and avatar).
+         Shared portal header with brand identity, search,
+         notification controls, messaging shortcut, and avatar.
          ==================================================== -->
     <header class="topbar">
 
         <!-- Brand block with logo and portal title -->
         <div class="topbar-brand">
             <div class="brand-logo">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none"
-                     stroke="white" stroke-width="2.2"
-                     stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                </svg>
+                <img src="icons/stethoscope.svg" class="icon icon-md" alt="" />
             </div>
             <div class="brand-text">
                 <div class="title">OU HealthConnection</div>
@@ -63,29 +48,16 @@
         <!-- Right hand group of topbar controls -->
         <div class="topbar-right">
 
-            <!-- Pill shaped search bar with an inline
-                 magnifying glass icon. -->
             <div class="search-bar">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
-                     stroke="#8fafd6" stroke-width="2"
-                     stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="m21 21-4.35-4.35" />
-                </svg>
+                <img src="icons/search.svg" class="icon icon-md" alt="" />
                 <input type="text" placeholder="Search..." />
             </div>
 
-            <!-- Notification bell button -->
-            <div class="icon-btn"><i class="fa-solid fa-bell"></i></div>
+            <div class="icon-btn"><img src="icons/bell.svg" class="icon icon-md" alt="" /></div>
+            <div class="icon-btn"><img src="icons/msg.svg" class="icon icon-md" alt="" /></div>
 
-            <!-- Secure messaging shortcut button -->
-            <div class="icon-btn"><i class="fa-solid fa-message"></i></div>
-
-            <!-- User avatar.
-                 Currently displays the patients initials.
-                 In production this would link to the profile
-                 menu or display a profile photograph. -->
-            <div class="avatar">JS</div>
+            <!-- Avatar links to the profile page -->
+            <div class="avatar" onclick="window.location.href='profile.html'">JS</div>
         </div>
     </header>
 
@@ -97,87 +69,95 @@
          ==================================================== -->
     <main class="main">
 
-        <!-- ---- Navigation Panel ----
-             Holds the Patient Menu header followed by a
-             column of navigation buttons. Each button
-             invokes setActive from dashboard.js when
-             clicked so that only one item appears active
-             at any given time. -->
+        <!-- ---- Navigation Panel ---- -->
         <nav class="nav-panel">
 
-            <!-- Panel header labels the navigation region. -->
             <div class="nav-panel-header">
                 <p>Navigation</p>
                 <h2>Patient Menu</h2>
             </div>
 
-            <!-- Home (active by default) -->
             <button class="nav-btn" onclick="window.location.href='dashboard.html'">
-                <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
+                <div class="nav-icon"><img src="icons/homeicon.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Home</span>
                 <span class="nav-arrow">&#8250;</span>
-                <a href="dashboard.html"></a>
             </button>
 
-            <!-- Appointments -->
             <button class="nav-btn" onclick="window.location.href='appointments.html'">
-                <div class="nav-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                <div class="nav-icon"><img src="icons/appticon.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Appointments</span>
                 <span class="nav-arrow">&#8250;</span>
             </button>
 
-            <!-- Immunizations -->
             <button class="nav-btn" onclick="window.location.href='immunizations.html'">
-                <div class="nav-icon"><i class="fa-solid fa-syringe"></i></div>
+                <div class="nav-icon"><img src="icons/immune.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Immunizations</span>
                 <span class="nav-arrow">&#8250;</span>
             </button>
 
-            <!-- Upload (medical documents) -->
             <button class="nav-btn" onclick="window.location.href='upload.html'">
-                <div class="nav-icon"><i class="fa-solid fa-upload"></i></div>
+                <div class="nav-icon"><img src="icons/uploadicon.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Upload</span>
                 <span class="nav-arrow">&#8250;</span>
             </button>
 
-            <!-- Forms (such as new patient paperwork) -->
-            <button class="nav-btn"onclick="window.location.href='forms.html'">
-                <div class="nav-icon"><i class="fa-solid fa-pencil"></i></div>
+            <button class="nav-btn" onclick="window.location.href='forms.html'">
+                <div class="nav-icon"><img src="icons/formsicon.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Forms</span>
                 <span class="nav-arrow">&#8250;</span>
             </button>
 
-            <!-- Secure Messaging -->
-            <button class="nav-btn"onclick="window.location.href='messaging.html'">
-                <div class="nav-icon"><i class="fa-solid fa-envelope"></i></div>
+            <button class="nav-btn" onclick="window.location.href='messaging.html'">
+                <div class="nav-icon"><img src="icons/msg.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Secure Messaging</span>
                 <span class="nav-arrow">&#8250;</span>
             </button>
 
-            <!-- Insurance information -->
-            <button class="nav-btn"onclick="window.location.href='insurance.html'">
-                <div class="nav-icon"><i class="fa-solid fa-umbrella"></i></div>
+            <button class="nav-btn" onclick="window.location.href='insurance.html'">
+                <div class="nav-icon"><img src="icons/insuranceicon.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Insurance</span>
                 <span class="nav-arrow">&#8250;</span>
             </button>
 
-            <!-- Patient Education resources -->
-            <button class="nav-btn active"onclick="window.location.href='education.html'">
-                <div class="nav-icon"><i class="fa-solid fa-bell"></i></div>
+            <button class="nav-btn active" onclick="window.location.href='education.html'">
+                <div class="nav-icon"><img src="icons/education.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Patient Education</span>
                 <span class="nav-arrow">&#8250;</span>
             </button>
 
-            <!-- My Profile -->
-            <button class="nav-btn"onclick="window.location.href='profile.html'">
-                <div class="nav-icon"><i class="fa-solid fa-circle-user"></i></div>
+            <button class="nav-btn" onclick="window.location.href='profile.html'">
+                <div class="nav-icon"><img src="icons/profileicon.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">My Profile</span>
                 <span class="nav-arrow">&#8250;</span>
             </button>
         </nav>
 
-            <!-- Small centered footer label reinforcing the
-                 portal name. -->
+
+        <!-- ---- Content Panel ----
+             Placeholder welcome card for the page. Replace
+             this block with real page content when the
+             section is built out. -->
+        <section class="content-panel">
+
+            <div class="welcome-card">
+                <h1 class="welcome-title">
+                    <span class="highlight">Patient Education</span>
+                </h1>
+                <div class="welcome-subtitle">Health resources and learning materials</div>
+
+                <div class="divider"></div>
+
+                <div class="alerts-stack">
+                    <div class="notice-card">
+                        <p class="notice-text">
+                            This section is a styled <strong>template</strong>. Educational
+                            articles, videos, and care guides will appear here once the
+                            page is built out.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div class="footer-note">HealthConnection Patient Portal</div>
         </section>
     </main>
