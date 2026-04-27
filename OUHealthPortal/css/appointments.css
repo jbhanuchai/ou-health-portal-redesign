@@ -164,12 +164,10 @@
         .type-card.selected { border-color: var(--blue-1); background: #eff6ff; box-shadow: var(--shadow-md); }
         .type-icon-wrap {
             width: 52px; height: 52px; border-radius: 14px;
-            background: linear-gradient(135deg,#eff6ff,#dbeafe);
+            background: var(--surface);
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 12px;
         }
-        .type-card.selected .type-icon-wrap { background: var(--blue-grad); }
-        .type-card.selected .type-icon-wrap i { color: #fff !important; }
         .type-icon-wrap i { color: var(--blue-1); font-size: 20px; }
         .type-icon-wrap img { width: 20px; height: 20px; display: inline-block; vertical-align: middle; }
 
