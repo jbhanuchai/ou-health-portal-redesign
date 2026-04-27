@@ -1,0 +1,190 @@
+/* ============================================================
+   FILE: upload.css
+   PURPOSE: Page specific styling for the Upload page.
+   ============================================================
+   The foundation styles (topbar, sidebar nav, welcome card,
+   divider, footer note) come from base.css and dashboard.css.
+
+   This file adds only the rules that are unique to the Upload
+   page:
+       1. The compact welcome card modifier used by the page
+          heading (also used by Forms, Insurance, and Patient
+          Education).
+       2. The Upload File action button (a styled label that
+          opens the hidden file input).
+       3. The records-card / record-row pattern adapted to
+          show recent uploads as rows with a file icon, name,
+          and status badge.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   SECTION 1: Page Specific Design Tokens
+   ------------------------------------------------------------ */
+:root {
+
+    /* Verified pill palette (green family) */
+    --status-green-bg:   #dcfce7;
+    --status-green-text: #166534;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 2: Compact Welcome Card Modifier
+   ------------------------------------------------------------
+   Tightens the padding and headline scale of the shared
+   .welcome-card chrome for use as a page heading on simpler
+   list-only pages.
+   ------------------------------------------------------------ */
+.welcome-card--compact {
+    flex: 0 0 auto;
+    padding: 22px 28px;
+}
+
+.welcome-card--compact .welcome-title {
+    font-size: 22px;
+    margin-bottom: 2px;
+}
+
+.welcome-card--compact .welcome-subtitle {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 3: Records / Recent Uploads Card
+   ------------------------------------------------------------
+   Reuses the records-card / record-row pattern established
+   on the Immunizations page. The header band is laid out as
+   a flex row so the Upload File action button can sit on
+   the right edge opposite the title.
+   ------------------------------------------------------------ */
+.records-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.records-header {
+    padding: 14px 24px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.records-header-title {
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.records-list {
+    padding: 0 24px;
+}
+
+.record-row {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--surface-2);
+}
+
+.record-row:last-child {
+    border-bottom: none;
+}
+
+.record-name {
+    color: var(--text-dark);
+    font-size: 14px;
+}
+
+.record-detail {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 4: Upload File Button
+   ------------------------------------------------------------
+   The button is a styled label so clicking it opens the
+   hidden file input natively, with no JavaScript.
+   ------------------------------------------------------------ */
+.upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: var(--radius-sm);
+    background: var(--blue-grad);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 12px var(--blue-shadow);
+    transition: all .18s ease;
+}
+
+.upload-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px var(--blue-active-shadow);
+}
+
+/* The line art upload icon is dark by default. On the blue
+   gradient it needs to be inverted so it remains visible. */
+.upload-btn .icon {
+    filter: brightness(0) invert(1);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 5: Recent Upload Row Layout
+   ------------------------------------------------------------
+   Three column grid: file icon, file metadata, status pill.
+   ------------------------------------------------------------ */
+.upload-row {
+    display: grid;
+    grid-template-columns: 42px 1fr auto;
+    gap: 14px;
+    align-items: center;
+}
+
+.upload-file-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    border: 1.5px solid var(--border-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 6: Status Badge (Verified)
+   ------------------------------------------------------------ */
+.status-badge {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 50px;
+    white-space: nowrap;
+}
+
+.status-badge--verified {
+    color: var(--status-green-text);
+    background: var(--status-green-bg);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 7: View Transitions
+   ------------------------------------------------------------ */
+@view-transition {
+    navigation: auto;
+}

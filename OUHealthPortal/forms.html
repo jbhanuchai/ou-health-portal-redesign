@@ -5,13 +5,17 @@
      FILE: forms.html
      PURPOSE: Forms page for the OU HealthConnection Patient
               Portal. This is where new patient paperwork and
-              other intake or consent forms will live.
+              other intake or consent forms live.
      ============================================================
-     This page is currently a styled template. The topbar and
-     navigation panel match the dashboard so the visual
-     language is consistent across the portal. The content
-     panel holds a placeholder welcome card that can be
-     replaced with the real page content when it is built out.
+     Styling for this page is split across three stylesheets,
+     loaded in order of dependency: base.css provides the
+     global tokens and shell, dashboard.css provides the
+     shared portal layout, and forms.css adds the page
+     specific rules for the form list row, status pill, and
+     action button.
+
+     This page is currently static. No page specific
+     JavaScript is required.
      ============================================================ -->
 
 <head>
@@ -21,6 +25,7 @@
 
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/forms.css" />
 </head>
 
 <body>
@@ -120,24 +125,41 @@
         </nav>
 
 
+        <!-- ====================================================
+             CONTENT PANEL
+             ==================================================== -->
         <section class="content-panel">
 
-            <div class="welcome-card">
+            <!-- Page heading (compact variant) -->
+            <div class="welcome-card welcome-card--compact">
                 <h1 class="welcome-title">
                     <span class="highlight">Forms</span>
                 </h1>
                 <div class="welcome-subtitle">New patient paperwork, consent, and intake forms</div>
+            </div>
 
-                <div class="divider"></div>
 
-                <div class="alerts-stack">
-                    <div class="notice-card">
-                        <p class="notice-text">
-                            This section is a styled <strong>template</strong>. Forms that
-                            patients can review, complete, and submit will appear here
-                            once the page is built out.
-                        </p>
+            <!-- Forms list -->
+            <div class="welcome-card records-card">
+
+                <div class="records-header">
+                    <h4 class="records-header-title">Available Forms</h4>
+                </div>
+
+                <div class="records-list">
+
+                    <div class="record-row form-row">
+                        <div class="form-row-icon">
+                            <img src="icons/formsiconblue.svg" class="icon icon-md" alt="" />
+                        </div>
+                        <div class="form-row-text">
+                            <strong class="record-name">New Patient Paperwork</strong>
+                            <div class="record-detail">Personal, contact, and emergency information</div>
+                        </div>
+                        <span class="status-badge status-badge--required">Required</span>
+                        <button class="form-action-btn primary">Start</button>
                     </div>
+
                 </div>
             </div>
 

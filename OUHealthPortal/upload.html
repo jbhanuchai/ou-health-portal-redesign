@@ -7,11 +7,15 @@
               Portal. This is where patients submit medical
               records, lab results, and other documents.
      ============================================================
-     This page is currently a styled template. The topbar and
-     navigation panel match the dashboard so the visual
-     language is consistent across the portal. The content
-     panel holds a placeholder welcome card that can be
-     replaced with the real page content when it is built out.
+     Styling for this page is split across three stylesheets,
+     loaded in order of dependency: base.css provides the
+     global tokens and shell, dashboard.css provides the
+     shared portal layout, and upload.css adds the page
+     specific rules for the upload action button and the
+     recent uploads list row.
+
+     The upload action is a styled label tied to a hidden
+     file input, so the file picker opens with no JavaScript.
      ============================================================ -->
 
 <head>
@@ -21,6 +25,7 @@
 
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/upload.css" />
 </head>
 
 <body>
@@ -120,24 +125,48 @@
         </nav>
 
 
+        <!-- ====================================================
+             CONTENT PANEL
+             ==================================================== -->
         <section class="content-panel">
 
-            <div class="welcome-card">
+            <!-- Page heading (compact variant) -->
+            <div class="welcome-card welcome-card--compact">
                 <h1 class="welcome-title">
                     <span class="highlight">Upload</span>
                 </h1>
                 <div class="welcome-subtitle">Submit medical records, lab results, and supporting documents</div>
+            </div>
 
-                <div class="divider"></div>
 
-                <div class="alerts-stack">
-                    <div class="notice-card">
-                        <p class="notice-text">
-                            This section is a styled <strong>template</strong>. A drag and
-                            drop file upload area and a list of previously submitted
-                            documents will appear here once the page is built out.
-                        </p>
+            <!-- Recent uploads list with the upload action in the header -->
+            <div class="welcome-card records-card">
+
+                <div class="records-header">
+                    <h4 class="records-header-title">Recent Uploads</h4>
+
+                    <!-- The label opens the hidden file input with no JS. -->
+                    <label class="upload-btn" for="upload-input">
+                        <img src="icons/uploadicon.svg" class="icon icon-md" alt="" />
+                        Upload File
+                    </label>
+                    <input type="file" id="upload-input"
+                           accept=".pdf,.jpg,.jpeg,.png,.heic" hidden />
+                </div>
+
+                <div class="records-list">
+
+                    <div class="record-row upload-row">
+                        <div class="upload-file-icon">
+                            <img src="icons/labblue.svg" class="icon icon-md" alt="" />
+                        </div>
+                        <div class="upload-row-text">
+                            <strong class="record-name">CBC Lab Results.pdf</strong>
+                            <div class="record-detail">Lab Results &middot; 1.4 MB &middot; Uploaded 04/22/2026</div>
+                        </div>
+                        <span class="status-badge status-badge--verified">Verified</span>
                     </div>
+
                 </div>
             </div>
 
