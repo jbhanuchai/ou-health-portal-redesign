@@ -1,0 +1,293 @@
+/* ============================================================
+   FILE: immunizations.css
+   PURPOSE: Page specific styling for the Immunizations page.
+   ============================================================
+   The foundation styles for this page (topbar, brand block,
+   search bar, sidebar navigation, base welcome card, generic
+   alert and notice cards, info tiles, and footer note) are
+   already defined in base.css and dashboard.css. Linking those
+   two stylesheets in addition to this one provides the entire
+   shared portal shell.
+
+   This file adds only the rules that are unique to the
+   immunizations record view, namely:
+       1. The rose themed Action Required alert variant
+       2. The Compliance Status row that combines a status
+          card and a Print Records button
+       3. The Verified Immunization History card and its
+          internal record rows
+       4. The Verified and Negative status badges
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   SECTION 1: Page Specific Design Tokens
+   ------------------------------------------------------------
+   These variables extend the global token set defined in
+   base.css and dashboard.css. They cover the two color
+   families that only this page uses, and the neutral chip
+   background used on the dose date pills.
+   ------------------------------------------------------------ */
+:root {
+
+    /* Action Required alert palette (rose family) */
+    --alert-rose-bg: #fff1f2;
+    --alert-rose-border: #fecdd3;
+    --alert-rose-1: #e11d48;
+    --alert-rose-2: #fb7185;
+    --alert-rose-grad: linear-gradient(135deg, var(--alert-rose-1), var(--alert-rose-2));
+    --alert-rose-shadow: rgba(225, 29, 72, 0.30);
+    --alert-rose-text-strong: #9f1239;
+
+    /* Status badge palette (green family for Verified and Negative) */
+    --status-green-bg:   #dcfce7;
+    --status-green-text: #166534;
+
+    /* Neutral chip background used by the Hepatitis B dose pills */
+    --chip-bg: #f1f5f9;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 2: Immunization View Container
+   ------------------------------------------------------------
+   The immunization view stacks its three blocks (alert,
+   compliance row, records list) vertically with consistent
+   spacing.
+   ------------------------------------------------------------ */
+#immunization-view {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 3: Action Required Alert (Rose Variant)
+   ------------------------------------------------------------
+   This is a modifier on the generic .alert-card defined in
+   dashboard.css. The base alert is orange themed for general
+   warnings; this variant retints it for the rose colored
+   "verification pending" state.
+   ------------------------------------------------------------ */
+.alert-card--action {
+    background: var(--alert-rose-bg);
+    border-color: var(--alert-rose-border);
+}
+
+.alert-card--action .alert-icon {
+    background: var(--alert-rose-grad);
+    box-shadow: 0 4px 12px var(--alert-rose-shadow);
+}
+
+.alert-card--action .alert-text {
+    color: var(--alert-rose-text-strong);
+}
+
+.alert-card--action .alert-text strong {
+    color: var(--alert-rose-text-strong);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 4: Compliance Status Row
+   ------------------------------------------------------------
+   Two column layout that pairs the compliance status card
+   on the left with the Print Records action on the right.
+   The card on the left reuses the .welcome-card chrome so it
+   keeps the shared shadow and decorative corner accent.
+   ------------------------------------------------------------ */
+.compliance-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+}
+
+.compliance-card {
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.compliance-title {
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.compliance-sub {
+    color: var(--text-mid);
+    font-size: 13px;
+}
+
+.compliance-status {
+    text-align: right;
+}
+
+.verified-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--status-green-bg);
+    color: var(--status-green-text);
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.print-records-btn {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 20px;
+    border: 2px solid var(--blue-1);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--blue-1);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all .22s ease;
+}
+
+.print-records-btn:hover {
+    background: var(--surface-2);
+    box-shadow: var(--shadow-md);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 5: Verified Immunization History Card
+   ------------------------------------------------------------
+   The records card reuses the .welcome-card surface but flips
+   off the inner padding so the inner header band can sit
+   flush against the card edge. Each record row is separated
+   from the next by a thin divider; the last row drops it.
+   ------------------------------------------------------------ */
+.records-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.records-header {
+    padding: 16px 24px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.records-header-title {
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.records-list {
+    padding: 0 24px;
+}
+
+.record-row {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--surface-2);
+}
+
+.record-row:last-child {
+    border-bottom: none;
+}
+
+.record-row-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+/* TB Skin Test row puts the badge inline with the title rather
+   than above a body block, so it centers vertically. */
+.record-row-head--inline {
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.record-name {
+    color: var(--text-dark);
+    font-size: 15px;
+}
+
+.record-detail {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 2px;
+}
+
+
+/* ---- Hepatitis B dose chip row ----
+   A flexible wrap of small neutral pills, each holding a
+   dose number and the date it was administered. */
+.dose-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.dose-chip {
+    font-size: 12px;
+    background: var(--chip-bg);
+    color: var(--text-mid);
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+
+/* ---- MMR component grid ----
+   Three equal columns, one for each component virus, each
+   showing its name in blue followed by the immunization
+   dates on file. */
+.mmr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.mmr-component {
+    font-size: 12px;
+    color: var(--text-mid);
+}
+
+.mmr-name {
+    font-weight: 600;
+    color: var(--blue-1);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 6: Status Badges
+   ------------------------------------------------------------
+   The Negative pill on the TB Skin Test row reuses the same
+   green palette as the Verified badge above so success states
+   are visually consistent across the page.
+   ------------------------------------------------------------ */
+.status-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.status-badge--negative {
+    color: var(--status-green-text);
+    background: var(--status-green-bg);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 7: View Transitions
+   ------------------------------------------------------------
+   Opt the page into the native cross document view transition
+   API so navigating between portal pages feels seamless on
+   browsers that support it.
+   ------------------------------------------------------------ */
+@view-transition {
+    navigation: auto;
+}

@@ -1,517 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- ============================================================
+     FILE: immunizations.html
+     PURPOSE: Immunizations record page for the OU
+              HealthConnection Patient Portal.
+     ============================================================
+     Styling for this page is split across three stylesheets,
+     loaded in order of dependency: base.css provides the
+     global tokens and shell, dashboard.css provides the
+     shared portal layout (sidebar nav, content panel, cards,
+     etc.), and immunizations.css adds the page specific rules
+     for the action required alert, compliance status row,
+     records list, and status badges.
+
+     The Print Records button is wired up by immunizations.js,
+     which builds a clean printable copy of the example
+     immunization record in a new browser window.
+     ============================================================ -->
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OU HealthConnection</title>
-<style>
-        /* Icon size utilities (parity with base.css) */
-        .icon { width: 14px; height: 14px; display: inline-block; vertical-align: middle; }
-        .icon-sm { width: 12px; height: 12px; }
-        .icon-md { width: 18px; height: 18px; }
-        .icon-lg { width: 22px; height: 22px; }
-
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --bg: #e8f0fb;
-            --surface: #ffffff;
-            --surface-2: #f0f5ff;
-            --blue-1: #3b82f6;
-            --blue-2: #60a5fa;
-            --blue-grad: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
-            --nav-active: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
-            --slight-purple-grad: linear-gradient(135deg, rgba(149, 0, 255, 0.8), rgba(149, 0, 255, 0.8));
-            --text-dark: #1e3a5f;
-            --text-mid: #4b6fa8;
-            --text-light: #8fafd6;
-            --shadow-sm: 0 2px 8px rgba(59, 130, 246, 0.10);
-            --shadow-md: 0 6px 24px rgba(59, 130, 246, 0.14);
-            --radius: 18px;
-            --radius-sm: 12px;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .topbar {
-            background: var(--surface);
-            box-shadow: var(--shadow-sm);
-            padding: 0 36px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .topbar-brand {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .brand-logo {
-            width: 46px;
-            height: 46px;
-            background: var(--blue-grad);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
-        }
-
-        .brand-text .title {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .brand-text .sub {
-            font-size: 12px;
-            color: var(--text-mid);
-        }
-
-        .topbar-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .search-bar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--surface-2);
-            border: 1.5px solid #dbe8f8;
-            border-radius: 50px;
-            padding: 8px 18px;
-            width: 240px;
-        }
-
-        .search-bar input {
-            border: none;
-            background: transparent;
-            font-size: 13px;
-            color: var(--text-dark);
-            outline: none;
-            width: 100%;
-        }
-
-        .search-bar input::placeholder {
-            color: var(--text-light);
-        }
-
-        .icon-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1.5px solid #dbe8f8;
-            background: var(--surface-2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all .2s;
-            color: var(--text-mid);
-        }
-
-        .icon-btn:hover {
-            background: var(--blue-1);
-            color: #fff;
-            border-color: var(--blue-1);
-        }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--blue-grad);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: 700;
-            color: #fff;
-            cursor: pointer;
-            box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
-        }
-
-        .main {
-            flex: 1;
-            display: flex;
-            padding: 28px 32px;
-            gap: 24px;
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .nav-panel {
-            width: 280px;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .nav-panel-header {
-            background: var(--surface);
-            border-radius: var(--radius);
-            padding: 20px 22px 16px;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 4px;
-        }
-
-        .nav-panel-header p {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: .08em;
-            font-weight: 600;
-            color: var(--text-light);
-            margin-bottom: 2px;
-        }
-
-        .nav-panel-header h2 {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .nav-btn {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 15px 20px;
-            border-radius: var(--radius-sm);
-            background: var(--surface);
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            text-align: left;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-mid);
-            box-shadow: var(--shadow-sm);
-            transition: all .22s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-btn::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: transparent;
-            border-radius: 0 4px 4px 0;
-            transition: background .2s;
-        }
-
-        .nav-btn:hover {
-            background: var(--surface-2);
-            color: var(--blue-1);
-            transform: translateX(4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .nav-btn:hover::before {
-            background: var(--blue-1);
-        }
-
-        .nav-btn.active {
-            background: var(--nav-active);
-            color: #fff;
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
-        }
-
-        .nav-btn.active::before {
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-        .nav-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: var(--blue-grad);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: background .2s;
-        }
-
-        .nav-btn.active .nav-icon {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .nav-btn:hover:not(.active) .nav-icon {
-            background: var(--slight-purple-grad);
-        }
-
-        .nav-icon i {
-            font-size: 17px;
-        }
-        .nav-icon img { width: 17px; height: 17px; display: inline-block; vertical-align: middle; }
-
-
-        .nav-btn.active .nav-icon i {
-            color: #fff;
-        }
-
-        .nav-btn:not(.active) .nav-icon i {
-            color: var(--blue-1);
-        }
-
-        .nav-label {
-            font-size: 14px;
-            font-weight: 500;
-            flex: 1;
-        }
-
-        .nav-arrow {
-            font-size: 16px;
-            opacity: 0.5;
-            transition: opacity .2s, transform .2s;
-        }
-
-        .nav-btn:hover .nav-arrow {
-            opacity: 1;
-            transform: translateX(3px);
-        }
-
-        .nav-btn.active .nav-arrow {
-            opacity: 0.8;
-        }
-
-        .content-panel {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .welcome-card {
-            flex: 1;
-            background: var(--surface);
-            border-radius: var(--radius);
-            padding: 36px 40px;
-            box-shadow: var(--shadow-md);
-            border: 1.5px solid rgba(219, 232, 248, 0.6);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .welcome-card::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            right: -60px;
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(96, 165, 250, 0.12) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .welcome-title {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--text-dark);
-            line-height: 1.3;
-            margin-bottom: 6px;
-        }
-
-        .welcome-title .highlight {
-            background: var(--blue-grad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .welcome-subtitle {
-            font-size: 17px;
-            font-weight: 600;
-            color: var(--blue-1);
-            margin-bottom: 22px;
-        }
-
-        .divider {
-            height: 1.5px;
-            background: linear-gradient(90deg, #dbeafe, transparent);
-            margin: 22px 0;
-            border-radius: 2px;
-        }
-
-        .notice-card {
-            background: #eff6ff;
-            border: 1.5px solid #bfdbfe;
-            border-radius: var(--radius-sm);
-            padding: 18px 22px;
-            display: flex;
-            gap: 14px;
-            align-items: flex-start;
-        }
-
-        .notice-icon {
-            width: 38px;
-            height: 38px;
-            background: var(--blue-grad);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-        }
-
-        .notice-icon i,
-        .alert-icon i {
-            font-size: 18px;
-            color: #fff;
-        }
-        .alert-icon img { width: 18px; height: 18px; display: inline-block; vertical-align: middle; }
-
-
-        .notice-text {
-            font-size: 14px;
-            color: var(--text-dark);
-            line-height: 1.65;
-        }
-
-        .notice-text strong {
-            color: var(--blue-1);
-            font-weight: 700;
-        }
-
-        .notice-text .tag {
-            color: var(--blue-1);
-            font-weight: 600;
-        }
-
-        .alerts-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .alert-card {
-            background: #fff7ed;
-            border: 1.5px solid #fed7aa;
-            border-radius: var(--radius-sm);
-            padding: 18px 22px;
-            display: flex;
-            gap: 14px;
-            align-items: flex-start;
-        }
-
-        .alert-icon {
-            width: 38px;
-            height: 38px;
-            background: linear-gradient(135deg, #f97316, #fb923c);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
-        }
-
-        .alert-text {
-            font-size: 14px;
-            color: #7c3f1e;
-            line-height: 1.65;
-        }
-
-        .alert-text strong {
-            color: #c2410c;
-            font-weight: 700;
-        }
-
-        .info-tiles {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .info-tile {
-            background: var(--surface);
-            border-radius: var(--radius-sm);
-            padding: 20px;
-            box-shadow: var(--shadow-sm);
-            border: 1.5px solid rgba(219, 232, 248, 0.6);
-            text-align: center;
-            transition: transform .2s, box-shadow .2s;
-        }
-
-        .info-tile:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .tile-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            margin: 0 auto 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tile-icon i {
-            font-size: 20px;
-        }
-        .tile-icon img { width: 20px; height: 20px; display: inline-block; vertical-align: middle; }
-
-
-        .tile-num {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--text-dark);
-        }
-
-        .tile-label {
-            font-size: 12px;
-            color: var(--text-mid);
-            font-weight: 500;
-            margin-top: 2px;
-        }
-
-        .footer-note {
-            text-align: center;
-            font-size: 12px;
-            color: var(--text-light);
-            padding: 12px 0 4px;
-        }
-        @view-transition {
-    navigation: auto;
-}
-    </style>
+    <title>Immunizations – OU HealthConnection</title>
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/immunizations.css" />
 </head>
 
 <body>
+
+    <!-- ====================================================
+         TOPBAR
+         ==================================================== -->
     <header class="topbar">
+
         <div class="topbar-brand">
             <div class="brand-logo">
                 <img src="icons/stethoscope.svg" class="icon icon-md" alt="" />
@@ -521,6 +45,7 @@
                 <div class="sub">University of Oklahoma Patient Portal</div>
             </div>
         </div>
+
         <div class="topbar-right">
             <div class="search-bar">
                 <img src="icons/search.svg" class="icon icon-md" alt="" />
@@ -532,8 +57,14 @@
         </div>
     </header>
 
+
+    <!-- ====================================================
+         MAIN LAYOUT
+         ==================================================== -->
     <main class="main">
+
         <nav class="nav-panel">
+
             <div class="nav-panel-header">
                 <p>Navigation</p>
                 <h2>Patient Menu</h2>
@@ -585,9 +116,13 @@
             </button>
         </nav>
 
+
+        <!-- ====================================================
+             CONTENT PANEL
+             ==================================================== -->
         <section class="content-panel">
 
-            <!-- Page heading for the immunizations record view. -->
+            <!-- Page heading -->
             <div class="welcome-card">
                 <h1 class="welcome-title">
                     <span class="highlight">Immunizations</span>
@@ -595,116 +130,111 @@
                 <div class="welcome-subtitle">Verified vaccination history and compliance status</div>
             </div>
 
-            <div id="immunization-view" style="display: flex; flex-direction: column; gap: 20px;">
+            <div id="immunization-view">
 
-                <div class="alert-card" style="background: #fff1f2; border: 1.5px solid #fecdd3;">
-                    <div class="alert-icon" style="background: linear-gradient(135deg, #e11d48, #fb7185);">
+                <!-- Action Required alert (rose variant) -->
+                <div class="alert-card alert-card--action">
+                    <div class="alert-icon">
                         <img src="icons/exclamation.svg" class="icon icon-md" alt="" />
                     </div>
                     <div class="alert-text">
-                        <strong style="color: #9f1239;">Action Required: Verification Pending</strong><br>
+                        <strong>Action Required: Verification Pending</strong><br>
                         Please submit a <strong>hard copy</strong> of your records to OU Health Services. You will
                         <strong>not</strong> be considered compliant until this step is verified.
                     </div>
                 </div>
 
-                <div class="info-tiles" style="grid-template-columns: 2fr 1fr;">
-                    <div class="welcome-card"
-                        style="padding: 24px; display: flex; align-items: center; justify-content: space-between;">
+                <!-- Compliance status and Print Records action -->
+                <div class="compliance-row">
+
+                    <div class="welcome-card compliance-card">
                         <div>
-                            <h3 style="color: var(--text-dark); margin-bottom: 5px;">Compliance Status</h3>
-                            <p style="color: var(--text-mid); font-size: 13px;">University Health Requirements</p>
+                            <h3 class="compliance-title">Compliance Status</h3>
+                            <p class="compliance-sub">University Health Requirements</p>
                         </div>
-                        <div style="text-align: right;">
-                            <span
-                                style="display: inline-block; padding: 6px 16px; background: #dcfce7; color: #166534; border-radius: 50px; font-weight: 700; font-size: 14px;">
+                        <div class="compliance-status">
+                            <span class="verified-badge">
                                 <img src="icons/checkmark.svg" class="icon icon-md" alt="" /> Verified
                             </span>
                         </div>
                     </div>
-                    <button class="nav-btn"
-                        onclick="printImmunizationRecord()"
-                        style="height: 100%; justify-content: center; font-weight: 700; border: 2px solid var(--blue-1); color: var(--blue-1);">
+
+                    <button class="print-records-btn" onclick="printImmunizationRecord()">
                         <img src="icons/printblue.svg" class="icon icon-lg" alt="" /> Print Records
                     </button>
                 </div>
 
-                <div class="welcome-card" style="padding: 0; overflow: hidden;">
-                    <div style="padding: 16px 24px; background: var(--surface-2); border-bottom: 1px solid #dbe8f8;">
-                        <h4 style="font-size: 14px; color: var(--text-dark);">Verified Immunization History</h4>
+                <!-- Verified Immunization History -->
+                <div class="welcome-card records-card">
+
+                    <div class="records-header">
+                        <h4 class="records-header-title">Verified Immunization History</h4>
                     </div>
 
-                    <div style="padding: 0 24px;">
-                        <div style="padding: 20px 0; border-bottom: 1px solid #f0f5ff;">
-                            <div
-                                style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                    <div class="records-list">
+
+                        <!-- Hepatitis B -->
+                        <div class="record-row">
+                            <div class="record-row-head">
                                 <div>
-                                    <strong style="color: var(--text-dark); font-size: 15px;">Hepatitis B
-                                        Requirement</strong>
-                                    <div style="font-size: 12px; color: var(--text-light); margin-top: 2px;">3 of 3
-                                        Doses Completed</div>
+                                    <strong class="record-name">Hepatitis B Requirement</strong>
+                                    <div class="record-detail">3 of 3 Doses Completed</div>
                                 </div>
                                 <img src="icons/checkmark.svg" class="icon icon-lg" alt="" />
                             </div>
-                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                                <span
-                                    style="font-size: 12px; background: #f1f5f9; padding: 4px 10px; border-radius: 4px; color: var(--text-mid);">#1:
-                                    01/23/1998</span>
-                                <span
-                                    style="font-size: 12px; background: #f1f5f9; padding: 4px 10px; border-radius: 4px; color: var(--text-mid);">#2:
-                                    02/23/1998</span>
-                                <span
-                                    style="font-size: 12px; background: #f1f5f9; padding: 4px 10px; border-radius: 4px; color: var(--text-mid);">#3:
-                                    08/05/1998</span>
+                            <div class="dose-chips">
+                                <span class="dose-chip">#1: 01/23/1998</span>
+                                <span class="dose-chip">#2: 02/23/1998</span>
+                                <span class="dose-chip">#3: 08/05/1998</span>
                             </div>
                         </div>
 
-                        <div style="padding: 20px 0; border-bottom: 1px solid #f0f5ff;">
-                            <div
-                                style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                        <!-- MMR -->
+                        <div class="record-row">
+                            <div class="record-row-head">
                                 <div>
-                                    <strong style="color: var(--text-dark); font-size: 15px;">MMR (Measles, Mumps,
-                                        Rubella)</strong>
-                                    <div style="font-size: 12px; color: var(--text-light); margin-top: 2px;">Fully
-                                        Verified</div>
+                                    <strong class="record-name">MMR (Measles, Mumps, Rubella)</strong>
+                                    <div class="record-detail">Fully Verified</div>
                                 </div>
                                 <img src="icons/checkmark.svg" class="icon icon-lg" alt="" />
                             </div>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
-                                <div style="font-size: 12px; color: var(--text-mid);">
-                                    <div style="font-weight: 600; color: var(--blue-1);">Measles</div>
+                            <div class="mmr-grid">
+                                <div class="mmr-component">
+                                    <div class="mmr-name">Measles</div>
                                     03/06/2000, 07/09/2006
                                 </div>
-                                <div style="font-size: 12px; color: var(--text-mid);">
-                                    <div style="font-weight: 600; color: var(--blue-1);">Mumps</div>
+                                <div class="mmr-component">
+                                    <div class="mmr-name">Mumps</div>
                                     09/12/2024, 10/10/2024
                                 </div>
-                                <div style="font-size: 12px; color: var(--text-mid);">
-                                    <div style="font-weight: 600; color: var(--blue-1);">Rubella</div>
+                                <div class="mmr-component">
+                                    <div class="mmr-name">Rubella</div>
                                     03/05/1999, 09/12/2024
                                 </div>
                             </div>
                         </div>
 
-                        <div style="padding: 20px 0;">
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <!-- TB Skin Test -->
+                        <div class="record-row">
+                            <div class="record-row-head record-row-head--inline">
                                 <div>
-                                    <strong style="color: var(--text-dark); font-size: 15px;">TB Skin Test</strong>
-                                    <div style="font-size: 12px; color: var(--text-mid); margin-top: 2px;">Latest Test:
-                                        08/14/2024</div>
+                                    <strong class="record-name">TB Skin Test</strong>
+                                    <div class="record-detail">Latest Test: 08/14/2024</div>
                                 </div>
-                                <span
-                                    style="font-size: 12px; font-weight: 600; color: #166534; background: #dcfce7; padding: 4px 8px; border-radius: 4px;">Negative</span>
+                                <span class="status-badge status-badge--negative">Negative</span>
                             </div>
                         </div>
+
                     </div>
                 </div>
+
             </div>
 
             <div class="footer-note">HealthConnection Patient Portal</div>
         </section>
     </main>
 
+    <!-- Page specific behavior (printable record). -->
     <script src="js/immunizations.js"></script>
 </body>
 
