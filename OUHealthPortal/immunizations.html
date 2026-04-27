@@ -5,8 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OU HealthConnection</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <style>
+<style>
+        /* Icon size utilities (parity with base.css) */
+        .icon { width: 14px; height: 14px; display: inline-block; vertical-align: middle; }
+        .icon-sm { width: 12px; height: 12px; }
+        .icon-md { width: 18px; height: 18px; }
+        .icon-lg { width: 22px; height: 22px; }
+
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
         *,
@@ -25,6 +30,7 @@
             --blue-2: #60a5fa;
             --blue-grad: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
             --nav-active: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+            --slight-purple-grad: linear-gradient(135deg, rgba(149, 0, 255, 0.8), rgba(149, 0, 255, 0.8));
             --text-dark: #1e3a5f;
             --text-mid: #4b6fa8;
             --text-light: #8fafd6;
@@ -247,7 +253,7 @@
             width: 36px;
             height: 36px;
             border-radius: 10px;
-            background: rgba(59, 130, 246, 0.10);
+            background: var(--blue-grad);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -260,12 +266,14 @@
         }
 
         .nav-btn:hover:not(.active) .nav-icon {
-            background: rgba(59, 130, 246, 0.15);
+            background: var(--slight-purple-grad);
         }
 
         .nav-icon i {
             font-size: 17px;
         }
+        .nav-icon img { width: 17px; height: 17px; display: inline-block; vertical-align: middle; }
+
 
         .nav-btn.active .nav-icon i {
             color: #fff;
@@ -382,6 +390,8 @@
             font-size: 18px;
             color: #fff;
         }
+        .alert-icon img { width: 18px; height: 18px; display: inline-block; vertical-align: middle; }
+
 
         .notice-text {
             font-size: 14px;
@@ -472,6 +482,8 @@
         .tile-icon i {
             font-size: 20px;
         }
+        .tile-icon img { width: 20px; height: 20px; display: inline-block; vertical-align: middle; }
+
 
         .tile-num {
             font-size: 24px;
@@ -499,10 +511,7 @@
     <header class="topbar">
         <div class="topbar-brand">
             <div class="brand-logo">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                </svg>
+                <img src="icons/stethoscope.svg" class="icon icon-md" alt="" />
             </div>
             <div class="brand-text">
                 <div class="title">OU HealthConnection</div>
@@ -511,15 +520,11 @@
         </div>
         <div class="topbar-right">
             <div class="search-bar">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8fafd6" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="m21 21-4.35-4.35" />
-                </svg>
+                <img src="icons/search.svg" class="icon icon-md" alt="" />
                 <input type="text" placeholder="Search…" />
             </div>
-            <div class="icon-btn"><i class="fa-solid fa-bell"></i></div>
-            <div class="icon-btn"><i class="fa-solid fa-message"></i></div>
+            <div class="icon-btn"><img src="icons/bell.svg" class="icon icon-md" alt="" /></div>
+            <div class="icon-btn"><img src="icons/msg.svg" class="icon icon-md" alt="" /></div>
             <div class="avatar">JS</div>
         </div>
     </header>
@@ -531,116 +536,67 @@
                 <h2>Patient Menu</h2>
             </div>
 
-            <button class="nav-btn active" onclick="setActive(this)">
-                <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
+            <button class="nav-btn" onclick="window.location.href='dashboard.html'">
+                <div class="nav-icon"><img src="icons/homeicon.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Home</span><span class="nav-arrow">›</span>
             </button>
 
-            <button class="nav-btn" onclick="setActive(this)">
-                <div class="nav-icon"><i class="fa-solid fa-calendar-days"></i></div>
+            <button class="nav-btn" onclick="window.location.href='appointments.html'">
+                <div class="nav-icon"><img src="icons/appticon.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Appointments</span><span class="nav-arrow">›</span>
             </button>
 
-            <button class="nav-btn" onclick="setActive(this)">
-                <div class="nav-icon"><i class="fa-solid fa-syringe"></i></div>
+            <button class="nav-btn active" onclick="window.location.href='immunizations.html'">
+                <div class="nav-icon"><img src="icons/immune.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Immunizations</span><span class="nav-arrow">›</span>
             </button>
 
-            <button class="nav-btn" onclick="setActive(this)">
-                <div class="nav-icon"><i class="fa-solid fa-upload"></i></div>
+            <button class="nav-btn" onclick="window.location.href='upload.html'">
+                <div class="nav-icon"><img src="icons/uploadicon.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Upload</span><span class="nav-arrow">›</span>
             </button>
 
-            <button class="nav-btn" onclick="setActive(this)">
-                <div class="nav-icon"><i class="fa-solid fa-pencil"></i></div>
+            <button class="nav-btn" onclick="window.location.href='forms.html'">
+                <div class="nav-icon"><img src="icons/formsicon.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Forms</span><span class="nav-arrow">›</span>
             </button>
 
-            <button class="nav-btn" onclick="setActive(this)">
-                <div class="nav-icon"><i class="fa-solid fa-envelope"></i></div>
+            <button class="nav-btn" onclick="window.location.href='messaging.html'">
+                <div class="nav-icon"><img src="icons/msg.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Secure Messaging</span><span class="nav-arrow">›</span>
             </button>
 
-            <button class="nav-btn" onclick="setActive(this)">
-                <div class="nav-icon"><i class="fa-solid fa-umbrella"></i></div>
+            <button class="nav-btn" onclick="window.location.href='insurance.html'">
+                <div class="nav-icon"><img src="icons/insuranceicon.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Insurance</span><span class="nav-arrow">›</span>
             </button>
 
-            <button class="nav-btn" onclick="setActive(this)">
-                <div class="nav-icon"><i class="fa-solid fa-bell"></i></div>
+            <button class="nav-btn" onclick="window.location.href='education.html'">
+                <div class="nav-icon"><img src="icons/education.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">Patient Education</span><span class="nav-arrow">›</span>
             </button>
 
-            <button class="nav-btn" onclick="setActive(this)">
-                <div class="nav-icon"><i class="fa-solid fa-circle-user"></i></div>
+            <button class="nav-btn" onclick="window.location.href='profile.html'">
+                <div class="nav-icon"><img src="icons/profileicon.svg" class="icon icon-md" alt="" /></div>
                 <span class="nav-label">My Profile</span><span class="nav-arrow">›</span>
             </button>
         </nav>
 
         <section class="content-panel">
+
+            <!-- Page heading for the immunizations record view. -->
             <div class="welcome-card">
-                <h1 class="welcome-title">Welcome to <span class="highlight">The University of Oklahoma's</span></h1>
-                <div class="welcome-subtitle">HealthConnection Patient Portal</div>
-                <div class="divider"></div>
-                <div class="alerts-stack">
-                    <div class="notice-card">
-                        <div class="notice-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                        <p class="notice-text">
-                            <strong>New</strong> appointments are added at <strong>8am daily</strong>. Please go to
-                            <span class="tag">Forms</span> and fill out <strong>"New Patient Paperwork"</strong> if not
-                            yet
-                            completed.
-                        </p>
-                    </div>
-                    <div class="alert-card">
-                        <div class="alert-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
-                        <p class="alert-text">
-                            <strong>Note:</strong> This system is only for the <strong>medical clinic</strong> and
-                            does
-                            <strong>not</strong> communicate with the University Counseling Center or the Goddard
-                            Pharmacy.
-                        </p>
-                    </div>
-                    <div class="notice-card">
-                        <div class="notice-icon"><i class="fa-solid fa-syringe"></i></div>
-                        <p class="notice-text">
-                            You have an <strong>Immunization</strong> scheduled for <strong>5/5/26</strong> at
-                            <strong>4:15 PM</strong>.
-                        </p>
-                    </div>
-                </div>
+                <h1 class="welcome-title">
+                    <span class="highlight">Immunizations</span>
+                </h1>
+                <div class="welcome-subtitle">Verified vaccination history and compliance status</div>
             </div>
 
-            <div class="info-tiles">
-                <div class="info-tile">
-                    <div class="tile-icon" style="background:linear-gradient(135deg,#eff6ff,#dbeafe)">
-                        <i class="fa-solid fa-calendar-days" style="color:#3b82f6"></i>
-                    </div>
-                    <div class="tile-num">8<span style="font-size:16px;color:#4b6fa8">am</span></div>
-                    <div class="tile-label">Daily Appointment Slots</div>
-                </div>
-                <div class="info-tile">
-                    <div class="tile-icon" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7)">
-                        <i class="fa-solid fa-heart-pulse" style="color:#22c55e"></i>
-                    </div>
-                    <div class="tile-num" style="color:#166534">24/7</div>
-                    <div class="tile-label">Portal Access</div>
-                </div>
-                <div class="info-tile">
-                    <div class="tile-icon" style="background:linear-gradient(135deg,#fff7ed,#ffedd5)">
-                        <i class="fa-solid fa-shield-halved" style="color:#f97316"></i>
-                    </div>
-                    <div class="tile-num" style="color:#9a3412">HIPAA</div>
-                    <div class="tile-label">Secure & Compliant</div>
-                </div>
-            </div>
-
-            <div class="footer-note">HealthConnection Patient Portal</div>
-            <div id="immunization-view" style="display: none; flex-direction: column; gap: 20px;">
+            <div id="immunization-view" style="display: flex; flex-direction: column; gap: 20px;">
 
                 <div class="alert-card" style="background: #fff1f2; border: 1.5px solid #fecdd3;">
                     <div class="alert-icon" style="background: linear-gradient(135deg, #e11d48, #fb7185);">
-                        <i class="fa-solid fa-file-signature"></i>
+                        <img src="icons/file-signature.svg" class="icon icon-md" alt="" />
                     </div>
                     <div class="alert-text">
                         <strong style="color: #9f1239;">Action Required: Verification Pending</strong><br>
@@ -659,13 +615,13 @@
                         <div style="text-align: right;">
                             <span
                                 style="display: inline-block; padding: 6px 16px; background: #dcfce7; color: #166534; border-radius: 50px; font-weight: 700; font-size: 14px;">
-                                <i class="fa-solid fa-check-circle"></i> Verified
+                                <img src="icons/check-circle.svg" class="icon icon-md" alt="" /> Verified
                             </span>
                         </div>
                     </div>
                     <button class="nav-btn"
                         style="height: 100%; justify-content: center; font-weight: 700; border: 2px solid var(--blue-1); color: var(--blue-1);">
-                        <i class="fa-solid fa-print"></i> Print Records
+                        <img src="icons/print.svg" class="icon icon-md" alt="" /> Print Records
                     </button>
                 </div>
 
@@ -684,7 +640,7 @@
                                     <div style="font-size: 12px; color: var(--text-light); margin-top: 2px;">3 of 3
                                         Doses Completed</div>
                                 </div>
-                                <i class="fa-solid fa-circle-check" style="color: #22c55e;"></i>
+                                <img src="icons/circle-check.svg" class="icon icon-md" alt="" />
                             </div>
                             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                                 <span
@@ -708,7 +664,7 @@
                                     <div style="font-size: 12px; color: var(--text-light); margin-top: 2px;">Fully
                                         Verified</div>
                                 </div>
-                                <i class="fa-solid fa-circle-check" style="color: #22c55e;"></i>
+                                <img src="icons/circle-check.svg" class="icon icon-md" alt="" />
                             </div>
                             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
                                 <div style="font-size: 12px; color: var(--text-mid);">
@@ -740,43 +696,11 @@
                     </div>
                 </div>
             </div>
+
+            <div class="footer-note">HealthConnection Patient Portal</div>
         </section>
     </main>
 
-    <script>
-        function setActive(btn) {
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        }
-        function setActive(btn) {
-            // UI Update for Buttons
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            // Content Toggle Logic
-            const label = btn.querySelector('.nav-label').innerText;
-            const homeContent = document.querySelector('.welcome-card:not(#immunization-view)');
-            const infoTiles = document.querySelector('.info-tiles');
-            const immView = document.getElementById('immunization-view');
-
-            if (label === "Immunizations") {
-                // Hide Home Elements
-                document.querySelectorAll('.content-panel > *').forEach(el => {
-                    if (el.id !== 'immunization-view') el.style.display = 'none';
-                });
-                // Show Immunization View
-                immView.style.display = 'flex';
-            } else if (label === "Home") {
-                // Show Home Elements
-                document.querySelectorAll('.content-panel > *').forEach(el => {
-                    if (el.id !== 'immunization-view' && !el.classList.contains('footer-note')) {
-                        el.style.display = el.classList.contains('info-tiles') ? 'grid' : 'block';
-                    }
-                });
-                immView.style.display = 'none';
-            }
-        }
-    </script>
 </body>
 
 </html>

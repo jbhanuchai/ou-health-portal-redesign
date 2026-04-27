@@ -91,13 +91,15 @@
         .nav-btn.active::before { background: rgba(255,255,255,0.5); }
         .nav-icon {
             width: 36px; height: 36px; border-radius: 10px;
-            background: rgba(59,130,246,0.10);
+            background: var(--blue-grad);
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0; transition: background .2s;
         }
         .nav-btn.active .nav-icon    { background: rgba(255,255,255,0.2); }
-        .nav-btn:hover:not(.active) .nav-icon { background: rgba(59,130,246,0.15); }
+        .nav-btn:hover:not(.active) .nav-icon { background: var(--slight-purple-grad); }
         .nav-icon i { font-size: 17px; }
+        .nav-icon img { width: 17px; height: 17px; display: inline-block; vertical-align: middle; }
+
         .nav-btn.active .nav-icon i     { color: #fff; }
         .nav-btn:not(.active) .nav-icon i { color: var(--blue-1); }
         .nav-label { font-size: 14px; font-weight: 500; flex: 1; }
@@ -176,6 +178,8 @@
         .type-card.selected .type-icon-wrap { background: var(--blue-grad); }
         .type-card.selected .type-icon-wrap i { color: #fff !important; }
         .type-icon-wrap i { color: var(--blue-1); font-size: 20px; }
+        .type-icon-wrap img { width: 20px; height: 20px; display: inline-block; vertical-align: middle; }
+
         .type-name { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
         .type-desc { font-size: 12px; color: var(--text-mid); }
 
@@ -241,6 +245,8 @@
             display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .summary-icon i { color: var(--blue-1); font-size: 17px; }
+        .summary-icon img { width: 17px; height: 17px; display: inline-block; vertical-align: middle; }
+
         .summary-label { font-size: 11px; color: var(--text-light); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
         .summary-value { font-size: 15px; font-weight: 700; color: var(--text-dark); }
 
@@ -256,6 +262,8 @@
             box-shadow: 0 4px 12px rgba(59,130,246,0.3);
         }
         .notice-icon i { font-size: 17px; color: #fff; }
+        .notice-icon img { width: 17px; height: 17px; display: inline-block; vertical-align: middle; }
+
         .notice-text { font-size: 14px; color: var(--text-dark); line-height: 1.6; }
         .notice-text strong { color: var(--blue-1); font-weight: 700; }
 
@@ -343,12 +351,16 @@
             margin: 0 auto 22px; box-shadow: 0 8px 24px rgba(34,197,94,0.25);
         }
         .success-icon i { color: #22c55e; font-size: 36px; }
+        .success-icon img { width: 36px; height: 36px; display: inline-block; vertical-align: middle; }
+
         .success-screen h2 { font-size: 24px; font-weight: 800; color: var(--text-dark); margin-bottom: 10px; }
         .success-screen p  { font-size: 14px; color: var(--text-mid); margin-bottom: 28px; max-width: 400px; margin-left: auto; margin-right: auto; }
 
         /* ── Empty state ── */
         .empty-state { text-align: center; padding: 60px 16px; color: var(--text-light); }
         .empty-state i { font-size: 40px; margin-bottom: 14px; display: block; }
+        .empty-state img { width: 40px; height: 40px; display: inline-block; vertical-align: middle; }
+
         .empty-state p { font-size: 14px; }
 
         /* ── Footer ── */
@@ -373,6 +385,8 @@
         }
         .reason-row-btn.selected .reason-row-icon { background: var(--blue-grad); }
         .reason-row-icon i { color: var(--blue-1); font-size: 14px; }
+        .reason-row-icon img { width: 14px; height: 14px; display: inline-block; vertical-align: middle; }
+
         .reason-row-btn.selected .reason-row-icon i { color: #fff; }
         .reason-row-text { flex: 1; }
         .reason-row-name { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); }
@@ -383,6 +397,8 @@
             transition: all .15s;
         }
         .reason-row-check i { color: #fff; font-size: 10px; }
+        .reason-row-check img { width: 10px; height: 10px; display: inline-block; vertical-align: middle; }
+
         .reason-row-btn.selected .reason-row-check { background: var(--blue-grad); border-color: var(--blue-1); }
 
         /* Phase B header polish */
