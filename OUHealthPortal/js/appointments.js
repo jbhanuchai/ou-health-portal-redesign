@@ -1,3 +1,27 @@
+/* ============================================================
+   FILE: appointments.js
+   PURPOSE: Page behavior for the Appointments scheduling
+            workflow. Drives the three step wizard, the
+            calendar, the My Appointments tab, and the cancel
+            modal.
+   ============================================================
+   Icons referenced from this file are stored in the icons
+   folder. The reasonsByCategory data structure stores icon
+   filenames directly (for example 'immuneblue.svg') so they
+   can be dropped into the rendered markup as <img src> values.
+   When an existing icon does not have a close semantic match,
+   the constant PLACEHOLDER_ICON is used as a clearly identified
+   stand in until a custom SVG is added.
+   ============================================================ */
+
+
+/* ── Icon constants ── */
+// Used wherever a Font Awesome icon did not have a close
+// existing SVG equivalent. Replace the file at this path
+// with a real icon and every placeholder updates at once.
+const PLACEHOLDER_ICON = 'placeholder.svg';
+
+
 /* ── State ── */
 let currentStep=1, selectedType=null, selectedDoc=null, selectedDate=null, selectedTime=null;
 let cancelTargetId=null;
@@ -11,135 +35,135 @@ let appointments=[
 const reasonsByCategory = {
     vaccines: {
         label: 'Vaccines & Immunizations',
-        icon: 'fa-syringe',
+        icon: 'immuneblue.svg',
         groups: [
-            { title: 'High Priority', icon: 'fa-star', color: '#f59e0b', items: [
-                { name: 'Flu + Covid Vaccine', icon: 'fa-shield-virus', note: 'Walk-in friendly' },
-                { name: 'Flu Vaccine', icon: 'fa-shield-virus', note: 'Walk-in friendly' },
-                { name: 'Covid Vaccine', icon: 'fa-shield-virus', note: 'Walk-in friendly' },
+            { title: 'High Priority', icon: PLACEHOLDER_ICON, color: '#f59e0b', items: [
+                { name: 'Flu + Covid Vaccine', icon: PLACEHOLDER_ICON, note: 'Walk-in friendly' },
+                { name: 'Flu Vaccine',         icon: PLACEHOLDER_ICON, note: 'Walk-in friendly' },
+                { name: 'Covid Vaccine',       icon: PLACEHOLDER_ICON, note: 'Walk-in friendly' },
             ]},
-            { title: 'Other Vaccines', icon: 'fa-syringe', color: '#3b82f6', items: [
-                { name: 'Vaccination (other)', icon: 'fa-syringe', note: null },
-                { name: 'Travel Consult', icon: 'fa-plane', note: 'International travel prep' },
+            { title: 'Other Vaccines', icon: 'immuneblue.svg', color: '#3b82f6', items: [
+                { name: 'Vaccination (other)', icon: 'immuneblue.svg',   note: null },
+                { name: 'Travel Consult',      icon: PLACEHOLDER_ICON,   note: 'International travel prep' },
             ]}
         ]
     },
     wellness: {
         label: 'Wellness & Check-ups',
-        icon: 'fa-stethoscope',
+        icon: 'stethoscopeblue.svg',
         groups: [
-            { title: 'Physical Exams', icon: 'fa-clipboard-check', color: '#16a34a', items: [
-                { name: 'Complete Physical Exam and Check-Up', icon: 'fa-user-check', note: null },
-                { name: 'Annual Gynecological Exam', icon: 'fa-venus', note: null },
-                { name: 'Appointment with a Sports Medicine Specialist', icon: 'fa-person-running', note: null },
+            { title: 'Physical Exams', icon: PLACEHOLDER_ICON, color: '#16a34a', items: [
+                { name: 'Complete Physical Exam and Check-Up',          icon: PLACEHOLDER_ICON,    note: null },
+                { name: 'Annual Gynecological Exam',                    icon: 'whealthblue.svg',   note: null },
+                { name: 'Appointment with a Sports Medicine Specialist',icon: PLACEHOLDER_ICON,    note: null },
             ]},
-            { title: 'Other Wellness', icon: 'fa-heart-pulse', color: '#3b82f6', items: [
-                { name: 'Dietitian Consult', icon: 'fa-apple-whole', note: 'Nutrition & dietary guidance' },
-                { name: 'Allergy Injection', icon: 'fa-syringe', note: 'Existing allergy patients only' },
+            { title: 'Other Wellness', icon: 'chronicheartblue.svg', color: '#3b82f6', items: [
+                { name: 'Dietitian Consult',  icon: PLACEHOLDER_ICON,  note: 'Nutrition & dietary guidance' },
+                { name: 'Allergy Injection',  icon: 'immuneblue.svg',  note: 'Existing allergy patients only' },
             ]}
         ]
     },
     illness: {
         label: 'Illness & Injury',
-        icon: 'fa-thermometer',
+        icon: 'thermometerblue.svg',
         groups: [
-            { title: 'Respiratory & Infections', icon: 'fa-lungs', color: '#dc2626', items: [
-                { name: 'Respiratory (Cough/Cold/Sinus/COVID/Flu)', icon: 'fa-lungs', note: null },
-                { name: 'Ear Problem (Pain/Itching/Drainage/Clogged)', icon: 'fa-ear-listen', note: null },
-                { name: 'Eye Problem (not for glasses/contacts prescriptions)', icon: 'fa-eye', note: null },
-                { name: 'Urinary (UTI/Bladder or Kidney Infection/Blood in Urine)', icon: 'fa-droplet', note: null },
-                { name: 'STI (Sexually Transmitted Infection) exposures/symptoms with provider visit', icon: 'fa-shield-halved', note: 'Confidential' },
+            { title: 'Respiratory & Infections', icon: PLACEHOLDER_ICON, color: '#dc2626', items: [
+                { name: 'Respiratory (Cough/Cold/Sinus/COVID/Flu)',                                  icon: PLACEHOLDER_ICON, note: null },
+                { name: 'Ear Problem (Pain/Itching/Drainage/Clogged)',                               icon: PLACEHOLDER_ICON, note: null },
+                { name: 'Eye Problem (not for glasses/contacts prescriptions)',                      icon: PLACEHOLDER_ICON, note: null },
+                { name: 'Urinary (UTI/Bladder or Kidney Infection/Blood in Urine)',                  icon: PLACEHOLDER_ICON, note: null },
+                { name: 'STI (Sexually Transmitted Infection) exposures/symptoms with provider visit', icon: PLACEHOLDER_ICON, note: 'Confidential' },
             ]},
-            { title: 'Pain & Injury', icon: 'fa-person-falling', color: '#f97316', items: [
-                { name: 'Back or Neck Pain', icon: 'fa-person', note: null },
-                { name: 'Chest Pain', icon: 'fa-heart-crack', note: 'Call 911 if emergency' },
-                { name: 'Headache / Migraine', icon: 'fa-head-side-cough', note: null },
-                { name: 'Fatigue', icon: 'fa-bed', note: null },
-                { name: 'Injury', icon: 'fa-bandage', note: null },
-                { name: 'Abdominal (Pain/Nausea/Vomiting/Diarrhea/Constipation)', icon: 'fa-stomach', note: null },
+            { title: 'Pain & Injury', icon: PLACEHOLDER_ICON, color: '#f97316', items: [
+                { name: 'Back or Neck Pain',                                                  icon: PLACEHOLDER_ICON,        note: null },
+                { name: 'Chest Pain',                                                         icon: 'chronicheartblue.svg',  note: 'Call 911 if emergency' },
+                { name: 'Headache / Migraine',                                                icon: PLACEHOLDER_ICON,        note: null },
+                { name: 'Fatigue',                                                            icon: PLACEHOLDER_ICON,        note: null },
+                { name: 'Injury',                                                             icon: PLACEHOLDER_ICON,        note: null },
+                { name: 'Abdominal (Pain/Nausea/Vomiting/Diarrhea/Constipation)',             icon: PLACEHOLDER_ICON,        note: null },
             ]},
-            { title: 'Skin', icon: 'fa-hand-dots', color: '#8b5cf6', items: [
-                { name: 'Skin (Acne/Rash/Lesion)', icon: 'fa-hand-dots', note: null },
+            { title: 'Skin', icon: PLACEHOLDER_ICON, color: '#8b5cf6', items: [
+                { name: 'Skin (Acne/Rash/Lesion)', icon: PLACEHOLDER_ICON, note: null },
             ]}
         ]
     },
     chronic: {
         label: 'Chronic Conditions',
-        icon: 'fa-heart-pulse',
+        icon: 'chronicheartblue.svg',
         groups: [
-            { title: 'Ongoing Management', icon: 'fa-rotate', color: '#3b82f6', items: [
-                { name: 'Chronic Condition — Follow-up care', icon: 'fa-rotate-right', note: 'Existing patients' },
-                { name: 'Chronic Condition — New patient to establish care', icon: 'fa-user-plus', note: 'First visit' },
-                { name: 'ADHD Consultation', icon: 'fa-brain', note: null },
-                { name: 'Endocrine (Diabetes/Thyroid)', icon: 'fa-flask', note: null },
-                { name: 'Heart (Blood Pressure/Palpitations)', icon: 'fa-heart-pulse', note: null },
-                { name: 'Abnormal Weight Gain or Loss', icon: 'fa-weight-scale', note: 'Not for treatment of obesity' },
+            { title: 'Ongoing Management', icon: PLACEHOLDER_ICON, color: '#3b82f6', items: [
+                { name: 'Chronic Condition — Follow-up care',              icon: PLACEHOLDER_ICON,        note: 'Existing patients' },
+                { name: 'Chronic Condition — New patient to establish care',icon: PLACEHOLDER_ICON,       note: 'First visit' },
+                { name: 'ADHD Consultation',                                icon: PLACEHOLDER_ICON,        note: null },
+                { name: 'Endocrine (Diabetes/Thyroid)',                     icon: 'labblue.svg',           note: null },
+                { name: 'Heart (Blood Pressure/Palpitations)',              icon: 'chronicheartblue.svg',  note: null },
+                { name: 'Abnormal Weight Gain or Loss',                     icon: PLACEHOLDER_ICON,        note: 'Not for treatment of obesity' },
             ]}
         ]
     },
     womens: {
         label: "Women's Health",
-        icon: 'fa-venus',
+        icon: 'whealthblue.svg',
         groups: [
-            { title: "Women's Health Services", icon: 'fa-venus', color: '#ec4899', items: [
-                { name: 'Annual Gynecological Exam', icon: 'fa-clipboard-check', note: null },
-                { name: 'Birth Control Consult (all other forms)', icon: 'fa-pills', note: null },
-                { name: 'Birth Control Consult (Nexplanon and IUD)', icon: 'fa-pills', note: 'Implant & IUD' },
-                { name: 'Menstrual Cycle Issues (irregular, heavy, painful cycles, etc.)', icon: 'fa-calendar-days', note: null },
+            { title: "Women's Health Services", icon: 'whealthblue.svg', color: '#ec4899', items: [
+                { name: 'Annual Gynecological Exam',                                              icon: PLACEHOLDER_ICON,    note: null },
+                { name: 'Birth Control Consult (all other forms)',                                icon: PLACEHOLDER_ICON,    note: null },
+                { name: 'Birth Control Consult (Nexplanon and IUD)',                              icon: PLACEHOLDER_ICON,    note: 'Implant & IUD' },
+                { name: 'Menstrual Cycle Issues (irregular, heavy, painful cycles, etc.)',        icon: 'appticonblue.svg',  note: null },
             ]}
         ]
     },
     mental: {
         label: 'Mental Health',
-        icon: 'fa-brain',
+        icon: PLACEHOLDER_ICON,
         groups: [
-            { title: 'Mental Health Services', icon: 'fa-brain', color: '#8b5cf6', items: [
-                { name: 'Mental Health (Anxiety/Depression/Insomnia/Stress)', icon: 'fa-brain', note: 'Counseling referrals available' },
-                { name: 'ADHD Consultation', icon: 'fa-head-side-cough', note: null },
+            { title: 'Mental Health Services', icon: PLACEHOLDER_ICON, color: '#8b5cf6', items: [
+                { name: 'Mental Health (Anxiety/Depression/Insomnia/Stress)', icon: PLACEHOLDER_ICON, note: 'Counseling referrals available' },
+                { name: 'ADHD Consultation',                                  icon: PLACEHOLDER_ICON, note: null },
             ]},
-            { title: 'Important Note', icon: 'fa-circle-info', color: '#f97316', items: [
-                { name: 'University Counseling Center (separate service)', icon: 'fa-building-columns', note: 'This portal does NOT connect to UCC — call 405-325-2911' },
+            { title: 'Important Note', icon: 'info.svg', color: '#f97316', items: [
+                { name: 'University Counseling Center (separate service)', icon: PLACEHOLDER_ICON, note: 'This portal does NOT connect to UCC — call 405-325-2911' },
             ]}
         ]
     },
     specialist: {
         label: 'Specialist & Other',
-        icon: 'fa-user-doctor',
+        icon: 'specialistblue.svg',
         groups: [
-            { title: 'Specialist Appointments', icon: 'fa-user-doctor', color: '#0ea5e9', items: [
-                { name: 'Appointment with a Sports Medicine Specialist', icon: 'fa-person-running', note: null },
-                { name: 'Dietitian Consult', icon: 'fa-apple-whole', note: 'Nutrition guidance' },
-                { name: 'Allergy Injection', icon: 'fa-syringe', note: 'Existing allergy patients only' },
-                { name: 'Travel Consult', icon: 'fa-plane', note: 'Pre-travel health planning' },
+            { title: 'Specialist Appointments', icon: 'specialistblue.svg', color: '#0ea5e9', items: [
+                { name: 'Appointment with a Sports Medicine Specialist', icon: PLACEHOLDER_ICON,   note: null },
+                { name: 'Dietitian Consult',                              icon: PLACEHOLDER_ICON,   note: 'Nutrition guidance' },
+                { name: 'Allergy Injection',                              icon: 'immuneblue.svg',   note: 'Existing allergy patients only' },
+                { name: 'Travel Consult',                                 icon: PLACEHOLDER_ICON,   note: 'Pre-travel health planning' },
             ]}
         ]
     },
     lab: {
         label: 'Lab & Screenings',
-        icon: 'fa-flask',
+        icon: 'labblue.svg',
         groups: [
-            { title: 'STI Screenings', icon: 'fa-shield-halved', color: '#16a34a', items: [
-                { name: 'STI Screening Panel (no symptoms/known exposure)', icon: 'fa-vial', note: 'No provider visit needed' },
-                { name: 'STI — exposures/symptoms (with provider visit)', icon: 'fa-shield-halved', note: 'Includes consultation' },
+            { title: 'STI Screenings', icon: PLACEHOLDER_ICON, color: '#16a34a', items: [
+                { name: 'STI Screening Panel (no symptoms/known exposure)',  icon: 'labblue.svg',     note: 'No provider visit needed' },
+                { name: 'STI — exposures/symptoms (with provider visit)',     icon: PLACEHOLDER_ICON,  note: 'Includes consultation' },
             ]},
-            { title: 'Other Lab Work', icon: 'fa-flask', color: '#3b82f6', items: [
-                { name: 'Blood Draw / Lab Order', icon: 'fa-droplet', note: 'Requires existing lab order' },
+            { title: 'Other Lab Work', icon: 'labblue.svg', color: '#3b82f6', items: [
+                { name: 'Blood Draw / Lab Order', icon: PLACEHOLDER_ICON, note: 'Requires existing lab order' },
             ]}
         ]
     },
     telehealth: {
         label: 'Telehealth — Virtual Visit',
-        icon: 'fa-video',
+        icon: PLACEHOLDER_ICON,
         groups: [
-            { title: 'Oklahoma Residents Only', icon: 'fa-location-dot', color: '#f97316', items: [
-                { name: 'Respiratory (Cough/Cold/Sinus/COVID/Flu)', icon: 'fa-lungs', note: null },
-                { name: 'Mental Health (Anxiety/Depression/Insomnia/Stress)', icon: 'fa-brain', note: null },
-                { name: 'Chronic Condition — Follow-up care', icon: 'fa-rotate-right', note: null },
-                { name: 'Urinary (UTI/Bladder or Kidney Infection)', icon: 'fa-droplet', note: null },
-                { name: 'Skin (Acne/Rash/Lesion)', icon: 'fa-hand-dots', note: null },
+            { title: 'Oklahoma Residents Only', icon: 'locationblue.svg', color: '#f97316', items: [
+                { name: 'Respiratory (Cough/Cold/Sinus/COVID/Flu)',           icon: PLACEHOLDER_ICON, note: null },
+                { name: 'Mental Health (Anxiety/Depression/Insomnia/Stress)', icon: PLACEHOLDER_ICON, note: null },
+                { name: 'Chronic Condition — Follow-up care',                 icon: PLACEHOLDER_ICON, note: null },
+                { name: 'Urinary (UTI/Bladder or Kidney Infection)',          icon: PLACEHOLDER_ICON, note: null },
+                { name: 'Skin (Acne/Rash/Lesion)',                            icon: PLACEHOLDER_ICON, note: null },
             ]},
-            { title: 'Telehealth Info', icon: 'fa-circle-info', color: '#3b82f6', items: [
-                { name: 'Please check in 15 min before your appointment. Appointments after 4pm should arrive and check in by 4pm.', icon: 'fa-clock', note: 'Important' },
+            { title: 'Telehealth Info', icon: 'infoblue.svg', color: '#3b82f6', items: [
+                { name: 'Please check in 15 min before your appointment. Appointments after 4pm should arrive and check in by 4pm.', icon: 'clockblue.svg', note: 'Important' },
             ]}
         ]
     }
@@ -231,19 +255,19 @@ function selectCategory(el){
         <div style="margin-bottom:20px">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:8px;border-bottom:1.5px solid #f0f5ff">
                 <span style="width:26px;height:26px;border-radius:7px;background:${g.color}22;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">
-                    <i class="fa-solid ${g.icon}" style="font-size:12px;color:${g.color}"></i>
+                    <img src="icons/${g.icon}" alt="" style="width:14px;height:14px" />
                 </span>
                 <span style="font-size:11px;font-weight:800;color:var(--text-light);text-transform:uppercase;letter-spacing:.08em">${g.title}</span>
             </div>
             <div style="display:flex;flex-direction:column;gap:7px">
                 ${g.items.map(r=>`
                 <button class="reason-row-btn" onclick="selectReason(this)" data-reason="${r.name.replace(/"/g,'&quot;')}">
-                    <span class="reason-row-icon"><i class="fa-solid ${r.icon}"></i></span>
+                    <span class="reason-row-icon"><img src="icons/${r.icon}" alt="" /></span>
                     <span class="reason-row-text">
                         <span class="reason-row-name">${r.name}</span>
-                        ${r.note ? `<span class="reason-row-note"><i class="fa-solid fa-circle-info" style="font-size:9px;margin-right:3px"></i>${r.note}</span>` : ''}
+                        ${r.note ? `<span class="reason-row-note"><img src="icons/info.svg" alt="" style="width:9px;height:9px;margin-right:3px;vertical-align:middle" />${r.note}</span>` : ''}
                     </span>
-                    <span class="reason-row-check"><i class="fa-solid fa-check"></i></span>
+                    <span class="reason-row-check"><img src="icons/checkmarkgreen.svg" alt="" /></span>
                 </button>`).join('')}
             </div>
         </div>
@@ -274,7 +298,6 @@ function selectReason(el){
     // Scroll preview into view
 
 }
-
 
 
 
@@ -317,7 +340,7 @@ function resetScheduler(){
 function renderAppointments(status){
     const list=appointments.filter(a=>a.status===status);
     const el=document.getElementById('appt-'+status);
-    if(!list.length){el.innerHTML='<div class="empty-state"><i class="fa-regular fa-calendar-xmark"></i><p>No '+status+' appointments.</p></div>';return;}
+    if(!list.length){el.innerHTML='<div class="empty-state"><img src="icons/'+PLACEHOLDER_ICON+'" alt="" style="width:40px;height:40px;margin-bottom:14px;display:block" /><p>No '+status+' appointments.</p></div>';return;}
     el.innerHTML=list.map(a=>{
         const pts=a.date.split(' '),mon=pts[0],day=parseInt(pts[1]);
         const badge=a.status==='upcoming'?'badge-upcoming':a.status==='past'?'badge-completed':'badge-cancelled';
@@ -433,7 +456,7 @@ function calPickDay(d){
         return `<div class="cal-phys-card" onclick="calPickDoc(this,${i})">
             <div class="cal-phys-av" style="background:${p.color}">${p.init}</div>
             <div class="cal-phys-info"><div class="p-name">${p.name}</div><div class="p-role">${p.role}</div></div>
-            <div class="cal-phys-check"><i class="fa-solid fa-check"></i></div>
+            <div class="cal-phys-check"><img src="icons/checkmarkgreen.svg" alt="" /></div>
         </div>`;
     }).join('');
     document.getElementById('cal-empty').style.display='none';
@@ -452,18 +475,20 @@ function calPickDoc(el,i){
 }
 
 function calUpdateBtn(){
+    // The cal-confirm button currently has no icon element in
+    // the HTML. Only the label and the ready class are toggled
+    // here. To restore an inline icon next to the label, add an
+    // <img> to the button in appointments.html and update its
+    // src in this function.
     const btn=document.getElementById('cal-confirm-btn');
     const lbl=document.getElementById('cal-confirm-label');
-    const ico=document.getElementById('cal-confirm-icon');
     const ready=calSelTime&&calSelDocIdx!==null;
     btn.classList.toggle('ready',ready);
     if(ready){
         lbl.textContent='Continue to Review';
-        ico.className='fa-solid fa-arrow-right';
     } else {
         const miss=(!calSelTime&&calSelDocIdx===null)?'a time & physician':!calSelTime?'a time':'a physician';
-        lbl.innerHTML='Select '+miss+' to continue';
-        ico.className='fa-solid fa-lock';
+        lbl.textContent='Select '+miss+' to continue';
     }
 }
 function calConfirm(){
