@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
-   sodipodi:docname="checkmark.svg"
+   sodipodi:docname="clock.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
-     inkscape:zoom="0.58488778"
-     inkscape:cx="-90.615673"
-     inkscape:cy="308.60621"
+     inkscape:zoom="0.40086182"
+     inkscape:cx="349.24753"
+     inkscape:cy="417.84972"
      inkscape:window-width="1920"
      inkscape:window-height="996"
      inkscape:window-x="0"
@@ -100,22 +100,21 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:none;stroke:#ffffff;stroke-width:18.0698;stroke-linecap:square;stroke-opacity:1"
-       d="M 21.401242,121.11428 67.927001,173.85573 191.44181,33.83974"
-       id="path1" />
-    <ellipse
-       style="fill:#2563eb;fill-opacity:1;stroke:#ffffff;stroke-width:9.36204;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#2563eb;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-dasharray:none"
        id="path2"
-       cx="15.496535"
-       cy="114.44239"
-       rx="4.6326671"
-       ry="4.0526524" />
-    <ellipse
-       style="fill:#2563eb;fill-opacity:1;stroke:#ffffff;stroke-width:9.36204;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
-       id="path2-1"
-       cx="197.29919"
-       cy="27.125807"
-       rx="4.6326671"
-       ry="4.0526524" />
+       sodipodi:type="arc"
+       sodipodi:cx="106.93351"
+       sodipodi:cy="103.14352"
+       sodipodi:rx="94.575668"
+       sodipodi:ry="91.838158"
+       sodipodi:start="4.1451707"
+       sodipodi:end="4.138343"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="M 56.119135,25.687323 A 94.575668,91.838158 0 0 1 186.61166,53.667834 94.575668,91.838158 0 0 1 158.01989,180.43081 94.575668,91.838158 0 0 1 27.429756,152.88305 94.575668,91.838158 0 0 1 55.575712,26.026028" />
+    <path
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#2563eb;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 100.24523,37.43869 v 84.3048 h 54.52585"
+       id="path3" />
   </g>
 </svg>

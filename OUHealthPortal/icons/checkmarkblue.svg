@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
-     inkscape:zoom="0.58488778"
-     inkscape:cx="-90.615673"
-     inkscape:cy="308.60621"
+     inkscape:zoom="0.91299556"
+     inkscape:cx="217.96382"
+     inkscape:cy="500.00243"
      inkscape:window-width="1920"
      inkscape:window-height="996"
      inkscape:window-x="0"
@@ -100,18 +100,18 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:none;stroke:#ffffff;stroke-width:18.0698;stroke-linecap:square;stroke-opacity:1"
+       style="fill:none;stroke:#2563eb;stroke-width:18.0698;stroke-linecap:square"
        d="M 21.401242,121.11428 67.927001,173.85573 191.44181,33.83974"
        id="path1" />
     <ellipse
-       style="fill:#2563eb;fill-opacity:1;stroke:#ffffff;stroke-width:9.36204;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#2563eb;fill-opacity:1;stroke:#2563eb;stroke-width:9.36204;stroke-linecap:square;stroke-dasharray:none"
        id="path2"
        cx="15.496535"
        cy="114.44239"
        rx="4.6326671"
        ry="4.0526524" />
     <ellipse
-       style="fill:#2563eb;fill-opacity:1;stroke:#ffffff;stroke-width:9.36204;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#2563eb;fill-opacity:1;stroke:#2563eb;stroke-width:9.36204;stroke-linecap:square;stroke-dasharray:none"
        id="path2-1"
        cx="197.29919"
        cy="27.125807"

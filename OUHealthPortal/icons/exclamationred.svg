@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
-   sodipodi:docname="checkmark.svg"
+   sodipodi:docname="exclamationred.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
-     inkscape:zoom="0.58488778"
-     inkscape:cx="-90.615673"
-     inkscape:cy="308.60621"
+     inkscape:zoom="0.45314242"
+     inkscape:cx="328.81495"
+     inkscape:cy="237.23226"
      inkscape:window-width="1920"
      inkscape:window-height="996"
      inkscape:window-x="0"
@@ -100,22 +100,23 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:none;stroke:#ffffff;stroke-width:18.0698;stroke-linecap:square;stroke-opacity:1"
-       d="M 21.401242,121.11428 67.927001,173.85573 191.44181,33.83974"
-       id="path1" />
+       id="path28"
+       style="baseline-shift:baseline;display:inline;overflow:visible;opacity:1;vector-effect:none;fill:#ff0000;stroke-width:1.426;stroke-linecap:square;enable-background:accumulate;stop-color:#000000;stop-opacity:1;fill-opacity:1;stroke:#ff0000;stroke-opacity:1"
+       d="m 103.36078,3.155424 c -11.227288,0 -19.175048,1.7683113 -22.610018,2.8448839 -1.238741,0.3882382 -2.172942,0.7307528 -2.903261,1.0367346 V 42.591077 93.721455 129.32769 c 0.720909,0.29908 1.636982,0.63304 2.840541,1.01024 3.43499,1.07658 11.38133,2.84645 22.608628,2.84645 11.22729,0 19.18063,-1.76987 22.6156,-2.84645 1.83519,-0.57517 3.00038,-1.04986 3.82455,-1.4536 V 94.165208 42.204591 7.4239186 C 128.91643,7.0264195 127.7641,6.5610441 125.97498,6.0003079 122.54001,4.9237353 114.58805,3.155424 103.36078,3.155424 Z" />
     <ellipse
-       style="fill:#2563eb;fill-opacity:1;stroke:#ffffff;stroke-width:9.36204;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:15.3559;stroke-linecap:square;stroke-opacity:1"
        id="path2"
-       cx="15.496535"
-       cy="114.44239"
-       rx="4.6326671"
-       ry="4.0526524" />
-    <ellipse
-       style="fill:#2563eb;fill-opacity:1;stroke:#ffffff;stroke-width:9.36204;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
-       id="path2-1"
-       cx="197.29919"
-       cy="27.125807"
-       rx="4.6326671"
-       ry="4.0526524" />
+       cx="104.01939"
+       cy="183.19984"
+       rx="19.772455"
+       ry="17.353579" />
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#ffffff;stroke-linecap:square;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path27" />
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#ffffff;stroke-linecap:square;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path25" />
   </g>
 </svg>

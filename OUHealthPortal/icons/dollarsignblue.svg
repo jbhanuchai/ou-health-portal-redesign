@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
-   sodipodi:docname="checkmark.svg"
+   sodipodi:docname="dollarsignblue.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
-     inkscape:zoom="0.58488778"
-     inkscape:cx="-90.615673"
-     inkscape:cy="308.60621"
+     inkscape:zoom="0.60804337"
+     inkscape:cx="328.92391"
+     inkscape:cy="592.88534"
      inkscape:window-width="1920"
      inkscape:window-height="996"
      inkscape:window-x="0"
@@ -34,6 +34,12 @@
      inkscape:current-layer="layer1" />
   <defs
      id="defs1">
+    <rect
+       x="111.83413"
+       y="144.72652"
+       width="481.87352"
+       height="518.05515"
+       id="rect1" />
     <linearGradient
        id="swatch89"
        inkscape:swatch="solid">
@@ -99,23 +105,13 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <path
-       style="fill:none;stroke:#ffffff;stroke-width:18.0698;stroke-linecap:square;stroke-opacity:1"
-       d="M 21.401242,121.11428 67.927001,173.85573 191.44181,33.83974"
-       id="path1" />
-    <ellipse
-       style="fill:#2563eb;fill-opacity:1;stroke:#ffffff;stroke-width:9.36204;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
-       id="path2"
-       cx="15.496535"
-       cy="114.44239"
-       rx="4.6326671"
-       ry="4.0526524" />
-    <ellipse
-       style="fill:#2563eb;fill-opacity:1;stroke:#ffffff;stroke-width:9.36204;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1"
-       id="path2-1"
-       cx="197.29919"
-       cy="27.125807"
-       rx="4.6326671"
-       ry="4.0526524" />
+    <text
+       xml:space="preserve"
+       transform="matrix(27.359694,0,0,15.23532,-3065.2699,-2199.8565)"
+       id="text1"
+       style="writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);display:inline;fill:none;fill-rule:evenodd;stroke:#2563eb;stroke-width:0.56312;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"><tspan
+         x="111.83398"
+         y="155.34375"
+         id="tspan2">$</tspan></text>
   </g>
 </svg>

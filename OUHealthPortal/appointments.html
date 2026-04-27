@@ -186,7 +186,7 @@
                     <div class="card" id="phase-b" style="display:none">
                         <div class="phase-b-header">
                             <button class="phase-b-back" onclick="backToCategories()" title="Back to categories">
-                                <img src="icons/chevron-left.svg" alt="" style="width:12px;height:12px" />
+                                <img src="icons/chevronleftblue.svg" alt="" style="width:12px;height:12px" />
                             </button>
                             <div style="flex:1">
                                 <div style="font-size:11px;color:var(--text-light);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">Step 1 — Select Reason</div>
@@ -198,38 +198,38 @@
                         </div>
                         <!-- Single dismissable info banner -->
                         <div id="info-banner" style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:var(--radius-sm);padding:14px 18px;display:flex;align-items:flex-start;gap:14px;margin-bottom:22px">
-                            <img src="icons/circle-exclamation.svg" alt="" style="width:20px;height:20px" />
+                            <img src="icons/exclamationred.svg" alt="" style="width:20px;height:20px" />
                             <div style="flex:1">
                                 <div style="font-size:13px;font-weight:700;color:#9a3412;margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em">Important Information</div>
                                 <div style="display:flex;flex-direction:column;gap:8px">
                                     <div style="display:flex;align-items:flex-start;gap:10px">
                                         <span style="width:22px;height:22px;border-radius:6px;background:#fecaca;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                                            <img src="icons/truck-medical.svg" alt="" style="width:11px;height:11px" />
+                                            <img src="icons/plusblue.svg" alt="" style="width:11px;height:11px" />
                                         </span>
                                         <span style="font-size:13px;color:#7c3f1e;line-height:1.5"><strong style="color:#dc2626">Emergency?</strong> Call <strong>911</strong> immediately — do not use this portal.</span>
                                     </div>
                                     <div style="display:flex;align-items:flex-start;gap:10px">
                                         <span style="width:22px;height:22px;border-radius:6px;background:#fed7aa;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                                            <img src="icons/phone.svg" alt="" style="width:11px;height:11px" />
+                                            <img src="icons/phoneblue.svg" alt="" style="width:11px;height:11px" />
                                         </span>
                                         <span style="font-size:13px;color:#7c3f1e;line-height:1.5"><strong style="color:#c2410c">Multiple issues</strong> require a longer appointment — call <strong style="color:#c2410c">405-325-4441</strong> to schedule by phone. Physical Therapy: same number.</span>
                                     </div>
                                     <div style="display:flex;align-items:flex-start;gap:10px">
                                         <span style="width:22px;height:22px;border-radius:6px;background:#dbeafe;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                                            <img src="icons/clock.svg" alt="" style="width:11px;height:11px" />
+                                            <img src="icons/clockblue.svg" alt="" style="width:11px;height:11px" />
                                         </span>
                                         <span style="font-size:13px;color:#7c3f1e;line-height:1.5">Check in <strong>15 minutes early.</strong> Appointments after 4pm must check in by 4pm.</span>
                                     </div>
                                     <div style="display:flex;align-items:flex-start;gap:10px">
                                         <span style="width:22px;height:22px;border-radius:6px;background:#fef08a;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                                            <img src="icons/dollar-sign.svg" alt="" style="width:11px;height:11px" />
+                                            <img src="icons/dollarsignblue.svg" alt="" style="width:11px;height:11px" />
                                         </span>
                                         <span style="font-size:13px;color:#7c3f1e;line-height:1.5"><strong>$20 no-show fee</strong> for appointments not cancelled within 1 hour of appointment time.</span>
                                     </div>
                                 </div>
                             </div>
                             <button onclick="document.getElementById('info-banner').style.display='none'" style="background:none;border:none;cursor:pointer;color:#9a3412;font-size:18px;padding:0;flex-shrink:0;line-height:1;opacity:.6;transition:opacity .15s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.6" title="Dismiss">
-                                <img src="icons/xmark.svg" class="icon icon-md" alt="" />
+                                <img src="icons/redx.svg" class="icon icon-md" alt="" />
                             </button>
                         </div>
                         <div id="reason-list"></div>
@@ -249,8 +249,8 @@
                             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
                                 <div style="font-size:18px;font-weight:800;color:var(--text-dark)" id="cal-month-label"></div>
                                 <div style="display:flex;gap:8px">
-                                    <button class="cal-nav-btn" onclick="changeMonth(-1)"><img src="icons/chevron-left.svg" class="icon icon-md" alt="" /></button>
-                                    <button class="cal-nav-btn" onclick="changeMonth(1)"><img src="icons/chevron-right.svg" class="icon icon-md" alt="" /></button>
+                                    <button class="cal-nav-btn" onclick="changeMonth(-1)"><img src="icons/chevronleftblue.svg" class="icon icon-lg" alt="" /></button>
+                                    <button class="cal-nav-btn" onclick="changeMonth(1)"><img src="icons/chevronrightblue.svg" class="icon icon-lg" alt="" /></button>
                                 </div>
                             </div>
 
@@ -269,7 +269,7 @@
                             <!-- Empty state -->
                             <div id="cal-empty" style="background:var(--surface);border-radius:var(--radius);padding:44px 24px;box-shadow:var(--shadow-sm);border:1.5px solid rgba(219,232,248,.6);text-align:center">
                                 <div style="width:64px;height:64px;margin:0 auto 16px;border-radius:20px;background:var(--surface-2);border:1.5px solid #dbe8f8;display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--text-light)">
-                                    <img src="icons/calendar-days.svg" class="icon icon-md" alt="" />
+                                    <img src="icons/appticonblue.svg" class="icon icon-lg" alt="" />
                                 </div>
                                 <div style="font-size:15px;font-weight:700;color:var(--text-dark);margin-bottom:8px">No date selected yet</div>
                                 <div style="font-size:12px;color:var(--text-light);line-height:1.7">Click a <strong style="color:#16a34a">green highlighted</strong> date to view available times and physicians.</div>
@@ -293,13 +293,13 @@
 
                                 <!-- Available times -->
                                 <div>
-                                    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:10px;display:flex;align-items:center;gap:6px"><img src="icons/clock.svg" class="icon icon-md" alt="" /> Available Times</div>
+                                    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:10px;display:flex;align-items:center;gap:6px"><img src="icons/clockblue.svg" class="icon icon-md" alt="" /> Available Times</div>
                                     <div class="cal-times-grid" id="cal-times"></div>
                                 </div>
 
                                 <!-- Physicians -->
                                 <div>
-                                    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:10px;display:flex;align-items:center;gap:6px"><img src="icons/user-doctor.svg" class="icon icon-md" alt="" /> Available Physicians</div>
+                                    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:10px;display:flex;align-items:center;gap:6px"><img src="icons/specialistblue.svg" class="icon icon-md" alt="" /> Available Physicians</div>
                                     <div style="display:flex;flex-direction:column;gap:8px" id="cal-phys"></div>
                                 </div>
 
@@ -322,39 +322,39 @@
                     <div class="card">
                         <div class="card-title">Appointment Summary</div>
                         <div class="summary-row">
-                            <div class="summary-icon"><img src="icons/stethoscope.svg" class="icon icon-md" alt="" /></div>
+                            <div class="summary-icon"><img src="icons/stethoscopeblue.svg" class="icon icon-md" alt="" /></div>
                             <div><div class="summary-label">Appointment Type</div><div class="summary-value" id="sum-type">—</div></div>
                         </div>
                         <div class="summary-row">
-                            <div class="summary-icon"><img src="icons/user-doctor.svg" class="icon icon-md" alt="" /></div>
+                            <div class="summary-icon"><img src="icons/specialistblue.svg" class="icon icon-md" alt="" /></div>
                             <div><div class="summary-label">Provider</div><div class="summary-value" id="sum-doc">—</div></div>
                         </div>
                         <div class="summary-row">
-                            <div class="summary-icon"><img src="icons/calendar-days.svg" class="icon icon-md" alt="" /></div>
+                            <div class="summary-icon"><img src="icons/appticonblue.svg" class="icon icon-md" alt="" /></div>
                             <div><div class="summary-label">Date</div><div class="summary-value" id="sum-date">—</div></div>
                         </div>
                         <div class="summary-row">
-                            <div class="summary-icon"><img src="icons/clock.svg" class="icon icon-md" alt="" /></div>
+                            <div class="summary-icon"><img src="icons/clockblue.svg" class="icon icon-md" alt="" /></div>
                             <div><div class="summary-label">Time</div><div class="summary-value" id="sum-time">—</div></div>
                         </div>
                         <div class="summary-row">
-                            <div class="summary-icon"><img src="icons/location-dot.svg" class="icon icon-md" alt="" /></div>
+                            <div class="summary-icon"><img src="icons/locationblue.svg" class="icon icon-md" alt="" /></div>
                             <div><div class="summary-label">Location</div><div class="summary-value">Goddard Health Center, Room 140</div></div>
                         </div>
                         <div class="notice-card">
-                            <div class="notice-icon"><img src="icons/circle-info.svg" class="icon icon-md" alt="" /></div>
+                            <div class="notice-icon"><img src="icons/info.svg" class="icon icon-md" alt="" /></div>
                             <p class="notice-text">Please arrive <strong>10 minutes early</strong>. If you need to cancel, do so at least <strong>24 hours in advance</strong> to avoid a no-show fee.</p>
                         </div>
                     </div>
                     <div class="btn-row">
                         <button class="btn btn-ghost" onclick="goStep(2)">‹ &nbsp;Back</button>
-                        <button class="btn btn-success" onclick="confirmAppt()"><img src="icons/check.svg" class="icon icon-md" alt="" /> &nbsp;Confirm Appointment</button>
+                        <button class="btn btn-success" onclick="confirmAppt()"><img src="icons/send.svg" class="icon icon-md" alt="" /> &nbsp;Confirm Appointment</button>
                     </div>
                 </div>
 
                 <!-- Success -->
                 <div class="success-screen" id="successScreen">
-                    <div class="success-icon"><img src="icons/check.svg" class="icon icon-md" alt="" /></div>
+                    <div class="success-icon"><img src="icons/checkmarkgreen.svg" class="icon icon-md" alt="" /></div>
                     <h2>Appointment Confirmed!</h2>
                     <p id="successMsg">Your appointment has been successfully scheduled.</p>
                     <button class="btn btn-primary" onclick="resetScheduler()" style="margin-right:10px">Schedule Another</button>

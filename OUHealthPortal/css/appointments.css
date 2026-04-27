@@ -409,8 +409,7 @@
         .cal-day.cal-avail:hover { background:#bbf7d0;border-color:#4ade80;transform:scale(1.1);box-shadow:0 4px 14px rgba(34,197,94,.25); }
         .cal-day.cal-avail.cal-sel { background:var(--blue-grad);color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(59,130,246,.38);transform:scale(1.1); }
         .cal-nav-btn { width:34px;height:34px;border-radius:50%;border:1.5px solid #dbe8f8;background:var(--surface-2);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-mid);font-size:14px;transition:all .2s; }
-        .cal-nav-btn:hover { background:var(--blue-1);color:#fff;border-color:var(--blue-1); }
-        .cal-times-grid { display:grid;grid-template-columns:1fr 1fr;gap:7px; }
+        .cal-nav-btn:hover { background:var(--surface);color:#fff;border-color:transparent; }        .cal-times-grid { display:grid;grid-template-columns:1fr 1fr;gap:7px; }
         .cal-t-chip { padding:10px 8px;border-radius:10px;text-align:center;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;border:1.5px solid #dbe8f8;background:var(--surface-2);color:var(--text-mid); }
         .cal-t-chip:hover { background:#eff6ff;color:var(--blue-1);border-color:#93c5fd; }
         .cal-t-chip.cal-chosen { background:var(--blue-grad);color:#fff;border-color:transparent;box-shadow:0 4px 12px rgba(59,130,246,.3); }
