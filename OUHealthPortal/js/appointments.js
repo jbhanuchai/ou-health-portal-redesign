@@ -25,7 +25,8 @@ const PLACEHOLDER_ICON = 'placeholder.svg';
 /* ── State ── */
 let currentStep=1, selectedType=null, selectedDoc=null, selectedDate=null, selectedTime=null;
 let cancelTargetId=null;
-// Step 2 (Provider) & Step 3 (Date/Time) data — teammate's section
+let selectedCategory = null;
+// Step 2 (Provider) & Step 3 (Date/Time) data
 let appointments=[
     {id:'a1',type:'Flu Vaccine',         doc:'Dr. Sarah Mitchell', date:'May 5, 2026',  time:'4:15 PM', status:'upcoming'},
     {id:'a2',type:'Complete Physical',   doc:'Dr. Ahmed Raza',     date:'Feb 10, 2026', time:'9:00 AM', status:'past'},
@@ -242,15 +243,36 @@ function updateStepper(){
 /* ── Step 1 – Category & Reason ── */
 function selectCategory(el){
     const cat = (typeof el === 'string') ? el : el.dataset.cat;
-    // highlight selected card
+
+    selectedCategory = cat;
+
     document.querySelectorAll('.type-card').forEach(c=>{
-        c.classList.toggle('selected', c.dataset.cat===cat);
+        c.classList.toggle('selected', c.dataset.cat === cat);
     });
-    const data = reasonsByCategory[cat];
-    document.getElementById('phase-b-title').textContent = data.label + ' — Choose your reason';
+
+    document.getElementById('phase-a').style.display = 'none';
+    document.getElementById('phase-notes').style.display = 'block';
+    document.getElementById('phase-b').style.display = 'none';
+
+    document.getElementById('btn-row-1').style.display = 'none';
+
+    setTimeout(()=>{
+        document.getElementById('phase-notes').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }, 50);
+}
+
+function showReasonPage(){
+    if(!selectedCategory) return;
+
+    const data = reasonsByCategory[selectedCategory];
     const container = document.getElementById('reason-list');
+
     document.getElementById('phase-b-title').textContent = 'Choose your reason for visit';
     document.getElementById('phase-b-badge-text').textContent = data.label;
+
     container.innerHTML = data.groups.map(g=>`
         <div style="margin-bottom:20px">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:8px;border-bottom:1.5px solid #f0f5ff">
@@ -259,6 +281,7 @@ function selectCategory(el){
                 </span>
                 <span style="font-size:11px;font-weight:800;color:var(--text-light);text-transform:uppercase;letter-spacing:.08em">${g.title}</span>
             </div>
+
             <div style="display:flex;flex-direction:column;gap:7px">
                 ${g.items.map(r=>`
                 <button class="reason-row-btn" onclick="selectReason(this)" data-reason="${r.name.replace(/"/g,'&quot;')}">
@@ -271,21 +294,49 @@ function selectCategory(el){
             </div>
         </div>
     `).join('<div style="height:1px;background:linear-gradient(90deg,#dbeafe80,transparent);margin:4px 0 20px"></div>');
-    document.getElementById('phase-a').style.display='none';
-    document.getElementById('phase-b').style.display='block';
-    document.getElementById('btn-row-1').style.display='flex';
-    document.getElementById('btn1').disabled=true;
-    selectedType=null;
-    setTimeout(()=>document.getElementById('phase-b').scrollIntoView({behavior:'smooth',block:'start'}),50);
+
+    document.getElementById('phase-a').style.display = 'none';
+    document.getElementById('phase-notes').style.display = 'none';
+    document.getElementById('phase-b').style.display = 'block';
+
+    document.getElementById('btn-row-1').style.display = 'flex';
+    document.getElementById('btn1').disabled = true;
+    selectedType = null;
+
+    setTimeout(()=>{
+        document.getElementById('phase-b').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }, 50);
+}
+
+function backToNotes(){
+    document.getElementById('phase-a').style.display = 'none';
+
+    document.getElementById('phase-notes').style.display = 'block';
+
+    document.getElementById('phase-b').style.display = 'none';
+
+    document.getElementById('btn-row-1').style.display = 'none';
+
+    document.getElementById('btn1').disabled = true;
+
+    selectedType = null;
 }
 
 function backToCategories(){
-    document.getElementById('phase-a').style.display='block';
-    document.getElementById('phase-b').style.display='none';
-    document.getElementById('btn-row-1').style.display='none';
-    document.getElementById('btn-row-1').style.display='none';
-    document.getElementById('btn1').disabled=true;
-    selectedType=null;
+    document.getElementById('phase-a').style.display = 'block';
+    document.getElementById('phase-notes').style.display = 'none';
+    document.getElementById('phase-b').style.display = 'none';
+
+    document.getElementById('btn-row-1').style.display = 'none';
+    document.getElementById('btn1').disabled = true;
+
+    selectedCategory = null;
+    selectedType = null;
+
+    document.querySelectorAll('.type-card').forEach(c=>c.classList.remove('selected'));
 }
 
 function selectReason(el){
@@ -325,6 +376,7 @@ function resetScheduler(){
     document.querySelectorAll('.reason-row-btn').forEach(c=>c.classList.remove('selected'));
     document.getElementById('phase-a').style.display='block';
     document.getElementById('phase-b').style.display='none';
+    document.getElementById('phase-notes').style.display='none';
     document.getElementById('btn-row-1').style.display='none';
     document.getElementById('btn1').disabled=true;
     document.getElementById('panel1').classList.add('active');

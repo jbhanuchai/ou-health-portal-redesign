@@ -183,10 +183,48 @@
                         </div>
                     </div>
                     <!-- Phase B: Specific reason -->
+                     <!-- Phase B: Appointment Notes Dialogue -->
+                    <div class="card" id="phase-notes" style="display:none">
+                        <div class="appointment-dialog">
+                            <div class="appointment-dialog-header">
+                                <div class="appointment-dialog-title-wrap">
+                                    <div class="appointment-dialog-icon">
+                                        <img src="icons/info.svg" alt="" />
+                                    </div>
+                                    <div>
+                                        <div class="appointment-dialog-kicker">
+                                            Please review before scheduling
+                                        </div>
+                                        <h3>Appointment Notes</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="appointment-dialog-body">
+                                <ul>
+                                    <li>New appointments open daily at <strong>8:00 AM</strong>.</li>
+                                    <li>Please arrive <strong>15 minutes before</strong> your appointment time.</li>
+                                    <li>Appointments after 4 PM must check in by <strong>4 PM</strong>.</li>
+                                    <li>Telehealth visits are only available for patients currently in Oklahoma.</li>
+                                    <li>A <strong>$20 no-show fee</strong> may apply for missed appointments not cancelled at least 1 hour in advance.</li>
+                                </ul>
+
+                                <p class="dialog-help-text">
+                                    Need help scheduling? <strong>405-325-4441</strong>
+                                </p>
+                            </div>
+
+                            <div class="appointment-dialog-footer">
+                                <button class="dialog-secondary-btn" onclick="backToCategories()">Back</button>
+                                <button class="dialog-primary-btn" onclick="showReasonPage()">Continue</button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card" id="phase-b" style="display:none">
                         <div class="phase-b-header">
-                            <button class="phase-b-back" onclick="backToCategories()" title="Back to categories">
-                                <img src="icons/chevronleftblue.svg" alt="" style="width:12px;height:12px" />
+                            <button class="phase-b-back-tag" onclick="backToNotes()">
+                                <span class="back-arrow">‹</span>
+                                <span>Back</span>
                             </button>
                             <div style="flex:1">
                                 <div style="font-size:11px;color:var(--text-light);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">Step 1 — Select Reason</div>
@@ -196,46 +234,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Single dismissable info banner -->
-                        <div id="info-banner" style="background:#fff7ed;border:1.5px solid #fed7aa;border-radius:var(--radius-sm);padding:14px 18px;display:flex;align-items:flex-start;gap:14px;margin-bottom:22px">
-                            <img src="icons/exclamationred.svg" alt="" style="width:20px;height:20px" />
-                            <div style="flex:1">
-                                <div style="font-size:13px;font-weight:700;color:#9a3412;margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em">Important Information</div>
-                                <div style="display:flex;flex-direction:column;gap:8px">
-                                    <div style="display:flex;align-items:flex-start;gap:10px">
-                                        <span style="width:22px;height:22px;border-radius:6px;background:#fecaca;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                                            <img src="icons/plusblue.svg" alt="" style="width:11px;height:11px" />
-                                        </span>
-                                        <span style="font-size:13px;color:#7c3f1e;line-height:1.5"><strong style="color:#dc2626">Emergency?</strong> Call <strong>911</strong> immediately — do not use this portal.</span>
-                                    </div>
-                                    <div style="display:flex;align-items:flex-start;gap:10px">
-                                        <span style="width:22px;height:22px;border-radius:6px;background:#fed7aa;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                                            <img src="icons/phoneblue.svg" alt="" style="width:11px;height:11px" />
-                                        </span>
-                                        <span style="font-size:13px;color:#7c3f1e;line-height:1.5"><strong style="color:#c2410c">Multiple issues</strong> require a longer appointment — call <strong style="color:#c2410c">405-325-4441</strong> to schedule by phone. Physical Therapy: same number.</span>
-                                    </div>
-                                    <div style="display:flex;align-items:flex-start;gap:10px">
-                                        <span style="width:22px;height:22px;border-radius:6px;background:#dbeafe;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                                            <img src="icons/clockblue.svg" alt="" style="width:11px;height:11px" />
-                                        </span>
-                                        <span style="font-size:13px;color:#7c3f1e;line-height:1.5">Check in <strong>15 minutes early.</strong> Appointments after 4pm must check in by 4pm.</span>
-                                    </div>
-                                    <div style="display:flex;align-items:flex-start;gap:10px">
-                                        <span style="width:22px;height:22px;border-radius:6px;background:#fef08a;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                                            <img src="icons/dollarsignblue.svg" alt="" style="width:11px;height:11px" />
-                                        </span>
-                                        <span style="font-size:13px;color:#7c3f1e;line-height:1.5"><strong>$20 no-show fee</strong> for appointments not cancelled within 1 hour of appointment time.</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button onclick="document.getElementById('info-banner').style.display='none'" style="background:none;border:none;cursor:pointer;color:#9a3412;font-size:18px;padding:0;flex-shrink:0;line-height:1;opacity:.6;transition:opacity .15s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.6" title="Dismiss">
-                                <img src="icons/redx.svg" class="icon icon-md" alt="" />
-                            </button>
-                        </div>
                         <div id="reason-list"></div>
                     </div>
                     <div class="btn-row" id="btn-row-1" style="display:none">
-                        <button class="btn btn-ghost" id="btn1-back" onclick="backToCategories()">‹ &nbsp;Back to Categories</button>
                         <button class="btn btn-primary" id="btn1" disabled>Continue &nbsp;›</button>
                     </div>
                 </div>
