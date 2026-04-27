@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="210mm"
+   viewBox="0 0 210 210"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   sodipodi:docname="lab.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.54537279"
+     inkscape:cx="649.09728"
+     inkscape:cy="395.14256"
+     inkscape:window-width="1920"
+     inkscape:window-height="996"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="swatch89"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop89" />
+    </linearGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5">
+      <rect
+         style="fill:#000000;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;paint-order:stroke markers fill;stop-color:#000000"
+         id="rect5-4"
+         width="20"
+         height="200"
+         x="530"
+         y="595" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath15">
+      <rect
+         style="fill:none;stroke:#000000;stroke-linecap:butt;stroke-linejoin:bevel;paint-order:stroke markers fill;stop-color:#000000"
+         id="rect15-7"
+         width="45.034248"
+         height="38.955639"
+         x="262.48285"
+         y="121.00073" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath25">
+      <rect
+         style="fill:#ff0000;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;paint-order:stroke markers fill;stop-color:#000000"
+         id="rect25-8"
+         width="78"
+         height="45.033199"
+         x="763.61322"
+         y="452.82422" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath24">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999999;stroke-linecap:butt;stroke-linejoin:bevel;paint-order:stroke markers fill;stop-color:#000000"
+         id="rect24"
+         width="44.999748"
+         height="77.937294"
+         x="251.53429"
+         y="222.73541" />
+    </clipPath>
+    <linearGradient
+       id="swatch2"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop2" />
+    </linearGradient>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path35"
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#ffffff;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       d="M 75.427954 3.2302938 A 2.3001949 2.3001949 0 0 0 73.12887 5.5314453 L 73.12887 113.29231 L 17.873328 198.12899 A 5.7561881 5.1023887 0 0 0 22.85752 205.78175 L 196.37354 205.78175 A 5.7561881 5.1023887 0 0 0 201.35825 198.12899 L 145.64641 112.59364 L 145.64641 5.5314453 A 2.3001949 2.3001949 0 0 0 143.34577 3.2302938 L 75.427954 3.2302938 z M 92.472909 29.316557 L 116.81819 29.316557 A 2.036865 2.036865 0 0 1 118.85528 31.353642 A 2.036865 2.036865 0 0 1 116.81819 33.390727 L 92.472909 33.390727 A 2.036865 2.036865 0 0 1 90.435307 31.353642 A 2.036865 2.036865 0 0 1 92.472909 29.316557 z M 91.253861 39.156266 L 134.93337 39.156266 A 2.5 2.5 0 0 1 137.43347 41.656372 A 2.5 2.5 0 0 1 134.93337 44.156478 L 91.253861 44.156478 A 2.5 2.5 0 0 1 88.753756 41.656372 A 2.5 2.5 0 0 1 91.253861 39.156266 z M 91.904468 48.747929 L 116.24975 48.747929 A 2.036865 2.036865 0 0 1 118.28735 50.782947 A 2.036865 2.036865 0 0 1 116.24975 52.820549 L 91.904468 52.820549 A 2.036865 2.036865 0 0 1 89.867383 50.782947 A 2.036865 2.036865 0 0 1 91.904468 48.747929 z M 90.683354 58.586088 L 134.36544 58.586088 A 2.5 2.5 0 0 1 136.86503 61.086194 A 2.5 2.5 0 0 1 134.36544 63.585783 L 90.683354 63.585783 A 2.5 2.5 0 0 1 88.183765 61.086194 A 2.5 2.5 0 0 1 90.683354 58.586088 z M 92.404179 69.298612 L 116.74791 69.298612 A 2.036865 2.036865 0 0 1 118.785 71.335697 A 2.036865 2.036865 0 0 1 116.74791 73.373299 L 92.404179 73.373299 A 2.036865 2.036865 0 0 1 90.367094 71.335697 A 2.036865 2.036865 0 0 1 92.404179 69.298612 z M 91.183582 79.138839 L 134.86515 79.138839 A 2.5 2.5 0 0 1 137.36526 81.638428 A 2.5 2.5 0 0 1 134.86515 84.138534 L 91.183582 84.138534 A 2.5 2.5 0 0 1 88.683476 81.638428 A 2.5 2.5 0 0 1 91.183582 79.138839 z " />
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path31" />
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path29" />
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path27" />
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path25" />
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path23" />
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path21" />
+  </g>
+</svg>

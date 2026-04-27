@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="210mm"
+   viewBox="0 0 210 210"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   sodipodi:docname="specialistblue.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.46270482"
+     inkscape:cx="512.2056"
+     inkscape:cy="301.48811"
+     inkscape:window-width="1920"
+     inkscape:window-height="996"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="swatch89"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop89" />
+    </linearGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5">
+      <rect
+         style="fill:#000000;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;paint-order:stroke markers fill;stop-color:#000000"
+         id="rect5-4"
+         width="20"
+         height="200"
+         x="530"
+         y="595" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath15">
+      <rect
+         style="fill:none;stroke:#000000;stroke-linecap:butt;stroke-linejoin:bevel;paint-order:stroke markers fill;stop-color:#000000"
+         id="rect15-7"
+         width="45.034248"
+         height="38.955639"
+         x="262.48285"
+         y="121.00073" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath25">
+      <rect
+         style="fill:#ff0000;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;paint-order:stroke markers fill;stop-color:#000000"
+         id="rect25-8"
+         width="78"
+         height="45.033199"
+         x="763.61322"
+         y="452.82422" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath24">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999999;stroke-linecap:butt;stroke-linejoin:bevel;paint-order:stroke markers fill;stop-color:#000000"
+         id="rect24"
+         width="44.999748"
+         height="77.937294"
+         x="251.53429"
+         y="222.73541" />
+    </clipPath>
+    <linearGradient
+       id="swatch2"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop2" />
+    </linearGradient>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#ffffff;stroke-linecap:square;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path27" />
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#ffffff;stroke-linecap:square;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path25" />
+    <path
+       id="path15"
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#2563eb;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       d="M 111.62523 4.0467814 C 102.50857 3.5016463 93.110875 5.1867293 84.515771 9.2909058 A 6.43785 6.43785 0 0 0 83.525134 10.392647 A 6.43785 6.43785 0 0 0 82.050806 10.550777 C 59.874688 22.665215 52.665187 49.452747 67.093579 68.929643 C 81.521971 88.40654 110.32698 93.962841 132.88491 82.429594 C 155.44284 70.896348 163.60132 44.355125 149.83582 24.480676 C 141.23238 12.059145 126.81966 4.9553398 111.62523 4.0467814 z M 40.861589 94.058341 C 45.334434 100.20577 50.443662 105.58491 56.027071 110.15607 C 82.77184 132.05211 120.39462 135.40952 151.05073 115.86735 C 153.82045 114.10175 156.45992 112.19325 158.96601 110.15607 C 164.78544 105.42548 169.88491 100.0009 174.21986 94.060409 A 8.0499048 8.0499048 0 0 0 174.03537 94.058341 L 40.861589 94.058341 z M 31.788241 98.54954 A 8.0499048 8.0499048 0 0 0 30.958834 102.10746 L 30.958834 193.71117 A 8.0499048 8.0499048 0 0 0 39.010022 201.75978 L 174.03537 201.75978 A 8.0499048 8.0499048 0 0 0 182.08398 193.71117 L 182.08398 102.10746 A 8.0499048 8.0499048 0 0 0 181.92171 100.49981 C 177.35006 106.66831 172.02553 112.334 165.98625 117.33496 C 162.97545 119.82812 159.78699 122.1561 156.42559 124.29887 C 153.00147 126.48163 149.49522 128.40675 145.92753 130.07992 L 145.92753 157.96969 C 152.77667 158.51649 159.70386 162.30448 165.98625 166.84873 C 166.08805 166.92233 166.18968 166.9964 166.29114 167.07042 C 170.19867 169.92127 173.71307 173.17943 176.31069 176.77319 C 178.90831 180.36694 180.86575 184.52547 180.01744 189.19724 A 5 5 0 0 1 174.20332 193.22438 A 5 5 0 0 1 170.17773 187.41027 C 170.2792 186.85148 169.93531 185.02208 168.20679 182.63071 C 167.59507 181.78441 166.84455 180.89677 165.98625 179.9978 C 164.41929 178.35659 162.4931 176.67818 160.39641 175.14848 C 153.90614 170.41332 145.23272 167.61955 142.7732 168.01558 A 5 5 0 0 1 140.09016 167.70863 C 134.30028 168.31829 125.41041 172.40212 119.15448 177.35352 C 115.83883 179.97776 113.21804 182.84008 111.96474 184.98819 C 111.8217 185.23336 111.69824 185.45735 111.59164 185.66205 C 110.76423 187.25086 110.96147 187.6773 111.05265 187.82213 A 5 5 0 0 1 109.48427 194.7168 A 5 5 0 0 1 102.5896 193.15048 C 101.10424 190.79142 100.80495 188.17562 101.21088 185.66205 C 101.53947 183.62731 102.33018 181.65956 103.32806 179.94922 C 105.55864 176.12605 108.94873 172.67622 112.94711 169.51162 C 119.61265 164.23603 127.83446 159.91788 135.92762 158.3769 L 135.92762 134.06624 C 105.21919 144.23533 71.532973 137.02965 47.058626 115.57072 C 41.432297 110.6376 36.292821 104.95124 31.788241 98.54954 z " />
+  </g>
+</svg>
