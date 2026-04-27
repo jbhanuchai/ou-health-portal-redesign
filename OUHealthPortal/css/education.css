@@ -1,0 +1,197 @@
+/* ============================================================
+   FILE: education.css
+   PURPOSE: Page specific styling for the Patient Education
+            page.
+   ============================================================
+   The foundation styles (topbar, sidebar nav, welcome card,
+   divider, footer note, and the records list pattern reused
+   for "Featured Articles") come from base.css and
+   dashboard.css.
+
+   This file adds only the rules that are unique to the
+   Patient Education page:
+       1. The compact welcome card modifier used by the page
+          heading (also reused by the Insurance page).
+       2. The article list rows, including their tag and
+          read time meta line.
+       3. The Read action button.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   SECTION 1: Compact Welcome Card Modifier
+   ------------------------------------------------------------
+   The base .welcome-card uses generous padding and a large
+   heading scale because it is meant to anchor a long page.
+   On simpler list-only pages a tighter heading reads better.
+   This modifier shrinks the padding and the headline scale
+   without disturbing the card's surface, border, or corner
+   accent.
+   ------------------------------------------------------------ */
+.welcome-card--compact {
+    flex: 0 0 auto;
+    padding: 22px 28px;
+}
+
+.welcome-card--compact .welcome-title {
+    font-size: 22px;
+    margin-bottom: 2px;
+}
+
+.welcome-card--compact .welcome-subtitle {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 2: Featured Articles List
+   ------------------------------------------------------------
+   Reuses the records-card / record-row pattern established
+   on the immunizations page. The list card flips off the
+   inner padding so the header band can sit flush against
+   the card edge, then the body restores horizontal padding
+   for the rows.
+   ------------------------------------------------------------ */
+.records-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.records-header {
+    padding: 16px 24px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.records-header-title {
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.records-list {
+    padding: 0 24px;
+}
+
+.record-row {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--surface-2);
+}
+
+.record-row:last-child {
+    border-bottom: none;
+}
+
+.record-name {
+    color: var(--text-dark);
+    font-size: 15px;
+    display: block;
+    margin-top: 4px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 3: Article Row Layout
+   ------------------------------------------------------------
+   Three column grid: category icon, body text, Read button.
+   ------------------------------------------------------------ */
+.article-row {
+    display: grid;
+    grid-template-columns: 42px 1fr auto;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.article-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    border: 1.5px solid var(--border-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* The line above the article title that holds the topic
+   tag and the read time, separated by a small dot. */
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--text-light);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.article-tag {
+    color: var(--blue-1);
+    font-weight: 700;
+}
+
+.article-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--text-light);
+}
+
+.article-excerpt {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.6;
+    margin-top: 4px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 4: Read Action Button
+   ------------------------------------------------------------
+   Outlined pill button on the right edge of each article
+   row. Echoes the existing print-records-btn styling.
+   ------------------------------------------------------------ */
+.article-read-btn {
+    padding: 8px 18px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--border-soft);
+    background: var(--surface);
+    color: var(--blue-1);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .18s ease;
+    align-self: center;
+}
+
+.article-read-btn:hover {
+    border-color: var(--blue-1);
+    background: var(--notice-bg);
+    box-shadow: var(--shadow-sm);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 5: Responsive Adjustments
+   ------------------------------------------------------------ */
+@media (max-width: 720px) {
+    .article-row {
+        grid-template-columns: 42px 1fr;
+    }
+    .article-read-btn {
+        grid-column: 2 / span 1;
+        justify-self: start;
+        margin-top: 6px;
+    }
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 6: View Transitions
+   ------------------------------------------------------------ */
+@view-transition {
+    navigation: auto;
+}

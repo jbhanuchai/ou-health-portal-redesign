@@ -4,14 +4,15 @@
 <!-- ============================================================
      FILE: insurance.html
      PURPOSE: Insurance page for the OU HealthConnection
-              Patient Portal. This is where the patient will
-              view and manage their insurance information.
+              Patient Portal. This is where the patient views
+              and manages their insurance information.
      ============================================================
-     This page is currently a styled template. The topbar and
-     navigation panel match the dashboard so the visual
-     language is consistent across the portal. The content
-     panel holds a placeholder welcome card that can be
-     replaced with the real page content when it is built out.
+     Styling for this page is split across three stylesheets,
+     loaded in order of dependency: base.css provides the
+     global tokens and shell, dashboard.css provides the
+     shared portal layout, and insurance.css adds the page
+     specific rules for the membership card display, the
+     coverage detail tiles, and the recent claims list.
      ============================================================ -->
 
 <head>
@@ -21,6 +22,7 @@
 
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/insurance.css" />
 </head>
 
 <body>
@@ -120,24 +122,171 @@
         </nav>
 
 
+        <!-- ====================================================
+             CONTENT PANEL
+             ==================================================== -->
         <section class="content-panel">
 
-            <div class="welcome-card">
+            <!-- Page heading (compact variant) -->
+            <div class="welcome-card welcome-card--compact">
                 <h1 class="welcome-title">
                     <span class="highlight">Insurance</span>
                 </h1>
                 <div class="welcome-subtitle">Coverage details, plan information, and claims</div>
+            </div>
 
-                <div class="divider"></div>
 
-                <div class="alerts-stack">
-                    <div class="notice-card">
-                        <p class="notice-text">
-                            This section is a styled <strong>template</strong>. Insurance
-                            coverage information and plan management tools will appear
-                            here once the page is built out.
-                        </p>
+            <!-- Membership card display -->
+            <div class="ins-card">
+                <div class="ins-card-top">
+                    <div class="ins-card-brand">
+                        <div class="ins-card-logo">
+                            <img src="icons/insuranceicon.svg" class="icon icon-md" alt="" />
+                        </div>
+                        <div>
+                            <div class="ins-card-payer">BlueCross BlueShield of Oklahoma</div>
+                            <div class="ins-card-plan">OU Student Health Plan</div>
+                        </div>
                     </div>
+                    <span class="status-badge status-badge--active">Active</span>
+                </div>
+
+                <div class="ins-card-body">
+                    <div class="ins-field">
+                        <div class="ins-field-label">Member Name</div>
+                        <div class="ins-field-value">Jane M. Smith</div>
+                    </div>
+                    <div class="ins-field">
+                        <div class="ins-field-label">Member ID</div>
+                        <div class="ins-field-value">XJK 123 456 789</div>
+                    </div>
+                    <div class="ins-field">
+                        <div class="ins-field-label">Group #</div>
+                        <div class="ins-field-value">P00785421</div>
+                    </div>
+                    <div class="ins-field">
+                        <div class="ins-field-label">Effective Date</div>
+                        <div class="ins-field-value">08/15/2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="ins-action-row">
+                <button class="ins-action-btn primary">
+                    <img src="icons/plusblue.svg" class="icon icon-md" alt="" />
+                    Update Insurance
+                </button>
+                <button class="ins-action-btn">
+                    <img src="icons/plusblue.svg" class="icon icon-md" alt="" />
+                    Add Secondary
+                </button>
+                <button class="ins-action-btn">
+                    <img src="icons/printblue.svg" class="icon icon-md" alt="" />
+                    Print Card
+                </button>
+            </div>
+
+
+            <!-- Coverage detail tiles -->
+            <div class="info-tiles">
+                <div class="info-tile">
+                    <div class="tile-icon">
+                        <img src="icons/dollarsignblue.svg" class="icon icon-lg" alt="" />
+                    </div>
+                    <div class="tile-num">$25</div>
+                    <div class="tile-label">Office Visit Co-pay</div>
+                </div>
+                <div class="info-tile">
+                    <div class="tile-icon">
+                        <img src="icons/dollarsignblue.svg" class="icon icon-lg" alt="" />
+                    </div>
+                    <div class="tile-num">$500</div>
+                    <div class="tile-label">Annual Deductible</div>
+                </div>
+                <div class="info-tile">
+                    <div class="tile-icon">
+                        <img src="icons/dollarsignblue.svg" class="icon icon-lg" alt="" />
+                    </div>
+                    <div class="tile-num">$3,500</div>
+                    <div class="tile-label">Out-of-Pocket Max</div>
+                </div>
+            </div>
+
+
+            <!-- Recent claims -->
+            <div class="welcome-card records-card">
+
+                <div class="records-header">
+                    <h4 class="records-header-title">Recent Claims</h4>
+                </div>
+
+                <div class="records-list">
+
+                    <div class="record-row claim-row">
+                        <div class="claim-date">
+                            <div class="claim-month">Apr</div>
+                            <div class="claim-day">14</div>
+                        </div>
+                        <div class="claim-text">
+                            <strong class="record-name">Office Visit : Goddard Health Center</strong>
+                            <div class="record-detail">Dr. Patel : Annual Physical</div>
+                        </div>
+                        <div class="claim-amount">
+                            <div class="claim-amount-value">$25.00</div>
+                            <div class="claim-amount-label">Your Cost</div>
+                        </div>
+                        <span class="status-badge status-badge--paid">Paid</span>
+                    </div>
+
+                    <div class="record-row claim-row">
+                        <div class="claim-date">
+                            <div class="claim-month">Mar</div>
+                            <div class="claim-day">02</div>
+                        </div>
+                        <div class="claim-text">
+                            <strong class="record-name">Lab Work : Routine Bloodwork</strong>
+                            <div class="record-detail">Quest Diagnostics : CBC + Metabolic Panel</div>
+                        </div>
+                        <div class="claim-amount">
+                            <div class="claim-amount-value">$0.00</div>
+                            <div class="claim-amount-label">Your Cost</div>
+                        </div>
+                        <span class="status-badge status-badge--paid">Paid</span>
+                    </div>
+
+                    <div class="record-row claim-row">
+                        <div class="claim-date">
+                            <div class="claim-month">Feb</div>
+                            <div class="claim-day">19</div>
+                        </div>
+                        <div class="claim-text">
+                            <strong class="record-name">Urgent Care : Acute Sinusitis</strong>
+                            <div class="record-detail">OU Urgent Care : Norman</div>
+                        </div>
+                        <div class="claim-amount">
+                            <div class="claim-amount-value">$48.20</div>
+                            <div class="claim-amount-label">Your Cost</div>
+                        </div>
+                        <span class="status-badge status-badge--pending">Pending</span>
+                    </div>
+
+                    <div class="record-row claim-row">
+                        <div class="claim-date">
+                            <div class="claim-month">Jan</div>
+                            <div class="claim-day">07</div>
+                        </div>
+                        <div class="claim-text">
+                            <strong class="record-name">Specialist Referral : Dermatology</strong>
+                            <div class="record-detail">OU Physicians : Consultation</div>
+                        </div>
+                        <div class="claim-amount">
+                            <div class="claim-amount-value">$50.00</div>
+                            <div class="claim-amount-label">Your Cost</div>
+                        </div>
+                        <span class="status-badge status-badge--paid">Paid</span>
+                    </div>
+
                 </div>
             </div>
 

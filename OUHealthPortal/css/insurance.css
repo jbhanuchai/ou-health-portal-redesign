@@ -1,0 +1,376 @@
+/* ============================================================
+   FILE: insurance.css
+   PURPOSE: Page specific styling for the Insurance page.
+   ============================================================
+   The foundation styles (topbar, sidebar nav, welcome card,
+   info tiles, divider, footer note, and the records list
+   pattern reused for "Recent Claims") come from base.css and
+   dashboard.css.
+
+   This file adds only the rules that are unique to the
+   Insurance page:
+       1. The membership card display (gradient hero card)
+       2. The action button row below the card
+       3. The claim row layout (date block, body, amount, pill)
+       4. Status pill variants for Active, Paid, and Pending
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   SECTION 1: Page Specific Design Tokens
+   ------------------------------------------------------------ */
+:root {
+
+    /* Active / Paid (green family) */
+    --status-green-bg:   #dcfce7;
+    --status-green-text: #166534;
+
+    /* Pending (amber family) */
+    --status-amber-bg:   #fef3c7;
+    --status-amber-text: #92400e;
+
+    /* Translucent white used for the field labels printed on
+       top of the membership card gradient. */
+    --on-blue-soft: rgba(255, 255, 255, 0.75);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 2: Compact Welcome Card Modifier
+   ------------------------------------------------------------
+   The base .welcome-card uses generous padding and a large
+   heading scale because it is meant to anchor a long page.
+   On simpler list-only pages a tighter heading reads better.
+   This modifier shrinks the padding and the headline scale
+   without disturbing the card's surface, border, or corner
+   accent.
+   ------------------------------------------------------------ */
+.welcome-card--compact {
+    flex: 0 0 auto;
+    padding: 22px 28px;
+}
+
+.welcome-card--compact .welcome-title {
+    font-size: 22px;
+    margin-bottom: 2px;
+}
+
+.welcome-card--compact .welcome-subtitle {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 3: Membership Card
+   ------------------------------------------------------------
+   A gradient surfaced card that mimics the look of a
+   physical insurance card. Uses the brand blue gradient
+   already used by the topbar logo and primary buttons so it
+   feels native to the portal.
+   ------------------------------------------------------------ */
+.ins-card {
+    background: var(--blue-grad);
+    color: var(--white);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+/* A faint white circle bleeds out of the bottom right to
+   add subtle depth, mirroring the accent on the welcome
+   card from dashboard.css. */
+.ins-card::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.ins-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+}
+
+.ins-card-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Small frosted square holding the insurance icon */
+.ins-card-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--white-20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Force the line art icon white on top of the gradient */
+.ins-card-logo .icon {
+    filter: brightness(0) invert(1);
+}
+
+.ins-card-payer {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--white);
+}
+
+.ins-card-plan {
+    font-size: 12px;
+    color: var(--on-blue-soft);
+    margin-top: 2px;
+}
+
+/* Body grid of four labelled fields */
+.ins-card-body {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 1fr;
+    gap: 18px;
+    position: relative;
+    z-index: 1;
+}
+
+.ins-field-label {
+    font-size: 10px;
+    color: var(--on-blue-soft);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.ins-field-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 4: Action Button Row
+   ------------------------------------------------------------
+   Outlined pill buttons placed under the card. The .primary
+   modifier swaps in the brand blue gradient for the most
+   important action (Update Insurance).
+   ------------------------------------------------------------ */
+.ins-action-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ins-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--border-soft);
+    background: var(--surface);
+    color: var(--text-mid);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .18s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.ins-action-btn:hover {
+    border-color: var(--blue-1);
+    color: var(--blue-1);
+    background: var(--notice-bg);
+}
+
+.ins-action-btn.primary {
+    background: var(--blue-grad);
+    color: var(--white);
+    border-color: transparent;
+    box-shadow: 0 4px 12px var(--blue-shadow);
+}
+
+.ins-action-btn.primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px var(--blue-active-shadow);
+    color: var(--white);
+}
+
+/* When the button is on the blue gradient the embedded line
+   art icon needs to be flipped white to remain visible. */
+.ins-action-btn.primary .icon {
+    filter: brightness(0) invert(1);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 5: Records / Claims List Card
+   ------------------------------------------------------------
+   Reuses the records-card / record-row pattern. Each claim
+   row uses a four column grid: a calendar style date block,
+   the body text, the dollar amount, and the status pill.
+   ------------------------------------------------------------ */
+.records-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.records-header {
+    padding: 16px 24px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.records-header-title {
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.records-list {
+    padding: 0 24px;
+}
+
+.record-row {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--surface-2);
+}
+
+.record-row:last-child {
+    border-bottom: none;
+}
+
+.record-name {
+    color: var(--text-dark);
+    font-size: 14px;
+}
+
+.record-detail {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 6: Claim Row Layout
+   ------------------------------------------------------------ */
+.claim-row {
+    display: grid;
+    grid-template-columns: 56px 1fr auto auto;
+    gap: 16px;
+    align-items: center;
+}
+
+/* Mini calendar style date block */
+.claim-date {
+    width: 56px;
+    text-align: center;
+    background: var(--notice-bg);
+    border: 1.5px solid var(--notice-border);
+    border-radius: 10px;
+    padding: 8px 4px;
+    flex-shrink: 0;
+}
+
+.claim-month {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--blue-1);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.claim-day {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.05;
+}
+
+.claim-amount {
+    text-align: right;
+    min-width: 80px;
+}
+
+.claim-amount-value {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.claim-amount-label {
+    font-size: 10px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 7: Status Badges
+   ------------------------------------------------------------ */
+.status-badge {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 50px;
+    white-space: nowrap;
+}
+
+.status-badge--active,
+.status-badge--paid {
+    color: var(--status-green-text);
+    background: var(--status-green-bg);
+}
+
+.status-badge--pending {
+    color: var(--status-amber-text);
+    background: var(--status-amber-bg);
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 8: Responsive Adjustments
+   ------------------------------------------------------------
+   On narrower viewports the four column membership card
+   body collapses to two columns so the long values do not
+   overflow.
+   ------------------------------------------------------------ */
+@media (max-width: 720px) {
+    .ins-card-body {
+        grid-template-columns: 1fr 1fr;
+    }
+    .claim-row {
+        grid-template-columns: 56px 1fr auto;
+    }
+    .claim-row .status-badge {
+        grid-column: 2 / span 2;
+        justify-self: start;
+    }
+}
+
+
+/* ------------------------------------------------------------
+   SECTION 9: View Transitions
+   ------------------------------------------------------------ */
+@view-transition {
+    navigation: auto;
+}

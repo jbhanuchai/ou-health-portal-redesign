@@ -4,13 +4,18 @@
 <!-- ============================================================
      FILE: education.html
      PURPOSE: Patient Education page for the OU
-              HealthConnection Patient Portal.
+              HealthConnection Patient Portal. Surfaces a
+              short list of featured health articles for the
+              patient to browse.
      ============================================================
-     This page is currently a styled template. The topbar and
-     navigation panel match the dashboard so the visual
-     language is consistent across the portal. The content
-     panel holds a placeholder welcome card that can be
-     replaced with the real page content when it is built out.
+     Styling for this page is split across three stylesheets,
+     loaded in order of dependency: base.css provides the
+     global tokens and shell, dashboard.css provides the
+     shared portal layout, and education.css adds the page
+     specific rules for the article list rows.
+
+     This page is currently static. No page specific
+     JavaScript is required.
      ============================================================ -->
 
 <head>
@@ -18,23 +23,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Patient Education</title>
 
-    <!-- Internal stylesheets. The base sheet defines global
-         tokens and the topbar while the dashboard sheet adds
-         layout rules shared with every authenticated page. -->
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/education.css" />
 </head>
 
 <body>
 
     <!-- ====================================================
          TOPBAR
-         Shared portal header with brand identity, search,
-         notification controls, messaging shortcut, and avatar.
          ==================================================== -->
     <header class="topbar">
 
-        <!-- Brand block with logo and portal title -->
         <div class="topbar-brand">
             <div class="brand-logo">
                 <img src="icons/stethoscope.svg" class="icon icon-md" alt="" />
@@ -45,18 +45,13 @@
             </div>
         </div>
 
-        <!-- Right hand group of topbar controls -->
         <div class="topbar-right">
-
             <div class="search-bar">
                 <img src="icons/search.svg" class="icon icon-md" alt="" />
                 <input type="text" placeholder="Search..." />
             </div>
-
             <div class="icon-btn"><img src="icons/bell.svg" class="icon icon-md" alt="" /></div>
             <div class="icon-btn"><img src="icons/msg.svg" class="icon icon-md" alt="" /></div>
-
-            <!-- Avatar links to the profile page -->
             <div class="avatar" onclick="window.location.href='profile.html'">JS</div>
         </div>
     </header>
@@ -64,12 +59,9 @@
 
     <!-- ====================================================
          MAIN LAYOUT
-         Two column layout with the navigation panel on the
-         left and the content panel on the right.
          ==================================================== -->
     <main class="main">
 
-        <!-- ---- Navigation Panel ---- -->
         <nav class="nav-panel">
 
             <div class="nav-panel-header">
@@ -133,28 +125,124 @@
         </nav>
 
 
-        <!-- ---- Content Panel ----
-             Placeholder welcome card for the page. Replace
-             this block with real page content when the
-             section is built out. -->
+        <!-- ====================================================
+             CONTENT PANEL
+             ==================================================== -->
         <section class="content-panel">
 
-            <div class="welcome-card">
+            <!-- Page heading (compact variant) -->
+            <div class="welcome-card welcome-card--compact">
                 <h1 class="welcome-title">
                     <span class="highlight">Patient Education</span>
                 </h1>
                 <div class="welcome-subtitle">Health resources and learning materials</div>
+            </div>
 
-                <div class="divider"></div>
 
-                <div class="alerts-stack">
-                    <div class="notice-card">
-                        <p class="notice-text">
-                            This section is a styled <strong>template</strong>. Educational
-                            articles, videos, and care guides will appear here once the
-                            page is built out.
-                        </p>
-                    </div>
+            <!-- Featured articles -->
+            <div class="welcome-card records-card">
+
+                <div class="records-header">
+                    <h4 class="records-header-title">Featured Articles</h4>
+                </div>
+
+                <div class="records-list">
+
+                    <article class="record-row article-row">
+                        <div class="article-icon">
+                            <img src="icons/immuneblue.svg" class="icon icon-md" alt="" />
+                        </div>
+                        <div class="article-text">
+                            <div class="article-meta">
+                                <span class="article-tag">Immunizations</span>
+                                
+                                <span>5 min read</span>
+                            </div>
+                            <strong class="record-name">Why Boosters Still Matter for College Students</strong>
+                            <p class="article-excerpt">
+                                A short guide to how immune protection wanes over time, and which
+                                vaccines should be refreshed during your university years.
+                            </p>
+                        </div>
+                        <button class="article-read-btn">Read</button>
+                    </article>
+
+                    <article class="record-row article-row">
+                        <div class="article-icon">
+                            <img src="icons/lightbulbblue.svg" class="icon icon-md" alt="" />
+                        </div>
+                        <div class="article-text">
+                            <div class="article-meta">
+                                <span class="article-tag">Mental Wellness</span>
+                                
+                                <span>8 min read</span>
+                            </div>
+                            <strong class="record-name">Managing Exam Stress: Evidence Based Strategies</strong>
+                            <p class="article-excerpt">
+                                Sleep, exercise, and structured study breaks have the strongest
+                                evidence for reducing anxiety in the run up to finals.
+                            </p>
+                        </div>
+                        <button class="article-read-btn">Read</button>
+                    </article>
+
+                    <article class="record-row article-row">
+                        <div class="article-icon">
+                            <img src="icons/stethoscopeblue.svg" class="icon icon-md" alt="" />
+                        </div>
+                        <div class="article-text">
+                            <div class="article-meta">
+                                <span class="article-tag">General Health</span>
+                                
+                                <span>4 min read</span>
+                            </div>
+                            <strong class="record-name">When to Use Urgent Care Instead of the ER</strong>
+                            <p class="article-excerpt">
+                                A simple decision guide that compares cost, wait times, and the
+                                conditions each setting is best equipped to treat.
+                            </p>
+                        </div>
+                        <button class="article-read-btn">Read</button>
+                    </article>
+
+                    <article class="record-row article-row">
+                        <div class="article-icon">
+                            <img src="icons/thermometerblue.svg" class="icon icon-md" alt="" />
+                        </div>
+                        <div class="article-text">
+                            <div class="article-meta">
+                                <span class="article-tag">Symptoms</span>
+                                
+                                <span>6 min read</span>
+                            </div>
+                            <strong class="record-name">Cold or Flu? Telling the Difference and Knowing When to Call</strong>
+                            <p class="article-excerpt">
+                                Symptom timelines, red flags, and self care steps that work for
+                                each. Includes guidance on when antiviral treatment is appropriate.
+                            </p>
+                        </div>
+                        <button class="article-read-btn">Read</button>
+                    </article>
+
+                    <article class="record-row article-row">
+                        <div class="article-icon">
+                            <img src="icons/whealthblue.svg" class="icon icon-md" alt="" />
+                        </div>
+                        <div class="article-text">
+                            <div class="article-meta">
+                                <span class="article-tag">Women's Health</span>
+                                
+                                <span>7 min read</span>
+                            </div>
+                            <strong class="record-name">Annual Wellness Visits: What to Expect</strong>
+                            <p class="article-excerpt">
+                                A walk through of the screenings, conversations, and lab work
+                                that are typically part of an annual women's health appointment.
+                            </p>
+                        </div>
+                        <button class="article-read-btn">Read</button>
+                    </article>
+
                 </div>
             </div>
 
