@@ -18,10 +18,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Profile</title>
 
-    <!-- External icon library for all Font Awesome glyphs -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
     <!-- Internal stylesheets -->
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
@@ -162,7 +158,7 @@
                 </div>
 
                 <button class="profile-primary-btn" id="editProfileBtn">
-                    <i class="fa-solid fa-pen-to-square"></i>
+                    <img src="icons/formsicon.svg" class="icon icon-sm" alt="" />
                     Edit Profile
                 </button>
             </div>
@@ -173,20 +169,20 @@
                 <div class="profile-avatar-xl">JS</div>
 
                 <div class="profile-summary-info">
-                    <h2 id="summaryName">Bhanu Chaitanya Jasti</h2>
-                    <p>Student Patient • University of Oklahoma</p>
+                    <h2 id="summaryName">Bhanu Jasti</h2>
+                    <p>Student • University of Oklahoma</p>
 
                     <div class="status-row">
                         <span class="status-pill success">
-                            <i class="fa-solid fa-circle-check"></i>
+                            <img src="icons/checkmarkgreen.svg" class="icon icon-xs" alt="" />
                             Profile Verified
                         </span>
                         <span class="status-pill">
-                            <i class="fa-solid fa-shield-halved"></i>
+                            <img src="icons/lockblue.svg" class="icon icon-xs" alt="" />
                             Secure Account
                         </span>
                         <span class="status-pill">
-                            <i class="fa-solid fa-message"></i>
+                            <img src="icons/msg.svg" class="icon icon-xs status-blue-icon" alt="" />
                             SMS Enabled
                         </span>
                     </div>
@@ -197,7 +193,7 @@
             <!-- ---- Quick Action Tiles ---- -->
             <div class="profile-action-grid">
                 <button class="quick-action-card" type="button" onclick="showPasswordPanel()">
-                    <div class="quick-icon"><i class="fa-solid fa-key"></i></div>
+                    <div class="quick-icon"><img src="icons/lockblue.svg" class="icon icon-md" alt="" /></div>
                     <div>
                         <h3>Change Password</h3>
                         <p>Update account security</p>
@@ -205,7 +201,7 @@
                 </button>
 
                 <button class="quick-action-card" type="button" onclick="startEditProfile()">
-                    <div class="quick-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="quick-icon"><img src="icons/phoneblue.svg" class="icon icon-md" alt="" /></div>
                     <div>
                         <h3>Update Contact</h3>
                         <p>Edit phone or email</p>
@@ -213,7 +209,7 @@
                 </button>
 
                 <button class="quick-action-card" type="button" onclick="showNotificationHelp()">
-                    <div class="quick-icon"><i class="fa-solid fa-bell"></i></div>
+                    <div class="quick-icon"><img src="icons/bell.svg" class="icon icon-md" alt="" /></div>
                     <div>
                         <h3>Notification Settings</h3>
                         <p>Manage reminders</p>
@@ -232,14 +228,14 @@
                             <h3>Personal Information</h3>
                             <p>Basic identity details used for healthcare records.</p>
                         </div>
-                        <div class="card-icon"><i class="fa-solid fa-user"></i></div>
+                        <div class="card-icon"><img src="icons/profileicon.svg" class="icon icon-md" alt="" /></div>
                     </div>
 
                     <div class="info-list">
                         <div class="info-item">
                             <span class="info-label required">Full Name</span>
                             <span class="info-value" data-field="fullName">
-                                Bhanu Chaitanya Jasti
+                                Bhanu Jasti
                             </span>
                         </div>
 
@@ -268,18 +264,18 @@
                             <h3>Contact Information</h3>
                             <p>How the health center can contact you.</p>
                         </div>
-                        <div class="card-icon"><i class="fa-solid fa-address-book"></i></div>
+                        <div class="card-icon"><img src="icons/phoneblue.svg" class="icon icon-md" alt="" /></div>
                     </div>
 
                     <div class="info-list">
                         <div class="info-item">
                             <span class="info-label required">Email</span>
-                            <span class="info-value" data-field="email">Bhanu.Chaitanya.Jasti-1@ou.edu</span>
+                            <span class="info-value" data-field="email">Bhanu.Jasti-1@ou.edu</span>
                         </div>
 
                         <div class="info-item">
                             <span class="info-label required">Cell Phone</span>
-                            <span class="info-value" data-field="cellPhone">945-268-4995</span>
+                            <span class="info-value" data-field="cellPhone">405-123-4567</span>
                         </div>
 
                         <div class="info-item">
@@ -302,13 +298,13 @@
                             <h3>Address</h3>
                             <p>Your current mailing address on file.</p>
                         </div>
-                        <div class="card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="card-icon"><img src="icons/locationblue.svg" class="icon icon-md" alt="" /></div>
                     </div>
 
                     <div class="info-list">
                         <div class="info-item">
                             <span class="info-label">Address Line 1</span>
-                            <span class="info-value" data-field="address1">908 E Lindsey St</span>
+                            <span class="info-value" data-field="address1">Devon Energy Hall</span>
                         </div>
 
                         <div class="info-item">
@@ -336,7 +332,7 @@
                             <h3>Communication Preferences</h3>
                             <p>Control how you receive healthcare updates.</p>
                         </div>
-                        <div class="card-icon"><i class="fa-solid fa-bell"></i></div>
+                        <div class="card-icon"><img src="icons/bell.svg" class="icon icon-md" alt="" /></div>
                     </div>
 
                     <div class="preference-list">
@@ -372,7 +368,7 @@
             <div class="profile-footer-actions">
                 <button class="profile-secondary-btn" id="cancelProfileBtn">Cancel</button>
                 <button class="profile-primary-btn" id="saveProfileBtn">
-                    <i class="fa-solid fa-floppy-disk"></i>
+                    <img src="icons/checkmark.svg" class="icon icon-sm" alt="" />
                     Save Changes
                 </button>
             </div>
@@ -399,7 +395,7 @@
                 </div>
 
                 <button class="close-modal-btn" onclick="closePasswordModal()">
-                    <i class="fa-solid fa-xmark"></i>
+                    <img src="icons/redx.svg" class="icon icon-sm" alt="" />
                 </button>
             </div>
 
