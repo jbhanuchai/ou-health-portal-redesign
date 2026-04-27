@@ -74,6 +74,8 @@
     /* Corner rounding values for large and small components */
     --radius: 18px;
     --radius-sm: 12px;
+
+    --verified-green: #22c55e;
 }
 
 

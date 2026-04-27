@@ -369,16 +369,6 @@
         }
         .reason-row-btn:hover { border-color: var(--blue-1); background: #eff6ff; }
         .reason-row-btn.selected { border-color: var(--blue-1); background: #eff6ff; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
-        .reason-row-icon {
-            width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
-            background: linear-gradient(135deg,#eff6ff,#dbeafe);
-            display: flex; align-items: center; justify-content: center;
-        }
-        .reason-row-btn.selected .reason-row-icon { background: var(--blue-grad); }
-        .reason-row-icon i { color: var(--blue-1); font-size: 14px; }
-        .reason-row-icon img { width: 14px; height: 14px; display: inline-block; vertical-align: middle; }
-
-        .reason-row-btn.selected .reason-row-icon i { color: #fff; }
         .reason-row-text { flex: 1; }
         .reason-row-name { display: block; font-size: 13px; font-weight: 600; color: var(--text-dark); }
         .reason-row-note { display: block; font-size: 11px; color: var(--text-mid); margin-top: 2px; font-weight: 500; }

@@ -37,12 +37,12 @@ const reasonsByCategory = {
         label: 'Vaccines & Immunizations',
         icon: 'immuneblue.svg',
         groups: [
-            { title: 'High Priority', icon: PLACEHOLDER_ICON, color: '#f59e0b', items: [
+            { title: 'High Priority', icon: 'exclamationred.svg', color: '#f59e0b', items: [
                 { name: 'Flu + Covid Vaccine', icon: PLACEHOLDER_ICON, note: 'Walk-in friendly' },
                 { name: 'Flu Vaccine',         icon: PLACEHOLDER_ICON, note: 'Walk-in friendly' },
                 { name: 'Covid Vaccine',       icon: PLACEHOLDER_ICON, note: 'Walk-in friendly' },
             ]},
-            { title: 'Other Vaccines', icon: 'immuneblue.svg', color: '#3b82f6', items: [
+            { title: 'Other Vaccines', icon: 'otherblue.svg', color: '#3b82f6', items: [
                 { name: 'Vaccination (other)', icon: 'immuneblue.svg',   note: null },
                 { name: 'Travel Consult',      icon: PLACEHOLDER_ICON,   note: 'International travel prep' },
             ]}
@@ -262,12 +262,11 @@ function selectCategory(el){
             <div style="display:flex;flex-direction:column;gap:7px">
                 ${g.items.map(r=>`
                 <button class="reason-row-btn" onclick="selectReason(this)" data-reason="${r.name.replace(/"/g,'&quot;')}">
-                    <span class="reason-row-icon"><img src="icons/${r.icon}" alt="" /></span>
                     <span class="reason-row-text">
                         <span class="reason-row-name">${r.name}</span>
                         ${r.note ? `<span class="reason-row-note"><img src="icons/info.svg" alt="" style="width:9px;height:9px;margin-right:3px;vertical-align:middle" />${r.note}</span>` : ''}
                     </span>
-                    <span class="reason-row-check"><img src="icons/checkmarkgreen.svg" alt="" /></span>
+                    <span class="reason-row-check"></span>
                 </button>`).join('')}
             </div>
         </div>
@@ -456,7 +455,7 @@ function calPickDay(d){
         return `<div class="cal-phys-card" onclick="calPickDoc(this,${i})">
             <div class="cal-phys-av" style="background:${p.color}">${p.init}</div>
             <div class="cal-phys-info"><div class="p-name">${p.name}</div><div class="p-role">${p.role}</div></div>
-            <div class="cal-phys-check"><img src="icons/checkmarkgreen.svg" alt="" /></div>
+            <div class="cal-phys-check"></div>
         </div>`;
     }).join('');
     document.getElementById('cal-empty').style.display='none';
