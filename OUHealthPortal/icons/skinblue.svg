@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="210mm"
+   viewBox="0 0 210 210"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   sodipodi:docname="skinblue.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.60804337"
+     inkscape:cx="325.63467"
+     inkscape:cy="196.53203"
+     inkscape:window-width="1920"
+     inkscape:window-height="996"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="swatch89"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop89" />
+    </linearGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5">
+      <rect
+         style="fill:#000000;stroke:#000000;stroke-width:0;stroke-linejoin:bevel;paint-order:stroke markers fill;stop-color:#000000"
+         id="rect5-4"
+         width="20"
+         height="200"
+         x="530"
+         y="595" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath15">
+      <rect
+         style="fill:none;stroke:#000000;stroke-linecap:butt;stroke-linejoin:bevel;paint-order:stroke markers fill;stop-color:#000000"
+         id="rect15-7"
+         width="45.034248"
+         height="38.955639"
+         x="262.48285"
+         y="121.00073" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath25">
+      <rect
+         style="fill:#ff0000;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:miter;paint-order:stroke markers fill;stop-color:#000000"
+         id="rect25-8"
+         width="78"
+         height="45.033199"
+         x="763.61322"
+         y="452.82422" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath24">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.999999;stroke-linecap:butt;stroke-linejoin:bevel;paint-order:stroke markers fill;stop-color:#000000"
+         id="rect24"
+         width="44.999748"
+         height="77.937294"
+         x="251.53429"
+         y="222.73541" />
+    </clipPath>
+    <linearGradient
+       id="swatch2"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop2" />
+    </linearGradient>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path24" />
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path22" />
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path20" />
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path18" />
+    <path
+       id="path76"
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#2563eb;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       d="M 106.82604 5.8787109 C 51.254984 5.8787109 5.878711 49.466464 5.8787109 103.34563 C 5.878711 157.2248 51.254984 200.81255 106.82604 200.81255 C 162.3971 200.81255 207.77543 157.2248 207.77543 103.34563 C 207.77543 49.466464 162.3971 5.878711 106.82604 5.8787109 z M 143.59175 34.923966 C 156.13006 34.923966 166.86733 44.340261 166.86733 56.459086 C 166.86733 68.577911 156.13006 77.994206 143.59175 77.994206 C 131.05343 77.994206 120.31462 68.577911 120.31462 56.459086 C 120.31462 44.340261 131.05343 34.923966 143.59175 34.923966 z M 68.316243 36.773466 C 80.854556 36.773466 91.591825 46.189761 91.591825 58.308586 C 91.591825 70.427411 80.854556 79.843705 68.316243 79.843705 C 55.77793 79.843705 45.041178 70.427411 45.041178 58.308586 C 45.041178 46.189761 55.77793 36.773466 68.316243 36.773466 z M 167.74583 88.990434 C 173.99248 88.990434 178.18551 94.660733 178.18551 100.51738 C 178.18551 106.37402 173.99248 112.04484 167.74583 112.04484 C 161.49919 112.04484 157.30668 106.37402 157.30668 100.51738 C 157.30668 94.660733 161.49919 88.990434 167.74583 88.990434 z M 138.29698 90.640462 C 144.54363 90.640462 148.73614 96.311284 148.73614 102.16792 C 148.73614 108.02456 144.54363 113.69539 138.29698 113.69539 C 132.05034 113.69539 127.85731 108.02456 127.85731 102.16792 C 127.85731 96.311284 132.05034 90.640462 138.29698 90.640462 z M 152.62893 113.83181 C 158.87557 113.83181 163.0686 119.50262 163.0686 125.35927 C 163.0686 131.21591 158.87557 136.88674 152.62893 136.88674 C 146.38228 136.88674 142.18925 131.21591 142.18925 125.35927 C 142.18925 119.50262 146.38228 113.83181 152.62893 113.83181 z M 54.828178 154.2619 L 153.60354 154.2619 A 5 5 0 0 1 158.60376 159.2616 A 5 5 0 0 1 153.60354 164.26181 L 54.828178 164.26181 A 5 5 0 0 1 49.827966 159.2616 A 5 5 0 0 1 54.828178 154.2619 z " />
+    <path
+       d=""
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+       id="path70" />
+  </g>
+</svg>

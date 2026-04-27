@@ -52,12 +52,12 @@ const reasonsByCategory = {
         label: 'Wellness & Check-ups',
         icon: 'stethoscopeblue.svg',
         groups: [
-            { title: 'Physical Exams', icon: PLACEHOLDER_ICON, color: '#16a34a', items: [
+            { title: 'Physical Exams', icon: 'plusblue.svg', color: '#16a34a', items: [
                 { name: 'Complete Physical Exam and Check-Up',          icon: PLACEHOLDER_ICON,    note: null },
                 { name: 'Annual Gynecological Exam',                    icon: 'whealthblue.svg',   note: null },
                 { name: 'Appointment with a Sports Medicine Specialist',icon: PLACEHOLDER_ICON,    note: null },
             ]},
-            { title: 'Other Wellness', icon: 'chronicheartblue.svg', color: '#3b82f6', items: [
+            { title: 'Other Wellness', icon: 'otherblue.svg', color: '#3b82f6', items: [
                 { name: 'Dietitian Consult',  icon: PLACEHOLDER_ICON,  note: 'Nutrition & dietary guidance' },
                 { name: 'Allergy Injection',  icon: 'immuneblue.svg',  note: 'Existing allergy patients only' },
             ]}
@@ -67,14 +67,14 @@ const reasonsByCategory = {
         label: 'Illness & Injury',
         icon: 'thermometerblue.svg',
         groups: [
-            { title: 'Respiratory & Infections', icon: PLACEHOLDER_ICON, color: '#dc2626', items: [
+            { title: 'Respiratory & Infections', icon: 'coughblue.svg', color: '#dc2626', items: [
                 { name: 'Respiratory (Cough/Cold/Sinus/COVID/Flu)',                                  icon: PLACEHOLDER_ICON, note: null },
                 { name: 'Ear Problem (Pain/Itching/Drainage/Clogged)',                               icon: PLACEHOLDER_ICON, note: null },
                 { name: 'Eye Problem (not for glasses/contacts prescriptions)',                      icon: PLACEHOLDER_ICON, note: null },
                 { name: 'Urinary (UTI/Bladder or Kidney Infection/Blood in Urine)',                  icon: PLACEHOLDER_ICON, note: null },
                 { name: 'STI (Sexually Transmitted Infection) exposures/symptoms with provider visit', icon: PLACEHOLDER_ICON, note: 'Confidential' },
             ]},
-            { title: 'Pain & Injury', icon: PLACEHOLDER_ICON, color: '#f97316', items: [
+            { title: 'Pain & Injury', icon: 'sadfaceblue.svg', color: '#f97316', items: [
                 { name: 'Back or Neck Pain',                                                  icon: PLACEHOLDER_ICON,        note: null },
                 { name: 'Chest Pain',                                                         icon: 'chronicheartblue.svg',  note: 'Call 911 if emergency' },
                 { name: 'Headache / Migraine',                                                icon: PLACEHOLDER_ICON,        note: null },
@@ -82,7 +82,7 @@ const reasonsByCategory = {
                 { name: 'Injury',                                                             icon: PLACEHOLDER_ICON,        note: null },
                 { name: 'Abdominal (Pain/Nausea/Vomiting/Diarrhea/Constipation)',             icon: PLACEHOLDER_ICON,        note: null },
             ]},
-            { title: 'Skin', icon: PLACEHOLDER_ICON, color: '#8b5cf6', items: [
+            { title: 'Skin', icon: 'skinblue.svg', color: '#8b5cf6', items: [
                 { name: 'Skin (Acne/Rash/Lesion)', icon: PLACEHOLDER_ICON, note: null },
             ]}
         ]
@@ -91,7 +91,7 @@ const reasonsByCategory = {
         label: 'Chronic Conditions',
         icon: 'chronicheartblue.svg',
         groups: [
-            { title: 'Ongoing Management', icon: PLACEHOLDER_ICON, color: '#3b82f6', items: [
+            { title: 'Ongoing Management', icon: 'circlearrowblue.svg', color: '#3b82f6', items: [
                 { name: 'Chronic Condition — Follow-up care',              icon: PLACEHOLDER_ICON,        note: 'Existing patients' },
                 { name: 'Chronic Condition — New patient to establish care',icon: PLACEHOLDER_ICON,       note: 'First visit' },
                 { name: 'ADHD Consultation',                                icon: PLACEHOLDER_ICON,        note: null },
@@ -117,11 +117,11 @@ const reasonsByCategory = {
         label: 'Mental Health',
         icon: PLACEHOLDER_ICON,
         groups: [
-            { title: 'Mental Health Services', icon: PLACEHOLDER_ICON, color: '#8b5cf6', items: [
+            { title: 'Mental Health Services', icon: 'lightbulbblue.svg', color: '#8b5cf6', items: [
                 { name: 'Mental Health (Anxiety/Depression/Insomnia/Stress)', icon: PLACEHOLDER_ICON, note: 'Counseling referrals available' },
                 { name: 'ADHD Consultation',                                  icon: PLACEHOLDER_ICON, note: null },
             ]},
-            { title: 'Important Note', icon: 'info.svg', color: '#f97316', items: [
+            { title: 'Important Note', icon: 'infoblue.svg', color: '#f97316', items: [
                 { name: 'University Counseling Center (separate service)', icon: PLACEHOLDER_ICON, note: 'This portal does NOT connect to UCC — call 405-325-2911' },
             ]}
         ]
@@ -142,7 +142,7 @@ const reasonsByCategory = {
         label: 'Lab & Screenings',
         icon: 'labblue.svg',
         groups: [
-            { title: 'STI Screenings', icon: PLACEHOLDER_ICON, color: '#16a34a', items: [
+            { title: 'STI Screenings', icon: 'search.svg', color: '#16a34a', items: [
                 { name: 'STI Screening Panel (no symptoms/known exposure)',  icon: 'labblue.svg',     note: 'No provider visit needed' },
                 { name: 'STI — exposures/symptoms (with provider visit)',     icon: PLACEHOLDER_ICON,  note: 'Includes consultation' },
             ]},
