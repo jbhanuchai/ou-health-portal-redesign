@@ -62,6 +62,7 @@
 .records-card {
     padding: 0;
     overflow: hidden;
+    flex: 0 0 auto; 
 }
 
 .records-header {
@@ -95,10 +96,13 @@
 
 .record-detail {
     font-size: 12px;
-    color: var(--text-light);
+    color: var(--text-dark);
     margin-top: 2px;
 }
 
+a.form-action-btn {
+    text-decoration: none;
+}
 
 /* ------------------------------------------------------------
    SECTION 4: Form Row Layout
