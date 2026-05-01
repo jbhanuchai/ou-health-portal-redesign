@@ -152,7 +152,8 @@ function buildThread(key) {
     const container = document.getElementById('thread-messages');
     container.innerHTML = '';
 
-    /* Date separator – always shown as "Today" in this demo */
+    /* Date separator. Always shows "Today" in this demo since
+       messages do not carry real timestamps. */
     const sep = document.createElement('div');
     sep.className = 'date-sep';
     sep.textContent = 'Today';

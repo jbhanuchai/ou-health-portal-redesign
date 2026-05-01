@@ -5,28 +5,27 @@
             calendar, the My Appointments tab, and the cancel
             modal.
    ============================================================
-   Icons referenced from this file are stored in the icons
+   Icons referenced in this file are stored in the icons
    folder. The reasonsByCategory data structure stores icon
-   filenames directly (for example 'immuneblue.svg') so they
-   can be dropped into the rendered markup as <img src> values.
-   When an existing icon does not have a close semantic match,
-   the constant PLACEHOLDER_ICON is used as a clearly identified
-   stand in until a custom SVG is added.
+   filenames directly so they can be used as img src values
+   in the rendered markup. When no close SVG match exists for
+   a given visit type, PLACEHOLDER_ICON is used so that all
+   missing icons can be swapped out by replacing one file.
    ============================================================ */
 
 
-/* ── Icon constants ── */
-// Used wherever a Font Awesome icon did not have a close
-// existing SVG equivalent. Replace the file at this path
-// with a real icon and every placeholder updates at once.
+/* Icon constants */
+// PLACEHOLDER_ICON is used wherever no matching custom SVG exists.
+// Replace the file at this path and every placeholder updates at once.
 const PLACEHOLDER_ICON = 'placeholder.svg';
 
 
-/* ── State ── */
+/* State */
+// Wizard step tracking and current selections for the scheduling flow.
 let currentStep=1, selectedType=null, selectedDoc=null, selectedDate=null, selectedTime=null;
 let cancelTargetId=null;
 let selectedCategory = null;
-// Step 2 (Provider) & Step 3 (Date/Time) data
+// Appointment records for Step 2 (Provider) and Step 3 (Date and Time).
 let appointments=[
     {id:'a1',type:'Flu Vaccine',         doc:'Dr. Sarah Mitchell', date:'May 5, 2026',  time:'4:15 PM', status:'upcoming'},
     {id:'a2',type:'Complete Physical',   doc:'Dr. Ahmed Raza',     date:'Feb 10, 2026', time:'9:00 AM', status:'past'},
@@ -170,13 +169,13 @@ const reasonsByCategory = {
     }
 };
 
-/* ── Nav ── */
+/* Nav */
 function setActive(btn){
     document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
 }
 
-/* ── Tab switching ── */
+/* Tab switching */
 function showTab(tab){
     const schedPane = document.getElementById('pane-schedule');
     const managePane = document.getElementById('pane-manage');
@@ -185,14 +184,14 @@ function showTab(tab){
     if(tab === 'schedule'){
         schedPane.style.display = 'block';
         managePane.style.display = 'none';
-        // Restore stepper visibility
+        // Restore stepper visibility based on whether the success screen is showing.
         if(document.getElementById('successScreen').classList.contains('show')){
             stepper.style.display = 'none';
         } else {
             stepper.style.display = 'flex';
         }
     } else {
-        // My Appointments — hide everything from schedule tab
+        // My Appointments tab: hide the schedule pane and show the manage pane.
         schedPane.style.display = 'none';
         managePane.style.display = 'block';
         renderAppointments('upcoming');
@@ -202,7 +201,7 @@ function showTab(tab){
     document.getElementById('tab-manage').classList.toggle('active', tab==='manage');
 }
 
-/* ── Stepper ── */
+/* Stepper */
 function goStep(n){
     document.getElementById('panel'+currentStep).classList.remove('active');
     currentStep=n;
@@ -240,7 +239,7 @@ function updateStepper(){
     if(c2) c2.classList.toggle('done', currentStep >= 4);
 }
 
-/* ── Step 1 – Category & Reason ── */
+/* Step 1: Category and Reason */
 function selectCategory(el){
     const cat = (typeof el === 'string') ? el : el.dataset.cat;
 
@@ -344,15 +343,12 @@ function selectReason(el){
     el.classList.add('selected');
     selectedType = el.dataset.reason || el.querySelector('.reason-row-name').textContent.trim();
     document.getElementById('btn1').disabled=false;
-    // Show preview
-    // Scroll preview into view
-
 }
 
 
 
 
-/* ── Step 4 – Summary ── */
+/* Step 4: Summary */
 function fillSummary(){
     document.getElementById('sum-type').textContent = selectedType || '—';
     document.getElementById('sum-doc').textContent  = selectedDoc  || '—';
@@ -387,7 +383,7 @@ function resetScheduler(){
     updateStepper();
 }
 
-/* ── My Appointments ── */
+/* My Appointments */
 function renderAppointments(status){
     const list=appointments.filter(a=>a.status===status);
     const el=document.getElementById('appt-'+status);
@@ -422,7 +418,8 @@ function doCancel(){
     const a=appointments.find(x=>x.id===cancelTargetId);
     if(a){
         a.status='cancelled';
-        // Free up the slot so others can book it
+        // Mark the appointment as cancelled in the local array.
+        // No backend call is made here since this is a UI prototype.
     }
     closeModal();
     renderAppointments('upcoming');
@@ -434,7 +431,8 @@ const CAL_MONTHS_S = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT
 const CAL_DAYS     = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const CAL_DOWS     = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
-/* ALL OF THIS INFO WILL BE HARD-CODED LOL*/
+// These availability sets are hardcoded for the demo.
+// Replace with a backend call when real scheduling data is available.
 const CAL_AVAIL = {
     '2026-4': [5,7,11,13,18,22,26,28],
     '2026-5': [2,4,9,11,16,18,23,25],
@@ -526,11 +524,9 @@ function calPickDoc(el,i){
 }
 
 function calUpdateBtn(){
-    // The cal-confirm button currently has no icon element in
-    // the HTML. Only the label and the ready class are toggled
-    // here. To restore an inline icon next to the label, add an
-    // <img> to the button in appointments.html and update its
-    // src in this function.
+    // The cal-confirm button only has a label element, no icon img.
+    // If you want an icon next to the label, add an img tag to the
+    // button in appointments.html and update its src here.
     const btn=document.getElementById('cal-confirm-btn');
     const lbl=document.getElementById('cal-confirm-label');
     const ready=calSelTime&&calSelDocIdx!==null;
@@ -554,6 +550,6 @@ function calConfirm(){
 
 calRender();
 
-/* ── Init ── */
+/* Init */
 updateStepper();
 document.getElementById('btn1').addEventListener('click', function(){ if(!this.disabled) goStep(2); });

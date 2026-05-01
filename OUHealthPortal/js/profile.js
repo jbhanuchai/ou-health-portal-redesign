@@ -1,11 +1,20 @@
 /* ============================================================
    FILE: profile.js
    PURPOSE: Interactive behavior for the My Profile page.
+   ============================================================
+   Handles inline editing of profile fields, password change
+   validation, notification preference toggles, and the toast
+   messages that confirm each action to the user.
    ============================================================ */
 
+   // Stores the original field values so edits can be cancelled cleanly.
    let originalProfileValues = {};
+
+   // Tracks whether the profile is currently in edit mode.
    let isEditingProfile = false;
    
+   // Puts every info-value field into an editable input and shows
+   // the save and cancel buttons at the bottom of the form.
    function startEditProfile() {
        if (isEditingProfile) return;
    
@@ -13,12 +22,16 @@
        originalProfileValues = {};
    
        document.querySelectorAll('.info-value').forEach((value, index) => {
+           // Save the original text so cancelProfileChanges can restore it.
            originalProfileValues[index] = value.textContent.trim();
    
            const currentText = value.textContent.trim();
            const input = document.createElement('input');
    
            input.className = 'profile-edit-input';
+
+           // Treat placeholder text as empty so the user does not have to
+           // manually clear it before typing their real value.
            input.value =
                currentText === 'Not provided' ||
                currentText === 'Not selected' ||
@@ -34,6 +47,8 @@
        showProfileMessage('Edit mode enabled. Update your information and click Save Changes.');
    }
    
+   // Validates required fields, writes the new values back into the DOM,
+   // and exits edit mode. Shows an error toast if validation fails.
    function saveProfileChanges() {
        let validationFailed = false;
    
@@ -46,6 +61,7 @@
    
                const requiredFields = ['fullName', 'email', 'cellPhone'];
    
+               // Highlight required fields that were left empty.
                if (requiredFields.includes(fieldName) && newValue === '') {
                    input.style.borderColor = '#dc2626';
                    input.style.background = '#fef2f2';
@@ -58,6 +74,7 @@
    
                value.textContent = newValue || 'Not provided';
    
+               // Apply the muted style when the field has no user value.
                if (newValue === '') {
                    value.classList.add('muted');
                } else {
@@ -71,6 +88,7 @@
            return;
        }
    
+       // Also update the summary name shown at the top of the profile card.
        const fullName = document.querySelector('[data-field="fullName"]');
        const summaryName = document.getElementById('summaryName');
    
@@ -83,10 +101,12 @@
        showProfileMessage('Profile updated successfully.');
    }
    
+   // Restores every field to its original value and exits edit mode.
    function cancelProfileChanges() {
        document.querySelectorAll('.info-value').forEach((value, index) => {
            value.textContent = originalProfileValues[index];
    
+           // Reapply the muted style for placeholder values.
            if (
                value.textContent.trim() === 'Not provided' ||
                value.textContent.trim() === 'Not selected' ||
@@ -103,6 +123,7 @@
        showProfileMessage('Changes cancelled.');
    }
    
+   // Toggles a single notification preference badge between On and Off.
    function togglePreference(badge) {
        const preferenceItem = badge.closest('.preference-item');
    
@@ -119,6 +140,7 @@
        }
    }
    
+   // Opens the change password modal.
    function showPasswordPanel() {
        const modal = document.getElementById('passwordModal');
    
@@ -127,6 +149,7 @@
        }
    }
    
+   // Closes the change password modal without saving anything.
    function closePasswordModal() {
        const modal = document.getElementById('passwordModal');
    
@@ -135,6 +158,8 @@
        }
    }
    
+   // Validates the new password against complexity requirements and
+   // confirms that the confirmation field matches before saving.
    function updatePassword() {
        const current = document.getElementById('currentPassword').value;
        const newPass = document.getElementById('newPassword').value;
@@ -173,11 +198,14 @@
        closePasswordModal();
        showProfileMessage('Password updated successfully.');
    
+       // Clear all three password fields after a successful update.
        document.getElementById('currentPassword').value = '';
        document.getElementById('newPassword').value = '';
        document.getElementById('confirmPassword').value = '';
    }
    
+   // Scrolls the notification preferences section into view and shows
+   // a helper message explaining how to toggle preferences.
    function showNotificationHelp() {
        const prefCard = document.querySelector('.preference-list');
    
@@ -188,6 +216,8 @@
        showProfileMessage('Use the On/Off badges in Communication Preferences to update reminders.');
    }
    
+   // Creates a temporary toast notification at the bottom of the page.
+   // Any existing toast is removed first so messages do not stack.
    function showProfileMessage(message) {
        const oldToast = document.querySelector('.profile-toast');
    
@@ -201,6 +231,7 @@
    
        document.body.appendChild(toast);
    
+       // Start fading out after 4.7 seconds, then remove from DOM.
        setTimeout(() => {
            toast.classList.add('hide');
        }, 4700);
@@ -228,10 +259,12 @@
            cancelButton.addEventListener('click', cancelProfileChanges);
        }
    
+       // Attach the toggle handler to every notification preference badge.
        document.querySelectorAll('.toggle-badge').forEach((badge) => {
            badge.addEventListener('click', () => togglePreference(badge));
        });
    
+       // Close the password modal when the user clicks the backdrop.
        const passwordModal = document.getElementById('passwordModal');
    
        if (passwordModal) {
@@ -242,6 +275,7 @@
            });
        }
    
+       // Hide the save and cancel footer until edit mode is entered.
        if (footerActions) {
            footerActions.style.display = 'none';
        }

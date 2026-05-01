@@ -3,45 +3,43 @@
    PURPOSE: Shared client side helpers used on multiple pages
             of the OU HealthConnection Patient Portal.
    ============================================================
-   This file currently contains the password visibility toggle
-   used on both the login page and the registration page. It
-   is kept in a separate file so that improvements made here
-   propagate automatically to every page that links it.
+   This file holds the password visibility toggle used on
+   both the login page and the registration page. Keeping it
+   here means any fix or improvement automatically applies to
+   every page that includes this script.
    ============================================================ */
 
 
 /* ------------------------------------------------------------
    FUNCTION: togglePwd
    ------------------------------------------------------------
-   Toggles the visibility of a password input field. When the
-   input currently hides the password (type attribute set to
-   "password"), the function switches it to plain text so the
-   user can verify what they typed. Clicking the button again
-   reverses the change.
-   
-   The function also swaps the Font Awesome icon between an
-   open eye (password is hidden) and a crossed out eye
-   (password is visible) to communicate the current state.
-   
-   PARAMETERS:
-     id  : The HTML id of the password input to toggle.
-     btn : The toggle button element that contains the icon
-           to be updated.
+   Toggles a password input between hidden and visible text.
+   When the input type is "password" the field masks what the
+   user typed. Calling this function switches it to "text" so
+   the user can read their entry. Calling it again switches
+   it back to "password".
+
+   The Font Awesome icon inside the button is also swapped so
+   the button always shows the state the field will move TO
+   when clicked. An open eye means the password is currently
+   hidden, and a slashed eye means it is currently visible.
+
+   Parameters:
+     id  - the HTML id of the password input to toggle
+     btn - the button element whose icon needs to be updated
    ------------------------------------------------------------ */
 function togglePwd(id, btn) {
     const inp = document.getElementById(id);
 
-    /* Record whether the field is currently revealed so that
-       we can invert it in the next step. */
+    // Save the current state so we can flip it below.
     const isText = inp.type === 'text';
 
-    /* Flip the input type. If the password was visible we
-       hide it, and if it was hidden we reveal it. */
+    // Switch the input type to show or hide the password.
     inp.type = isText ? 'password' : 'text';
 
-    /* Update the icon inside the toggle button to reflect the
-       new state. The open eye represents a hidden password,
-       and the slashed eye represents a visible password. */
+    // Swap the icon to reflect the new state of the field.
+    // Open eye means the password is now hidden.
+    // Slashed eye means the password is now visible.
     btn.querySelector('i').className = isText
         ? 'fa-solid fa-eye'
         : 'fa-solid fa-eye-slash';
