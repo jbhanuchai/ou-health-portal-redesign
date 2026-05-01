@@ -1,6 +1,6 @@
 # OU Health Portal Redesign
 
-A responsive React-based redesign of the OU Health Portal (Web + Mobile).
+An HCI-driven redesign of the OU Health Portal.
 
 
 ## Getting Started
@@ -15,7 +15,7 @@ git clone https://github.com/jbhanuchai/ou-health-portal-redesign.git
 ### Navigate into the Project Folder
 
 ```bash
-cd OUHealthPortal
+cd ou-health-portal-redesign/OUHealthPortal
 ```
 
 ### Host on localhost
