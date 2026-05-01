@@ -31,6 +31,6 @@ After running the command above, you can find the login page at "localhost:8080/
 The login page does not require credentials. You can access the dashboard regardless of typing anything for username and password
 
 ## Tech Stack
-HTML
-JavaScript
+HTML,
+JavaScript,
 CSS
