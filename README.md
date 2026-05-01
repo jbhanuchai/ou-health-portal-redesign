@@ -15,32 +15,22 @@ git clone https://github.com/jbhanuchai/ou-health-portal-redesign.git
 ### Navigate into the Project Folder
 
 ```bash
-cd ou-health-portal-redesign
+cd OUHealthPortal
 ```
 
-### Install Dependencies
-``` bash
-npm install
-```
-
-### Start the Development Server
+### Host on localhost
+Once you see the html files in your current directory, run the following command:
 ```bash
-npm run dev
+python -m http.server 8080
 ```
 
 ### Open in Browser
-After running the command above, a local development link will appear in the terminal.
-On macOS (and most systems), it will typically be: http://localhost:5173/
-Open this link in your browser to view the application.
+After running the command above, you can find the login page at "localhost:8080/login.html" in the browser.
 
-The app will automatically reload when you make changes.
+## Navigation
+The login page does not require credentials. You can access the dashboard regardless of typing anything for username and password
 
 ## Tech Stack
-
-React (Vite)
+HTML
 JavaScript
 CSS
-
-## Responsive Design
-
-The application is designed to work on Desktop (Web) and Mobile devices
